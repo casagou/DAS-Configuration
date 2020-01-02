@@ -1,0 +1,4 @@
+<Subsystems LastModificationDate="2019-10-28 14:54:39" Version="1.1">
+	<Subsystem Name="InternalAll" Description="Subsystem containing all internal channels" Enabled="true" LastModificationDate="2008-06-26 09:27:11" Id="0" Type="Internal" CreationDate="2004-03-19 09:00:00"/>
+	<Subsystem Name="Calculated" Description="Calculated and simulated channels" Enabled="true" LastModificationDate="2019-10-28 14:45:08" Id="0" Type="Calculated" CreationDate="2004-11-03 09:28:22"/>
+	</Subsystems>

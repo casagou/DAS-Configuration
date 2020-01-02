@@ -1,0 +1,94 @@
+<Polynomials LastModificationDate="2019-12-17 11:11:52" Version="1">
+	<Polynomial Name="ATP_Calibration" Description="Demo" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="0" Max="1000000">
+		<Coefficient Value="0"/>
+		<Coefficient Value="1"/>
+		<Coefficient Value="2"/>
+		<Coefficient Value="3"/>
+		<Coefficient Value="4"/>
+		<Coefficient Value="5"/>
+		<Coefficient Value="6"/>
+		<Coefficient Value="7"/>
+		<Coefficient Value="8"/>
+		<Coefficient Value="9"/>
+		<Coefficient Value="10"/>
+		</Polynomial>
+	<Polynomial Name="Math_Poly" Description="Demo - Polynomials to demo lookup calculations" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="-500" Max="1000">
+		<Coefficient Value="0"/>
+		<Coefficient Value="1"/>
+		<Coefficient Value="2"/>
+		<Coefficient Value="3"/>
+		<Coefficient Value="4"/>
+		<Coefficient Value="5"/>
+		<Coefficient Value="6"/>
+		</Polynomial>
+	<Polynomial Name="Surge_Line" Description="Demo - Compressor Map - Limits" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="5" Max="23">
+		<Coefficient Value="0.72915"/>
+		<Coefficient Value="-0.17524"/>
+		<Coefficient Value="0.09457"/>
+		<Coefficient Value="-0.00556"/>
+		<Coefficient Value="0.00011"/>
+		</Polynomial>
+	<Polynomial Name="Choke_Line" Description="Demo - Compressor Map - Limits" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="5.3" Max="23">
+		<Coefficient Value="0.6047"/>
+		<Coefficient Value="0.0669"/>
+		<Coefficient Value="0.0073"/>
+		</Polynomial>
+	<Polynomial Name="Speed_50pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="5.1" Max="6.4">
+		<Coefficient Value="-2.7489"/>
+		<Coefficient Value="1.8304"/>
+		<Coefficient Value="-0.1892"/>
+		</Polynomial>
+	<Polynomial Name="Speed_60pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="6.3" Max="8">
+		<Coefficient Value="-344.36"/>
+		<Coefficient Value="196.33"/>
+		<Coefficient Value="-41.713"/>
+		<Coefficient Value="3.9428"/>
+		<Coefficient Value="-0.1401"/>
+		</Polynomial>
+	<Polynomial Name="Speed_70pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="8" Max="10.8">
+		<Coefficient Value="67.273"/>
+		<Coefficient Value="-22.091"/>
+		<Coefficient Value="2.5317"/>
+		<Coefficient Value="-0.0968"/>
+		</Polynomial>
+	<Polynomial Name="Speed_75pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="10.3" Max="13">
+		<Coefficient Value="-8"/>
+		<Coefficient Value="12.062"/>
+		<Coefficient Value="-2.9248"/>
+		<Coefficient Value="0.2689"/>
+		<Coefficient Value="-0.0085"/>
+		</Polynomial>
+	<Polynomial Name="Speed_80pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="11.3" Max="14.5">
+		<Coefficient Value="-729.88"/>
+		<Coefficient Value="246.7"/>
+		<Coefficient Value="-31.12"/>
+		<Coefficient Value="1.7468"/>
+		<Coefficient Value="-0.0368"/>
+		</Polynomial>
+	<Polynomial Name="Speed_85pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="13.37" Max="16.1">
+		<Coefficient Value="-55"/>
+		<Coefficient Value="8.917"/>
+		<Coefficient Value="-0.3285"/>
+		</Polynomial>
+	<Polynomial Name="Speed_90pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="16.3" Max="17.45">
+		<Coefficient Value="-337.11"/>
+		<Coefficient Value="43.12"/>
+		<Coefficient Value="-1.3514"/>
+		</Polynomial>
+	<Polynomial Name="Speed_95pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="18.35" Max="18.86">
+		<Coefficient Value="35508"/>
+		<Coefficient Value="-5894.4"/>
+		<Coefficient Value="326.26"/>
+		<Coefficient Value="-6.0201"/>
+		</Polynomial>
+	<Polynomial Name="Speed_100pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="19.92" Max="20.15">
+		<Coefficient Value="-14317"/>
+		<Coefficient Value="1444.7"/>
+		<Coefficient Value="-36.424"/>
+		</Polynomial>
+	<Polynomial Name="Speed_105pc" Description="Demo - Compressor Map - Speed" Enabled="true" LastModificationDate="2019-12-17 11:11:52" XEngineeringUnit="-" YEngineeringUnit="-" Min="20.89" Max="21.04">
+		<Coefficient Value="-19783.07"/>
+		<Coefficient Value="1912.585"/>
+		<Coefficient Value="-46.2021"/>
+		</Polynomial>
+	</Polynomials>

@@ -1,0 +1,10 @@
+<Options>
+	<Option Name="ScanRates" Type="String" Value="0	200	100	66	50	40	33	25	20	10	8	5	4	2	1"/>
+	<Option Name="CFEColorLevel0" Type="Integer" Value="13408767"/>
+	<Option Name="CFEColorLevel1" Type="Integer" Value="16751001"/>
+	<Option Name="CFEColorLevel2" Type="Integer" Value="16764057"/>
+	<Option Name="CFEColorLevel3" Type="Integer" Value="16777113"/>
+	<Option Name="CFEColorLevel4" Type="Integer" Value="10092441"/>
+	<Option Name="CFEColorLevel5" Type="Integer" Value="10092543"/>
+	<Option Name="CFEColorLevel6" Type="Integer" Value="10079487"/>
+	</Options>
