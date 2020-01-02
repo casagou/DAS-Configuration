@@ -1,1 +1,6 @@
-<Configuration LastModificationDate="2019-10-28 14:37:09" Description="Test Cell # 1 - For ATPs and Demos"/>
+<Configuration LastModificationDate="2020-01-02 10:41:02" Description="Test Cell # 1 - For ATPs and Demos">
+	<Users>
+		<User Name="operator"/>
+		<User Name="engineer"/>
+		</Users>
+	</Configuration>
