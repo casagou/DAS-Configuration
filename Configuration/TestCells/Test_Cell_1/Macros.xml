@@ -1,5 +1,10 @@
-<Macros LastModificationDate="2019-12-27 18:11:50" Version="1">
+<Macros LastModificationDate="2020-01-03 15:29:31" Version="1">
 	<Macro Name="1 DAS Screensaver" Description="1 DAS Screensaver" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\1_DAS_Screensaver.tps">
+		<Categories>
+			<Category Name="Test Procedure"/>
+			</Categories>
+		</Macro>
+	<Macro Name="1 Recording Fullset Logs" Description="1 Recording Fullset Logs" Enabled="true" LastModificationDate="2020-01-03 15:29:31" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\1_Recording_Fullset_Logs.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
