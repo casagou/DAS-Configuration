@@ -2,7 +2,7 @@
 
 *DAS-Configuration* provides simulated channels, limit/alarm monitoring, view pages, report templates, test procedures to demonstrate the data acquisition capabilities of proDAS or nxDAS.
 
-> Before starting to cpying the files, backup your system.
+> Before starting to copying or merging the files, backup your system so you can revert any mistake.
 
 ## Installation for proDAS
 
