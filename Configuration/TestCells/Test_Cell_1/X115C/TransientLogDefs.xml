@@ -1,7 +1,1 @@
-<TransientLogDefs LastModificationDate="2019-12-17 10:56:23" Version="1">
-	<TransientLogDef Name="Vibration" Description="auto_report Vib Survey Log" Enabled="true" LastModificationDate="2019-12-12 14:48:32" FormatVersion="2.0" Duration="300000" Rate="10"/>
-	<TransientLogDef Name="VibAccel" Description="auto_report" Enabled="true" LastModificationDate="2019-12-12 14:48:32" FormatVersion="2.0" Duration="300000" Rate="10"/>
-	<TransientLogDef Name="VibDecel" Description="auto_report" Enabled="true" LastModificationDate="2019-12-12 14:48:32" FormatVersion="2.0" Duration="300000" Rate="10"/>
-	<TransientLogDef Name="Start" Description="auto_report Start Log" Enabled="true" LastModificationDate="2019-12-17 10:56:23" FormatVersion="2.0" Duration="1200000" Rate="10"/>
-	<TransientLogDef Name="Stop" Description="auto_report Stop Log" Enabled="true" LastModificationDate="2019-12-12 14:48:32" FormatVersion="2.0" Duration="300000" Rate="10"/>
-	</TransientLogDefs>
+<TransientLogDefs LastModificationDate="2019-12-17 10:56:23" Version="1"/>

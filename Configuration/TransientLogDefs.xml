@@ -1,0 +1,545 @@
+<TransientLogDefs LastModificationDate="2020-01-10 23:54:30" Version="1">
+	<TransientLogDef Name="Demo_Report" Description="auto_report REC" Enabled="true" LastModificationDate="2020-01-10 23:36:27" FormatVersion="2.0" Duration="900000" Rate="10">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Triangle_Up"/>
+			<TransientLogDefChannel Name="Math_Triangle_SlopUp"/>
+			<TransientLogDefChannel Name="Math_Triangle_SlopDown"/>
+			<TransientLogDefChannel Name="Math_Triangle_Min_Flag"/>
+			<TransientLogDefChannel Name="Math_Triangle_Min"/>
+			<TransientLogDefChannel Name="Math_Triangle_Max_Flag"/>
+			<TransientLogDefChannel Name="Math_Triangle_Max"/>
+			<TransientLogDefChannel Name="Math_Triangle_Latch"/>
+			<TransientLogDefChannel Name="Math_Triangle_Down"/>
+			<TransientLogDefChannel Name="Math_Triangle"/>
+			<TransientLogDefChannel Name="Math_Tol"/>
+			<TransientLogDefChannel Name="Math_Timer2_"/>
+			<TransientLogDefChannel Name="Math_Timer2"/>
+			<TransientLogDefChannel Name="Math_Timer1_"/>
+			<TransientLogDefChannel Name="Math_Timer1"/>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sum"/>
+			<TransientLogDefChannel Name="Math_Substract"/>
+			<TransientLogDefChannel Name="Math_Square_Timer"/>
+			<TransientLogDefChannel Name="Math_Square_Root"/>
+			<TransientLogDefChannel Name="Math_Square_Period"/>
+			<TransientLogDefChannel Name="Math_Square_Min"/>
+			<TransientLogDefChannel Name="Math_Square_Max"/>
+			<TransientLogDefChannel Name="Math_Square_Flag"/>
+			<TransientLogDefChannel Name="Math_Square"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Counter_10Hz"/>
+			<TransientLogDefChannel Name="Math_Sin_Counter"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Min"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Max"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal"/>
+			<TransientLogDefChannel Name="Math_Reverse"/>
+			<TransientLogDefChannel Name="Math_Reset"/>
+			<TransientLogDefChannel Name="Math_Raw"/>
+			<TransientLogDefChannel Name="Math_Random_Counter"/>
+			<TransientLogDefChannel Name="Math_Random_Coef"/>
+			<TransientLogDefChannel Name="Math_Random"/>
+			<TransientLogDefChannel Name="Math_Quality"/>
+			<TransientLogDefChannel Name="Math_Power"/>
+			<TransientLogDefChannel Name="Math_Poly"/>
+			<TransientLogDefChannel Name="Math_Or"/>
+			<TransientLogDefChannel Name="Math_Not_Equal_To"/>
+			<TransientLogDefChannel Name="Math_Not"/>
+			<TransientLogDefChannel Name="Math_Mux"/>
+			<TransientLogDefChannel Name="Math_Multiply"/>
+			<TransientLogDefChannel Name="Math_Minimum"/>
+			<TransientLogDefChannel Name="Math_Maximum"/>
+			<TransientLogDefChannel Name="Math_LookupXY3D"/>
+			<TransientLogDefChannel Name="Math_LookupX2D"/>
+			<TransientLogDefChannel Name="Math_Lookup3D"/>
+			<TransientLogDefChannel Name="Math_Lookup2D"/>
+			<TransientLogDefChannel Name="Math_Log"/>
+			<TransientLogDefChannel Name="Math_Ln"/>
+			<TransientLogDefChannel Name="Math_Less_Than_Equal"/>
+			<TransientLogDefChannel Name="Math_Less_Than"/>
+			<TransientLogDefChannel Name="Math_Int_Hex_to_Dec"/>
+			<TransientLogDefChannel Name="Math_Int_Hex_to_Bin"/>
+			<TransientLogDefChannel Name="Math_Int_Hex"/>
+			<TransientLogDefChannel Name="Math_Int_Dec_to_Hex"/>
+			<TransientLogDefChannel Name="Math_Int_Dec_to_Bin"/>
+			<TransientLogDefChannel Name="Math_Int_Dec"/>
+			<TransientLogDefChannel Name="Math_Int_Bin_to_Hex"/>
+			<TransientLogDefChannel Name="Math_Int_Bin_to_Dec"/>
+			<TransientLogDefChannel Name="Math_Int_Bin"/>
+			<TransientLogDefChannel Name="Math_Greater_Than_Equal"/>
+			<TransientLogDefChannel Name="Math_Greater_Than"/>
+			<TransientLogDefChannel Name="Math_Floor"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Exp"/>
+			<TransientLogDefChannel Name="Math_Equal_To"/>
+			<TransientLogDefChannel Name="Math_Divide"/>
+			<TransientLogDefChannel Name="Math_Counter_VerticalShift"/>
+			<TransientLogDefChannel Name="Math_Counter_PhaseShift"/>
+			<TransientLogDefChannel Name="Math_Counter_Period"/>
+			<TransientLogDefChannel Name="Math_Counter_Amplitude"/>
+			<TransientLogDefChannel Name="Math_Counter_200Hz"/>
+			<TransientLogDefChannel Name="Math_Counter_10Hz"/>
+			<TransientLogDefChannel Name="Math_Counter_100Hz"/>
+			<TransientLogDefChannel Name="Math_Counter"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Counter_10Hz"/>
+			<TransientLogDefChannel Name="Math_Cos_Counter_100Hz"/>
+			<TransientLogDefChannel Name="Math_Cos_Counter"/>
+			<TransientLogDefChannel Name="Math_Ceiling"/>
+			<TransientLogDefChannel Name="Math_Bool2"/>
+			<TransientLogDefChannel Name="Math_Bool1"/>
+			<TransientLogDefChannel Name="Math_Bitget"/>
+			<TransientLogDefChannel Name="Math_Average_Tolerance"/>
+			<TransientLogDefChannel Name="Math_Average"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_And"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Math_Absolute"/>
+			<TransientLogDefChannel Name="Math_Sinus_Signal"/>
+			<TransientLogDefChannel Name="Math_Sinus_Selector"/>
+			<TransientLogDefChannel Name="Math_Sin_Counter_200Hz"/>
+			<TransientLogDefChannel Name="Math_Sin_Counter_100Hz"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_32"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_31"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_30"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_29"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_28"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_27"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_26"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_25"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_24"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_23"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_22"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_21"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_20"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_19"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_18"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_17"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_16"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_15"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_14"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_13"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_12"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_11"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_10"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_09"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_08"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_07"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_06"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_05"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_04"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_03"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_02"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_Selector_01"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_32"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_31"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_30"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_29"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_28"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_27"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_26"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_25"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_24"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_23"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_22"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_21"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_20"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_19"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_18"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_17"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_16"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_15"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_14"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_13"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_12"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_11"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_10"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_09"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_08"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_07"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_06"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_05"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_04"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_03"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_02"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput_01"/>
+			<TransientLogDefChannel Name="Math_Sim_Signal_ManualInput"/>
+			<TransientLogDefChannel Name="Math_Random_200Hz"/>
+			<TransientLogDefChannel Name="Math_Random_10Hz"/>
+			<TransientLogDefChannel Name="Math_Random_100Hz"/>
+			<TransientLogDefChannel Name="Math_Ramp_Signal"/>
+			<TransientLogDefChannel Name="Math_Ramp_Selector"/>
+			<TransientLogDefChannel Name="Math_Cos_Counter_200Hz"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_000dot1Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="0.1">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_001Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="86400000" Rate="1">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_002Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="3600000" Rate="2">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_004Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="4">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_005Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="5">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_008Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="8">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_010Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="10">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_020Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="20">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_025Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="25">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_033Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="33">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_040Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="40">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_050Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="50">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_066Hz" Description="auto_report " Enabled="true" LastModificationDate="2020-01-10 23:54:30" FormatVersion="2.0" Duration="900000" Rate="66">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_100Hz" Description="auto_report REC" Enabled="true" LastModificationDate="2020-01-10 23:36:27" FormatVersion="2.0" Duration="60000" Rate="100">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	<TransientLogDef Name="Demo_Log_200Hz" Description="auto_report REC" Enabled="true" LastModificationDate="2020-01-10 23:36:27" FormatVersion="2.0" Duration="60000" Rate="200">
+		<Categories>
+			<TransientLogDefChannel Name="Math_Tanh_Float1"/>
+			<TransientLogDefChannel Name="Math_Tan_Float1"/>
+			<TransientLogDefChannel Name="Math_Sinh_Float1"/>
+			<TransientLogDefChannel Name="Math_Sin_Float1"/>
+			<TransientLogDefChannel Name="Math_Float5"/>
+			<TransientLogDefChannel Name="Math_Float4"/>
+			<TransientLogDefChannel Name="Math_Float3"/>
+			<TransientLogDefChannel Name="Math_Float2"/>
+			<TransientLogDefChannel Name="Math_Float1_Max"/>
+			<TransientLogDefChannel Name="Math_Float1"/>
+			<TransientLogDefChannel Name="Math_Cosh_Float1"/>
+			<TransientLogDefChannel Name="Math_Cos_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan_Float1"/>
+			<TransientLogDefChannel Name="Math_Atan2_Float1_2"/>
+			<TransientLogDefChannel Name="Math_Asin_Float1"/>
+			<TransientLogDefChannel Name="Math_Acos_Float1"/>
+			<TransientLogDefChannel Name="Al_Float2_Lim"/>
+			<TransientLogDefChannel Name="Al_Float2"/>
+			<TransientLogDefChannel Name="Al_Float1_Lim"/>
+			<TransientLogDefChannel Name="Al_Float1"/>
+			</Categories>
+		</TransientLogDef>
+	</TransientLogDefs>
