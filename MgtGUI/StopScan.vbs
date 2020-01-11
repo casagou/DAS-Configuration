@@ -31,7 +31,10 @@
 '*    ----------   -----   --------  --------------------------------------------------
 '*    08-DEC-03            FM        Added Error handling
 '*    26-APR-07    V2.01   DP        Moved startup of ARINC to RTD1
+'*    10-JAN-20            JOA       Fixed script to stop multi RTD Driver instance (wrong "if" logic). Cleaned up code and indentation. Added verbosity.
 '******************************************************************************
+
+
 
 Option Explicit
 
@@ -47,23 +50,22 @@ Dim remCtrl
 'COM Objects
 Dim rte, oTrace
 
-'***************************START CHANGE***************************************
 
-AlarmSumDispPC = "mangtp5-mgt"
-InfoSumDispPC = "mangtp5-mgt"
-ARINCDispPC    = "mangtp5-mgt"
-RTDPCNames     = "mangtp5-mgt"
+
+ '////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
+
+AlarmSumDispPC = "prodasmgt"
+InfoSumDispPC = "prodasmgt"
+ARINCDispPC    = "prodasmgt"
+RTDPCNames     = "prodasmgt,prodasrtd1"
 
 'Initialise Strings and parameters
 Const strTraceFile = "C:\\proDAS\\Data\\Trace\\StopScanTrace.txt"
 Const strHost = "rtehost"
 Const strService = "ui_serv"
 Const ScriptName = "StopScan.vbs"
-'***************************END CHANGE*****************************************
 
-
-
-'***************************DO NOT CHANGE**************************************
+'/////////////////////// END SECTION  ///////////////////////////////////////////////
 
 
 '*******************************************************
@@ -80,6 +82,8 @@ Else
    Set objCommands = Nothing
 End If
 
+
+
 '*******************************************************
 '**** 2. Stop Info Summary Display
 '*******************************************************
@@ -91,6 +95,8 @@ Else
    objCommands.Stop
    Set objCommands = Nothing
 End If
+
+
 
 '*******************************************************
 '**** 3. Stop ARINC Display
@@ -104,11 +110,14 @@ End If
 '   Set objCommands = Nothing
 'End If
 
+
+
 '*******************************************************
 '**** 3.1. Stop OMS GUI (T800 or T700) 
 '*******************************************************
 'Set remCtrl = CreateObject( "MDS.Remoting.RemotingClient" )
 'remCtrl.ShutdownProcess "STN1_RTD3", "OmsGUI", False
+
 
 
 '*******************************************************
@@ -137,39 +146,42 @@ For i = 0 to PCcount
       End If
       StopRtdDriver
    Else
-      'First RTD Driver instance
-      set RTDDriver = CreateObject ("proDAS.RTDDriver", arrPCNames(i)) ' remote
-      If Err.Number <> 0 Then
-         MsgBox "Failed to stop the RTD Driver on '"+arrPCNames(i)+"': "+Err.Description
-         Err.Number = 0
-      End If
-      StopRtdDriver
+   
+'/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
+   
+		'First RTD Driver instance
+			set RTDDriver = CreateObject ("proDAS.RTDDriver", arrPCNames(i)) ' remote
+			If Err.Number <> 0 Then
+				MsgBox "Failed to stop the RTD Driver on '"+arrPCNames(i)+"': "+Err.Description
+				Err.Number = 0
+			End If
+				StopRtdDriver
 
-      'Second RTD Driver instance
+		'Second RTD Driver instance
+			set RTDDriver = CreateObject ("proDAS.RTDDriver2", arrPCNames(i)) ' remote
+			If Err.Number <> 0 And Err.Number <> 424 Then
+				MsgBox "Failed to stop the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
+				Err.Number = 0
+			End If
+				StopRtdDriver
 
-      If i > 3 Then      
-	  set RTDDriver = CreateObject ("proDAS.RTDDriver2", arrPCNames(i)) ' remote
-          If Err.Number <> 0 And Err.Number <> 424 Then
-             MsgBox "Failed to stop the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
-             Err.Number = 0
-          End If
-          StopRtdDriver
-      End If
 
-      'Third RTD Driver instance
-      If i > 2 Then
-          set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames(i)) ' remote
-          If Err.Number <> 0 And Err.Number <> 424 Then
-            MsgBox "Failed to stop the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
-            Err.Number = 0
-          End If
-          StopRtdDriver
-      End If
+		' 'Third RTD Driver instance
+			' set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames(i)) ' remote
+			' If Err.Number <> 0 And Err.Number <> 424 Then
+				' MsgBox "Failed to stop the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
+				' Err.Number = 0
+			' End If
+				' StopRtdDriver
+ 
+ '////////////////////// END SECTION  ///////////////////////////////////////////////
 
    End If
 
 next
 'delay 5
+
+
 
 '*******************************************************
 '**** 5. Send Save Critical Log OpCode 12 = SAVE_LOG
@@ -177,34 +189,30 @@ next
 Call InitialiseCOMobjects		' Creates COM objects
   
 if rte.InitAndConnect() then
-
 	Dim code
-
 	code = rte.SendOpcode(12,"")
-
 	Call oTrace.WriteArgs(ScriptName, "Sendopcode: ", "Opcode 12 status = " & code)
-		
-
 else
-
 	Call oTrace.WriteArgs(ScriptName, "ConnectToRTE:","Cannot connect to the RTE")
-
 end if
 
 Terminate
+
 
 
 '*******************************************************
 '**  Stop the RTDDriver
 '*******************************************************
 sub StopRtdDriver
-  set Errors = RTDDriver.Errors
-  CheckErrors
-  set Errors = Nothing
+	set Errors = RTDDriver.Errors
+	CheckErrors
+	set Errors = Nothing
 
-  RTDDriver.Terminate Force
-  set RTDDriver = Nothing
+	RTDDriver.Terminate Force
+	set RTDDriver = Nothing
 end sub
+
+
 
 '*******************************************************
 '**  check for errors and notify the user, if appropriate
@@ -220,6 +228,8 @@ sub CheckErrors
       msgbox msg
    end if
 end sub
+
+
 
 '******************************************************************************
 '**** Function GetArg()
@@ -243,6 +253,8 @@ On Error Resume Next
     End If
     GetArg = retVal
 End Function
+
+
 
 '******************************************************************************
 '**** Sub InitialiseCOMobjects
@@ -268,6 +280,7 @@ Sub InitialiseCOMobjects
 End Sub
 
 
+
 '******************************************************************************
 '**** Sub Terminate
 '******************************************************************************
@@ -288,5 +301,3 @@ Sub Terminate
   
   Exit Sub
 End Sub
-
-'***************************DO NOT CHANGE**************************************

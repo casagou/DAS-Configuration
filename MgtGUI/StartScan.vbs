@@ -44,7 +44,10 @@
 '*    23-FEB-04            FM        Retrieve possible command line arguments
 '*                                   (cf. NCR# 11476)
 '*    07-FEB-07            TPS       Cleaned up the RTD Driver code
+'*    10-JAN-20            JOA       Fixed script to start multi RTD Driver instance (wrong "if" logic). Cleaned up code and indentation. Added verbosity.
 '******************************************************************************
+
+
 
 Option Explicit
 
@@ -81,14 +84,19 @@ Dim arrSubSystems
 Dim objCommands
 
 
-'***************************START CHANGE***************************************
-AlarmSumDispPC = "mangtp5-mgt"
-InfoSumDispPC = "mangtp5-mgt"
-ARINCDispPC    = "mangtp5-mgt"
-RTDPCNames     = "mangtp5-mgt"
 
+'/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
+
+AlarmSumDispPC = "prodasmgt"
+InfoSumDispPC = "prodasmgt"
+ARINCDispPC    = ""
+'RTDPCNames     = "prodasmgt,prodasrtd1"
+RTDPCNames     = "prodasrtd1"
 
 StartRTD          = TRUE
+
+ '////////////////////// END SECTION  ///////////////////////////////////////////////
+
 
 
 '******************************************************************************
@@ -96,31 +104,35 @@ StartRTD          = TRUE
 '******************************************************************************
 Sub GetStartupPages()
 
+'/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
+
     if argEngineType = "ATP_Calibration" Then
-	StartupPage1      = "TestBevel.v"
-	StartupPage2      = "Demo_RTD_Page2.v"
-	StartupPage3      = "Demo_RTD_Page3.v"
-	StartupPage4      = "Demo_RTD_Page4.v"
-	StartupPage5      = "Demo_RTD_Page5.v"
-	StartupPage6      = "Demo_RTD_Page6.v"
-	StartupPage7      = "Demo_RTD_Page7.v"
-	StartupPage8      = "Demo_RTD_Page8.v"
-	StartupPage9      = "Demo_RTD_Page9.v"
-    Elseif argEngineType = "RM12" Then
-	StartupPage1      = "TestBevel.v"
-	StartupPage2      = "Demo_RTD_Page5.v"
-	StartupPage3      = "Demo_RTD_Page6.v"
-	StartupPage4      = "Demo_RTD_Page8.v" 
+	StartupPage1      = "1_DAS_Control.v"
+	StartupPage2      = "2_Simulations2.v"
+	StartupPage3      = "2_Alarms.v"
+	StartupPage4      = "2_Calculations.v"
+	StartupPage5      = "2_Conversion_DecHexBin.v"
+	StartupPage6      = "2_Languages.v"
+	StartupPage7      = "2_Polar.v"
+	StartupPage8      = "2_Profile_Plot.v"
+	StartupPage9      = "2_Simulations_32Channels.v"
+    Elseif argEngineType = "X115C" Then
+	StartupPage1      = "1_DAS_Control.v"
+	StartupPage2      = "2_Simulations2.v"
+	StartupPage3      = "3_CompressorMap_Panel.v"
+	StartupPage4      = "4_JetEngine_MainPage.v"
+	StartupPage5      = "4_JetEngine_Picture.v"
+	StartupPage6      = "5_Bellmouth_Mass_Flow.v"
+	StartupPage7      = "6_GasTurbine_Mechanical_Verif.v"
+	StartupPage8      = "6_GasTurbine_Picture.v"
+	StartupPage9      = "6_GasTurbine_Speed_Targets.v"
     End If
  
-
-
+  '////////////////////// END SECTION  ///////////////////////////////////////////////
+ 
 End Sub
 
-'***************************END CHANGE*****************************************
 
-
-'***************************DO NOT CHANGE**************************************
 
 '******************************************************************************
 '*** 1. Retrieve the arguments
@@ -143,6 +155,8 @@ StartAlarmSumDisp = IsSubSystemOnline("LIMIT_ACTION")
 StartInfoSumDisp = IsSubSystemOnline("LIMIT_ACTION_INFO")
 StartArincDisp = IsSubSystemOnline("ARINC")
 
+
+
 '******************************************************************************
 '**** 2. Start Alarm Summary Display
 '******************************************************************************
@@ -157,6 +171,8 @@ If StartAlarmSumDisp Then
         Set objCommands = Nothing
     End If
 End If
+
+
 
 '******************************************************************************
 '**** 2.5. Start Info Summary Display
@@ -174,10 +190,9 @@ If StartInfoSumDisp Then
 End If
 
 
-'******************************************************************************
-'**** 3. Start ARINC Display
 
 '******************************************************************************
+'**** 3. Start ARINC Display
 '******************************************************************************
 If StartArincDisp Then
     Err.Number = 0
@@ -190,6 +205,8 @@ If StartArincDisp Then
         Set objCommands = Nothing
     End If
 End If
+
+
 
 '******************************************************************************
 '**** 4. Start Real Time Display
@@ -220,45 +237,49 @@ If StartRTD Then
             Err.Number = 0
         End If
     Else
+	
+'/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
+	
        'First RTD Driver instance
-	Set RTDDriver = CreateObject ("proDAS.RTDDriver", arrPCNames (i))
-        'ERR.NUMBER = 438 must be ok return code?
-        If Err.Number <> 0  And Err.Number <> 438 Then
-            MsgBox "Failed to create the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
-            Err.Number = 0
-        Else
-          StartRtdDriver i, 0
-        End If
+			Set RTDDriver = CreateObject ("proDAS.RTDDriver", arrPCNames (i))
+			'ERR.NUMBER = 438 must be ok return code?
+			If Err.Number <> 0  And Err.Number <> 438 Then
+				MsgBox "Failed to create the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
+				Err.Number = 0
+			Else
+				StartRtdDriver i, 0
+			End If
+
 
        'Second RTD Driver instance
-        If i > 3 Then 
-            Set RTDDriver = CreateObject ("proDAS.RTDDriver2", arrPCNames (i))
-            'ERR.NUMBER = 438 must be ok return code?
-            If Err.Number <> 0  And Err.Number <> 438 Then
-                MsgBox "Failed to create the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
-                Err.Number = 0
-            Else
-            StartRtdDriver i, 1
-            End If
-        End If
+			Set RTDDriver = CreateObject ("proDAS.RTDDriver2", arrPCNames (i))
+			'ERR.NUMBER = 438 must be ok return code?
+			If Err.Number <> 0  And Err.Number <> 438 Then
+				MsgBox "Failed to create the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
+				Err.Number = 0
+			Else
+				StartRtdDriver i, 1
+			End If
 
 
-       'Third RTD Driver instance
-        If i > 2 Then        
-            Set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames (i))
-            'ERR.NUMBER = 438 must be ok return code?
-            If Err.Number <> 0  And Err.Number <> 438 Then
-                MsgBox "Failed to create the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
-                Err.Number = 0
-            Else
-                StartRtdDriver i, 2
-            End If
-       End If
+       ' 'Third RTD Driver instance
+			' Set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames (i))
+			' 'ERR.NUMBER = 438 must be ok return code?
+			' If Err.Number <> 0  And Err.Number <> 438 Then
+				' MsgBox "Failed to create the RTD Driver on '" & arrPCNames(i) & "': "+Err.Description
+				' Err.Number = 0
+			' Else
+				' StartRtdDriver i, 2
+			' End If
+
+ '////////////////////// END SECTION  ///////////////////////////////////////////////
       
      End If
 
     Next
 End If
+
+
 
 '******************************************************************************
 '**  Start the RTD Driver
@@ -278,73 +299,104 @@ Sub StartRtdDriver (i, j)
   RTDDriver.Login Trim (argUserName), Trim (argPassword)
   CheckErrors i 
 	    
-  Set ViewObj = RTDDriver.CreateView("View0")
+  Set ViewObj = RTDDriver.CreateView("View 0")
 
   If Err.Number <> 0  And Err.Number <> 438 Then
     MsgBox "Failed to create view for the RTD Driver on '" & arrPCNames(i) &"': "+Err.Description
     Err.Number = 0
   Else
-    Select Case i
+	Select Case i
+	
+'/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
+	
+		'Computer #1
+		Case 0
+			Select Case j
+				'Monitor #1 of Computer #1
+				Case 0
+					ViewObj.PageName = StartupPage1
+					ViewObj.SetPosition 0, 0, 1920, 1200
+					WScript.Sleep 1000	    
+					ViewObj.Reload
+				'Monitor #2 of Computer #1
+				Case 1
+					ViewObj.PageName = StartupPage2
+					ViewObj.SetPosition 1920, 0, 3840, 1200
+					WScript.Sleep 1000	    
+					ViewObj.Reload
+			End Select
+			
+		' 'Computer #2
+		' Case 1
+			' Select Case j
+				' 'Monitor #1 of Computer #2
+				' Case 0
+					' ViewObj.PageName = StartupPage1
+					' ViewObj.SetPosition 0, 0, 1920, 1200
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+				' 'Monitor #2 of Computer #2
+				' Case 1
+					' ViewObj.PageName = StartupPage2
+					' ViewObj.SetPosition 1920, 0, 3840, 1200
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+				' 'Monitor #3 of Computer #2
+				' Case 2
+					' ViewObj.PageName = StartupPage3
+					' ViewObj.SetPosition 3840, 0, 5760, 1080
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+			' End Select
 
-      Case 0
-        Select Case j
-          Case 0
-            ViewObj.PageName = StartupPage1
-            ViewObj.SetPosition 0, 0, 1920, 1080
-			WScript.Sleep 1000	    
-            ViewObj.Reload
-          Case 1
-            ViewObj.PageName = StartupPage2
-            ViewObj.SetPosition 1920, 0, 3840, 1080
-			WScript.Sleep 1000	    
-            ViewObj.Reload
-		  Case 2
-            ViewObj.PageName = StartupPage3
-            ViewObj.SetPosition 3840, 0, 5760, 1080
-			WScript.Sleep 1000	    
-            ViewObj.Reload
- 
-        End Select
+		' 'Computer #3
+		' Case 2
+			' Select Case j
+				' 'Monitor #1 of Computer #3
+				' Case 0
+					' ViewObj.PageName = StartupPage1
+					' ViewObj.SetPosition 0, 0, 1920, 1200
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+				' 'Monitor #2 of Computer #3
+				' Case 1
+					' ViewObj.PageName = StartupPage2
+					' ViewObj.SetPosition 1920, 0, 3840, 1200
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+				' 'Monitor #3 of Computer #3
+				' Case 2
+					' ViewObj.PageName = StartupPage3
+					' ViewObj.SetPosition 3840, 0, 5760, 1080
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+			' End Select
 
-      
+		' 'Computer #4
+		' Case 3
+			' Select Case j
+				' 'Monitor #1 of Computer #4
+				' Case 0
+					' ViewObj.PageName = StartupPage1
+					' ViewObj.SetPosition 0, 0, 1920, 1200
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+				' 'Monitor #2 of Computer #4
+				' Case 1
+					' ViewObj.PageName = StartupPage2
+					' ViewObj.SetPosition 1920, 0, 3840, 1200
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+				' 'Monitor #3 of Computer #4
+				' Case 2
+					' ViewObj.PageName = StartupPage3
+					' ViewObj.SetPosition 3840, 0, 5760, 1080
+					' WScript.Sleep 1000	    
+					' ViewObj.Reload
+			' End Select              
 
-      Case 1
-        Select Case j
-          Case 0
-            ViewObj.PageName = StartupPage5
-            ViewObj.SetPosition 0, 0, 1920, 1080
-          Case 1
-            ViewObj.PageName = StartupPage6
-            ViewObj.SetPosition 1920, 0, 3840, 1080
- 	  Case 2
-            ViewObj.PageName = StartupPage1
-            ViewObj.SetPosition 3840, 0, 5760, 1080
- 
-        End Select
-
-      Case 2
-         Select Case j
-          Case 0
-            ViewObj.PageName = StartupPage9
-            ViewObj.SetPosition 0, 0, 1920, 1080
-          Case 1
-            ViewObj.PageName = StartupPage5
-            ViewObj.SetPosition -1920, 0, 0, 1080
-            'ViewObj.SetPosition 0, 0, 1920, 1080
-          
-        End Select
-      
-      Case 3
-        Select Case j
-          Case 0
-            ViewObj.PageName = StartupPage1
-            ViewObj.SetPosition 0, 0, 1920, 1080
-          
-          
-        End Select
-
-                
-       
+ '////////////////////// END SECTION  ///////////////////////////////////////////////
+  
     End Select
     CheckErrors i
 
@@ -352,6 +404,7 @@ Sub StartRtdDriver (i, j)
   End If
   Set RTDDriver = Nothing
 End Sub
+
 
 
 '******************************************************************************
@@ -366,6 +419,7 @@ Sub CheckErrors (i)
         Loop
     End If
 End Sub
+
 
 
 '******************************************************************************
@@ -388,6 +442,8 @@ Function GetArg (Flag)
     End if
     GetArg = retVal
 End Function
+
+
 
 '******************************************************************************
 '**** Function IsSubSystemOnline()
@@ -412,6 +468,8 @@ Function IsSubSystemOnline(SubSystemName)
 
     IsSubSystemOnline = retVal
 End Function
+
+
 
 '******************************************************************************
 '**** Sub DumpArgs()
