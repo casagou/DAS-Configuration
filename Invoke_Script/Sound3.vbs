@@ -18,7 +18,19 @@ oPlayer.settings.volume = 100
 oPlayer.controls.play 
 
 While oPlayer.playState <> 1 ' 1 = Stopped
-  WScript.Sleep 100
+  WScript.Sleep 500
+Wend
+
+oPlayer.controls.play 
+
+While oPlayer.playState <> 1 ' 1 = Stopped
+  WScript.Sleep 500
+Wend
+
+oPlayer.controls.play 
+
+While oPlayer.playState <> 1 ' 1 = Stopped
+  WScript.Sleep 500
 Wend
 
 ' Release the audio file
