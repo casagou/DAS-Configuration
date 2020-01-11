@@ -1,11 +1,11 @@
 # ========================================
 # Default command line parameters
 # ----------------------------------------
-CL  VERBOSITY          100
-CL  STATUS_DEST        prodas_status
-CL  TRACE_DEST         Trace.prodas
-CL  ROOT_PATH          /disk3/users/RTE
-CL  DEBUG_FLAG          TRUE 
+CL		VERBOSITY		100
+CL		STATUS_DEST		prodas_status
+CL		TRACE_DEST		Trace.prodas
+CL		ROOT_PATH		/disk3/users/RTE
+CL		DEBUG_FLAG		TRUE 
 # ========================================
 # Internal subsystem
 # ----------------------------------------
@@ -28,7 +28,7 @@ CI    timeout               90
 # Limit & Action subsystem
 # ----------------------------------------
 SS  LIMIT_ACTION       TRUE
-CI     la_rate_hz               2
+#CI     la_rate_hz               2
 CI     la_alsum_cli_host        mgthost
 CI     la_alsum_cli_service     alsum_srv
 CI     la_alsum_srv_service     laas_srv
@@ -42,6 +42,9 @@ CI     la_event_comment_to_db   TRUE
 CI     la_enable_alarms_ch      Alarm_Enable
 CI     la_ch_ack_on             Alarm_Ack_One
 CI     la_ch_ack_all            Alarm_Ack_All
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/ssh
+
 
 SS    LIMIT_ACTION_INFO   TRUE                  
 CI     la_rate_hz               2
@@ -56,12 +59,16 @@ CI     la_default_hostname     mgthost
 CI     la_event_comment_to_db  FALSE
 CI     la_enable_alarms_ch     Alarm_Enable
 CI     la_info_uel_flag        TRUE
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/ssh
 
 SS    LIMIT_ACTION_QUIET  TRUE
 CI     la_rate_hz               2
 CI     la_default_hostname     mgthost
-CI     la_event_comment_to_db  FALSE                                          
+CI     la_event_comment_to_db  TRUE                                          
 CI     la_enable_alarms_ch     Alarm_Enable                                  
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/ssh
 
 # ========================================
 # Fullset (Steady State) subsystem
@@ -70,7 +77,6 @@ SS  FULLSET            TRUE
 CI    deviation_limit  50
 CI    deviation_duration 30
 CI    fs_channame      Fullset_Status_
-#CI    pre_fs_action
 CI    pre_fs_action    op_rec_num Num_Fullset
 
 # ========================================
@@ -102,12 +108,24 @@ CI    pre_log_start      REC op_rec_num Num_Log
 # post_log_stop action
 #CI    post_log_stop      PW op_rec_num REC_NO O30002 -1
 
+# CI    log_conversion     SNECMA /usr/bin/rsh prodasmgt c:\\proDAS\\bin\\SNEXML.exe /mode TR /log  
+# CI    log_conversion     CDF /usr/bin/rsh prodasmgt "<[MIN]>" c:\\proDAS\\bin\\DCU.exe /testname=$TESTNAME$ /log=$LOGNAME$
+# CI    log_conversion     RRDS /users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_r2d2.config_rob -t TR
+# CI    log_conversion     DDAS /users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_ddas.config -t TR
+# CI    log_conversion     CHECK /users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_check.config_rob -t TR
+
+
 # ========================================
 # Calculated subsystems
 # ----------------------------------------
 SS  Calculated         TRUE 
-CI report_all_error    TRUE
+
 CI load_balance_enable TRUE
+
+# Can be either set to BAD or SUSPECT for NON domain error (Can't set to GOOD)
+CI  propagated_quality  SUSPECT
+# Set to TRUE to report all calc error; set to FALSE to report only domain error
+CI  report_all_error    FALSE
 
 # ========================================
 # Data Server subsystems
@@ -118,6 +136,8 @@ CI    service_name          ds_serv
 CI    com_timeout           2000
 # Maximun send rate allowed in Hz for DS
 CI    max_sendrate          10
+
+
 
 
 #--------------------------------------------------------------------------
