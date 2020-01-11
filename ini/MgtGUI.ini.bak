@@ -321,7 +321,7 @@ TestStep48=
 
 [LogTestStep]
 #Defines Log test step auto increments channel
-AutoIncChan=   
+AutoIncChan=    
 #Defines Log test step auto increments prefix
 Prefix=Rec
 TestStep1=GG1_PT1
