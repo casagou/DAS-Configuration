@@ -24,6 +24,10 @@ Management GUI Computer  `C:\proDAS\Data\MgtGUI\Test_Procedure`
 
 Management GUI Computer  `C:\proDAS\Data\MgtGUI\`
 
+### ini
+
+Management GUI Computer  `C:\proDAS\`
+
 ### Palette
 
 Real-Time Engine Computer  `\\rtehost\rte\views`
