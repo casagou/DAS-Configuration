@@ -1,0 +1,1191 @@
+# ========================================
+# Default command line parameters
+# ----------------------------------------
+CL  VERBOSITY          100
+CL  STATUS_DEST        prodas_status
+CL  TRACE_DEST         Trace.prodas
+CL  ROOT_PATH          /disk3/users/RTE
+CL  DEBUG_FLAG          TRUE 
+# ========================================
+# Internal subsystem
+# ----------------------------------------
+SS  INTERNAL           TRUE
+# ========================================
+# External subsystem
+# ----------------------------------------
+SS  userfunctions           FALSE
+# ----------------------------------------
+CI    serv_key		ut_serv
+CI    connection	SOCKET	
+CI    kill_client       no
+#=========================================
+#  UI_server
+#-----------------------------------------
+MD    UI_SERVER
+CI    service_name          ui_serv
+CI    timeout               90
+# ========================================
+# Limit & Action subsystem
+# ----------------------------------------
+SS  LIMIT_ACTION       TRUE
+CI     la_rate_hz               2
+CI     la_alsum_cli_host        mgthost
+CI     la_alsum_cli_service     alsum_srv
+CI     la_alsum_srv_service     laas_srv
+CI     la_alsum_timeout         60000
+CI     la_alsum_max_retry       20
+CI     la_alsum_sleep_ms        100
+CI     la_audio_player          /usr/sbin/soundplayer -nodisplay
+CI     la_yellow_alarm          TRUE
+CI     la_default_hostname      mgthost
+CI     la_event_comment_to_db   TRUE
+CI     la_enable_alarms_ch      Alarm_Enable
+CI     la_ch_ack_on             Alarm_Ack_One
+CI     la_ch_ack_all            Alarm_Ack_All
+
+SS    LIMIT_ACTION_INFO   TRUE                  
+CI     la_rate_hz               2
+CI     la_alsum_cli_host       mgthost  
+CI     la_alsum_cli_service    alsum_srv_info   
+CI     la_alsum_srv_service    laas_srv_info
+CI     la_alsum_timeout        60000             
+CI     la_alsum_max_retry      20                
+CI     la_alsum_sleep_ms       100
+CI     la_yellow_alarm         FALSE
+CI     la_default_hostname     mgthost
+CI     la_event_comment_to_db  FALSE
+CI     la_enable_alarms_ch     Alarm_Enable
+CI     la_info_uel_flag        TRUE
+
+SS    LIMIT_ACTION_QUIET  TRUE
+CI     la_rate_hz               2
+CI     la_default_hostname     mgthost
+CI     la_event_comment_to_db  FALSE                                          
+CI     la_enable_alarms_ch     Alarm_Enable                                  
+
+# ========================================
+# Fullset (Steady State) subsystem
+# ----------------------------------------
+SS  FULLSET            TRUE
+CI    deviation_limit  50
+CI    deviation_duration 30
+CI    fs_channame      Fullset_Status_
+#CI    pre_fs_action
+CI    pre_fs_action    op_rec_num Num_Fullset
+
+# ========================================
+# Log control & playback subsystem
+# ----------------------------------------
+SS  LOG_PLAYBACK       TRUE
+CI    crit_pre_event     1800
+CI    crit_post_event    60
+CI    crit_rate_hz       10
+CI    crit_description   auto_report
+CI    max_agg_rate       150000
+CI    log_version        4.0
+CI    crit_size          450
+CI    report_precision   8
+CI    use_testeng_dir_4_rep     TRUE
+CI    max_buf_duration   600
+CI    cl_enabled         TRUE 
+CI    cl_exceedance      TRUE
+CI    cl_scan_rate       10
+CI    cl_max_file_size   2000000
+CI    cl_max_number_test 20
+CI    cl_trigger         CL_Enable
+CI    rec_num_monitor_chan RECModeOn
+CI    cl_max_off_delay   0
+CI    unlimited_logs	 TRUE
+# pre_log_start action
+#CI    pre_log_start      PW op_rec_num REC_NO O30002
+CI    pre_log_start      REC op_rec_num Num_Log
+# post_log_stop action
+#CI    post_log_stop      PW op_rec_num REC_NO O30002 -1
+
+# ========================================
+# Calculated subsystems
+# ----------------------------------------
+SS  Calculated         TRUE 
+CI report_all_error    TRUE
+CI load_balance_enable TRUE
+
+# ========================================
+# Data Server subsystems
+# ----------------------------------------
+SS  DATA_SERVER                 TRUE
+# Service name for connecting to DS
+CI    service_name          ds_serv
+CI    com_timeout           2000
+# Maximun send rate allowed in Hz for DS
+CI    max_sendrate          10
+
+
+#--------------------------------------------------------------------------
+# PBS (Pressure Bricks) subsystem
+# ----------------------------------------
+SS  PBS                TRUE
+CI    port               pbs
+CI    zone               20
+CI    trigger            ON 100
+CI    min_days_to_cal    5
+CI    accel_xfer         33
+CI    reply_timeout      30
+CI    cal_uel_source     CALCHK
+CI    vent_control_ch    PBS_Cmd_Purge
+CI    valve_on_delay     2000
+CI    valve_off_delay    5000
+
+# ========================================
+# DTS subsystem
+# ----------------------------------------
+SS    DTS            	TRUE
+# DPS service name (default telnet)
+CI     port              telnet
+# software or hardware trigger; SW or HW
+CI     trigger           HW
+# external trigger rate (Hz)
+CI     hw_trigger_rate   20
+# number of averages during calibration
+CI     calavg            1
+# maximum allowable difference between RTD values
+CI     maxdelta          10.0
+# scan rate for accelerated transfer
+CI     accel_xfer        40
+# reply time-out in seconds
+CI     reply_timeout     10
+# ========================================
+# PRODAQ subsystem
+# ----------------------------------------
+SS    Bustec            TRUE
+# ========================================
+# FCS subsystem
+# ----------------------------------------
+SS    FCS                  FALSE
+# FCS host name
+CI    host              mangtp5-fcsas      
+# FCS service port
+CI    service           me_serv     
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           2
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                1000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# FCS 1 subsystem
+# ----------------------------------------
+SS    FCS1                  TRUE
+# FCS host name
+CI    host              mangtp5-fcsas      
+# FCS service port
+CI    service           me_serv     
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           2
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#CI    fchannelgroup          inputregisters
+#     timeout in ms
+CI    timeout                1000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# FCS subsystem
+# ----------------------------------------
+SS    FCS2                  TRUE
+# FCS host name
+CI    host              mangtp5-fcsas      
+# FCS service port
+CI    service           me_serv     
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           2
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#CI    fchannelgroup          inputregisters
+#     timeout in ms
+CI    timeout                1000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# FCS subsystem
+# ----------------------------------------
+SS    FCS3                  TRUE
+# FCS host name
+CI    host              mangtp5-fcsas      
+# FCS service port
+CI    service           me_serv     
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           2
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                1000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# FCS subsystem
+# ----------------------------------------
+SS    FCS4                  TRUE
+# FCS host name
+CI    host              mangtp5-fcsas      
+# FCS service port
+CI    service           me_serv     
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           2
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                1000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# FCS subsystem
+# ----------------------------------------
+SS    FCS5                  TRUE
+# FCS host name
+CI    host              mangtp5-fcsas      
+# FCS service port
+CI    service           me_serv     
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           2
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                1000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# ECS subsystem
+# ----------------------------------------
+SS    EGA                  FALSE
+
+CI    host                 mangtp5-egas  
+CI    service              me_serv  
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                100
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# ========================================
+# ECS subsystem
+# ----------------------------------------
+SS    ECS                  FALSE
+
+CI    host                   
+CI    service              me_serv  
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputcoils
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                500
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#     write multiple registers : multiple/single
+CI    writemultipleregisters  multiple
+#     max range of coil addresses in one output request (<= 1968)
+CI    maxcoiloutput     1920
+#     max range of holding register addresses in one output request (<=120)
+CI    maxregoutput      120
+#
+# =========================================================================
+# # ibaPDA Booleans (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Bool                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   unsigned
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+#CI    datatype               float
+CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_01                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_02                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_03                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_04                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_05                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_06                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_07                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_08                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_09                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_10                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_11                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_12                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_13                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_14                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_15                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# =========================================================================
+# # ibaPDA Floats (Generic Modbus Ethernet Driver) subsystem
+# # -------------------------------------------------------------------------
+SS    ibaPDA_Float_16                 FALSE
+CI    host                   sw_mgt
+CI    service                me_serv
+#     sign: signed or unsigned
+CI    sign                   signed
+#     endian: little or big
+CI    endian                 big
+#     datatype:  float or short (short is for short integer)
+CI    datatype               float
+#CI    datatype               short
+#     use decimal format for the slave address
+CI    slaveaddress           1
+#     discrete channel group, inputcoils or inputstatus
+CI    dchannelgroup          inputstatus
+#     float channel group, inputregisters or holdingregisters
+CI    fchannelgroup          inputregisters
+#CI    fchannelgroup          holdingregisters
+#     timeout in ms
+CI    timeout                5000
+#     protocol, tcp or udp
+CI    protocol               tcp
+#     max number of Modbus register channels
+CI    maxregchannel          125
+#     TCP implementation (use either Woodward or OpenMODBUS)
+CI    modbus_tcp             OpenMODBUS
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+
+# ========================================
+# External subsystem
+SS  WS           TRUE
+# Command line to start WS
+CI   program           ws -c .config.ws -s
+CI    serv_key          ex_serv
+CI    connection        SOCKET
+CI    tolerance         30
+CI    init_tolerance    120
+CI    retry             3
+# Heartbeat channel delay value
+CI    delay             10
+# Enable/Disable EXT HOOKS button in GUI
+CI    allow_disable     No
+# Name of Heartbeat channel
+CI    heartbeat         WS_Heartbeat
+# Name of Error channel
+CI    error             WS_Error
+
+#--------------------------------------------------------------------------
+# Network Data Distribution Subsystem
+#--------------------------------------------------------------------------
+SS    NDDS                  FALSE
+# Static channel data topic name
+CI    sta_topic_name        Example StaChan
+# Static channel data profile name
+CI    sta_profile_name      StaChanData_Profile
+# Dynamic channel data topic name
+CI    dyn_topic_name        Example DynChan
+# Dynamic channel data profile name
+CI    dyn_profile_name      DynChanData_Profile
+# Test information data topic name
+CI    test_topic_name       Example TestInfo
+# Test information data profile name
+CI    test_profile_name     TestInfo_Profile
+
+# ========================================
+# EDAS GUI module
+# ----------------------------------------
+MD  GUI
+CI    check_disc_in_scan   FALSE
+CI    save_dds_sentry      OFF
+# ========================================
+# Playback GUI module
+# ----------------------------------------
+MD  PB_GUI
+CI    check_disc_in_scan   FALSE
+# ========================================
+# UEL (Unified Event Log) module
+# ----------------------------------------
+MD  UEL
+CI    source_names         CALCHK, WS, ALSUMDISP, RDD, GENDBSRV
+CI    language_filename    EV_English.lang
+CI    UEL_display_server_service_name   uel_dserv
+# ========================================
+# ST (Scan & Tranfser) module
+# ----------------------------------------
+MD  ST
+CI    set_rt_cpu           TRUE
+CI    detect_overruns      TRUE
+CI    base_frequency       200
+CI    rt_priority          INTERNAL 30
+CI    rt_priority          Bustec 29
+CI    overrun_tolerance		10
+CI    rt_default_priority	15
+#--------------------------------------------------------------------------
+MD    EN_SERVER
+# Name of service 
+CI    service_name         en_serv
+# Timeout in seconds              
+CI    timeout               10
+# Heartbeat period in seconds
+CI    hb_period             5
+#--------------------------------------------------------------------------
+# ========================================
+# Initialization module
+# ----------------------------------------
+MD  INIT
+# database service name.
+CI      db_serv_key               pdb_serv
+# database server host name.
+CI      db_host_name              rtehost
+# timeout to wait for database server requests, in seconds
+CI      db_timeout                900
+#  configuration retriever service name.
+CI      cr_serv_key               CRS_Serv
+# configuration retrieval server host name
+CI      cr_host_name              mgthost
+# timeout to wait for configuration retrieval server requests, in seconds
+CI      cr_timeout                900
+CI    report_quality_change	FALSE
+# SS type and its extrapolation value pair 
+# # (float number, zero means no extrapolation, less than zero is invalid)
+# # (polynomial type needs some extrapolation in order to enable limit check)
+CI    ss_extrap_value         ProDAQVXI   0.1
+<!> END OF CONFIG <!>
+
+NOTES:
+    1) '<!> END OF CONFIG <!>' marks the end of the config file
+        (so that we can put comments here ...). It MUST follow the last
+        configuration parameter and MUST start in column 1 and MUST be exactly
+       as above (without the quotes -'-).
+
+       '#' in column 1 introduces a comment line; EDAS ignores comment lines.
+
+
+    2) 'CL' stands for Command Line option. Valid command line options are:
+         - MASTER_CONFIG_ID: identifies the default test to configure EDAS with;
+         - CELL_ID: identifies the default cell to configure EDAS for;
+         - VERBOSITY: level of verbosity to be used (0 (low) - 100 (high));
+           Note that '89' is the highest verbosity EDAS should run with
+           under normal operating conditions.
+         - TRACE_DEST: either "stdout" (all trace messages go to the
+           X-term) or a trace file name with no path (all traces go to
+           the 'tmp' dir, in the named file).
+        e.g.:  CL  VERBOSITY  89
+
+        NOTE: if EDAS is started with command line options from the
+        prompt, those options will override the config file definitions; valid
+        command line options at the prompt are 'm', 'c', 'v', 't' 'e' and 'f',
+        or the same letters in capitals:
+         mXXXX       to download master config XXXX;
+         cX          to configure for test cell XX;
+         v[0-100]    to set the verbosity between 0 (low) and 100 (high);
+         tfile_name  to use file 'file_name' (no path) as the trace destination;
+         eeng_name   to use the engine 'eng_name' with EDAS (for views and logs).
+         fconfig     to use 'config' (path/file_name) instead of this '.config'
+        e.g.:  edas m1000 c3 v89
+
+
+    3) 'SS' stands for Sub-System option
+        A sub-system will be opened only if it is set to TRUE on a
+        SS line.  It will be configured only if it is included in the
+        down-loaded master configuration.
+        e.g.:  SS  INTERNAL  TRUE
+
+
+    4) 'CI' stands for Configuration Info
+        Lines that start with 'CI' contain configuration parameters
+        that apply to the last preceeding 'SS' sub-system or 'MD'
+        module encountered in the config file.
+        e.g.:  CI  crit_pre_event  120
+
+
+    5) 'MD' stands for Module Description
+        To identify the module (or sub-system) to which 'CI' lines apply,
+        Modules which are sub-systems (such as the 'Fullset' sub-system) can
+        have config parameters after a 'SS' or 'MD' line with their name.
+        Modules which are not sub-systems (such as the GUI) can only have
+        config parameters after a 'MD' line.
+        e.g.:  MD  GUI
+        e.g.:  MD  G2_1
+
+
+/***************************************************************************/
+
+
