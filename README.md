@@ -83,7 +83,7 @@ Features and Improvements:
         - Incorporated new MDS logo
         - Improved header with more fields and a configuration tab
 - RTD Pages
-    - Created dark templates RTD page 1920 x 1200
+    - Created dark RTD template 1920 x 1200
     - Created DAS control RTD pages
     - Created ATP RTD pages to demonstrate all RTD ActiveX objects 
     - Created demo Compressor Map RTD pages
@@ -91,7 +91,7 @@ Features and Improvements:
     - Created demo Bellmouth Mass Flow Troubleshooting RTD page
     - Created demo Industrial Gas Turbine RTD pages
     - Created demo Emissions RTD page
-	- Created standard sequence
+    - Created demo sequence
 - Palettes
     - Standardized sub drawing definition
     - Standardized bitmap definition
@@ -153,6 +153,8 @@ Features and Improvements:
 - Replace all "proDAS" channels by "DAS" channels 
 - Create a Thrust Calibration RTD page
 - Improve the Jet Engine Vibration Survey RTD page
+- Create Full HD 1920x1080 RTD templates
+- Create light RTD template 1920 x 1200
 
 ----
 
