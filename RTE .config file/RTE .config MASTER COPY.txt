@@ -7,7 +7,7 @@
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-# Default command line parameters
+# Default Command Line Parameters
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 #CL		MASTER_CONFIG_ID	0
 #CL		CELL_ID			0
@@ -26,7 +26,7 @@ CL		REPLAY_FLAG		FALSE
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-# Limit & Action subsystem
+# Limit & Action
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS		LIMIT_ACTION		TRUE
 # value: Rate (Hz) to check limits 
@@ -221,12 +221,6 @@ CI		load_balance_enable		TRUE
 CI		propagated_quality		SUSPECT		
 # Set to TRUE to report all calc error; set to FALSE to report only domain error
 CI		report_all_error		TRUE		
-
-
-# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-# Internal
-# ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-SS		INTERNAL		TRUE
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -805,7 +799,7 @@ CI		disc_out		B25
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-# PRODAQ
+# PRODAQ VXI
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS		Bustec		FALSE
 
@@ -822,7 +816,7 @@ CI		card		1	0x15000000
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-# THG (Thrust generic )
+# Thrust Generic (THG)
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS		Thrust		FALSE
 
