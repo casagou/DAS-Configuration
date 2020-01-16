@@ -17,10 +17,14 @@ Features and Improvements:
             - Simulations
             - Non-english language support
             - Invoke Script demonstrations
+			- DAS control
+			- DAS monitoring
         - Compressor Map
             - Simulation
+			- Polynomial Overalys
+			- BreakPoint Table Overlays
         - Jet Engines
-            - Simulation
+            - Simulation from Idle to Take-Off
         - Bellmouth Mass Flow
             - Troubleshooting
             - Simulation
@@ -28,7 +32,9 @@ Features and Improvements:
             - Performance
             - Mechanical Verification Test
             - Thermodynamic Verification Test
-        - Emissions RTD
+			- Simulation with Test Procedure
+        - Emissions
+			- Standardization calculations
     - Standardized the engineering unit definition
         - Updated unit description. Corrected format consistency.
         - Modified the units: g, radians, radians/s, g/l, Btu(Int), Hz/cst, Mile(US), gram, ton(long), ton(metric), ton(short), kg/hr, kg/m, HP(UK), inH2O(4DegC), inHg(0DegC), mmH2O(4DegC), mmHg(0DegC), DegK, hr, cst, gal(Im), gal(US), pint(Im), pint(US), qt(Im), qt(US), gph(Im), gph(US), gpm(Im), gpm(US), gps(Im), gps(US), L/hr, qt(Im)/hr, qt(US)/hr
@@ -76,7 +82,6 @@ Features and Improvements:
     - Improved existing legacy master log sheet
         - Incorporated new MDS logo
         - Improved header with more fields and a configuration tab
-- RTE .config File
 - RTD Pages
     - Created dark templates RTD page 1920 x 1200
     - Created DAS control RTD pages
@@ -86,11 +91,14 @@ Features and Improvements:
     - Created demo Bellmouth Mass Flow Troubleshooting RTD page
     - Created demo Industrial Gas Turbine RTD pages
     - Created demo Emissions RTD page
+	- Created standard sequence
 - Palettes
     - Standardized sub drawing definition
     - Standardized bitmap definition
 - Media
     - Recorded screen captures of the RTD pages for Marketing
+    
+----
 
 ### 1.0.0
 Features and Improvements:
@@ -99,15 +107,15 @@ Features and Improvements:
 - Ini Files
     - Modified RAVE.ini
         - Data Origin set to I23
-    - MgtGUI.ini
+    - Modified MgtGUI.ini
         - Added fullset test steps for Industrial Gas Turbine testing
-    - RTDActiveXControls.ini
+    - Modified RTDActiveXControls.ini
         - Dead time set to 0 by default
         - Highlight Size set to 30 by default
         - Highlight Rotation set to 0 by default
         - Fixed RTD State Indicator default bitmap to `\\rtehost\rte\Palette\Indicator_SubDrawing.bmp`
 - MgtGUI Scripts
-    - Improved StartScan and StopScan scripts to manage up to 3 RTD Driver instances per computer
+    - Improved StartScan and StopScan scripts to manage up to 3 RTD Driver instances per computer (Better Strip Chart performances) 
 - RTE .config File
     - Standardized the RTE .config file
         - Split the file into 2 sections: Sofware subsystems and Hardware subsystems
@@ -116,16 +124,27 @@ Features and Improvements:
         - Improved style and cleanup code
         - Tested in MSIL
 
+----
+
 ### 1.1.0
 Features and Improvements:
 - Added screen captures of RTD pages, notably Compressor Map and Industrial Gas Turbine
 - Added screen captures of MgtGUI interface while RTE is scanning
 
+----
+
 ### 1.1.1
 Features and Improvements:
-- Added monitor photos MgtGUI and RTD monitors all combined running Test Procedures and RTD pages
+- Added monitor photos MgtGUI and RTD monitors (3 monitors all combined) running Test Procedures and RTD pages
+
+----
 
 ### 1.1.2 (current)
+
+Bug Fixes:
+- Deleted duplicate subsystems in RTE .config file
+
+----
 
 ### 1.2.0 (alpha)
 
@@ -135,10 +154,11 @@ Features and Improvements:
 - Create a Thrust Calibration RTD page
 - Improve the Jet Engine Vibration Survey RTD page
 
+----
+
 ### 2.0.0 (development)
 Features and Improvements:
 - nxDAS integration
-
 
 
 ## Installation for proDAS
