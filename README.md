@@ -156,7 +156,7 @@ Bug Fixes:
 
 ----
 
-### 1.2.0 (current)
+### 1.2.0
 
 Features and Improvements:
 - Updated StartScan.vbs
@@ -169,6 +169,15 @@ Bug Fixes:
 - RTE .config File
 	- Added missing attributes #PV4 #543 #534
 ----
+
+### 1.2.1 (current)
+
+Bug Fixes:
+- Updated StartScan.vbs
+
+----
+
+
 
 ### 1.3.0 (alpha)
 
