@@ -45,6 +45,7 @@
 '*                                   (cf. NCR# 11476)
 '*    07-FEB-07            TPS       Cleaned up the RTD Driver code
 '*    10-JAN-20            JOA       Fixed script to start multi RTD Driver instance (wrong "if" logic). Cleaned up code and indentation. Added verbosity.
+'*    17-JAN-20            JOA       Multi RTD Driver instance (up to 4) with variable monitor quantity capability.
 '******************************************************************************
 
 
