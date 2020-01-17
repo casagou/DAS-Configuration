@@ -148,7 +148,7 @@ Bug Fixes:
 
 ----
 
-### 1.1.3 (current)
+### 1.1.3
 
 Bug Fixes:
 - Modified README structure
@@ -156,7 +156,21 @@ Bug Fixes:
 
 ----
 
-### 1.2.0 (alpha)
+### 1.2.0 (current)
+
+Features and Improvements:
+- Updated StartScan.vbs
+	- Capability to start up to 4 RTD Driver instances per computer
+	- Capability to choose how many RTD Driver instances are started per computer if monitors quantities are different
+	- Capability to Start RTD Driver instance with no View creation (useful for MgtGUI)
+	- Clarified script with comments and variablea for every monitor of every computer possible
+
+Bug Fixes:
+- RTE .config File
+	- Added missing attributes #PV4 #543 #534
+----
+
+### 1.3.0 (alpha)
 
 Features and Improvements:
 - Create a compressor Map split view with extra overlays
