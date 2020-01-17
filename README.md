@@ -85,6 +85,7 @@ Features and Improvements:
 		- Improved header with additional fields and a configuration tab
 - RTD Pages
 	- Created dark RTD template 1920 x 1200
+	- Created a new ribbon with DAS control and DAS monitoring features
 	- Created DAS control RTD pages
 	- Created ATP RTD pages to demonstrate all RTD ActiveX objects 
 	- Created demo Compressor Map RTD pages
