@@ -13,7 +13,7 @@
 #CL		CELL_ID			0
 CL		VERBOSITY		100
 CL		STATUS_DEST		edas_status
-#CL		STATUS_DEST		prodas_status	#default
+#CL		STATUS_DEST		prodas_status	#default #PV4 #534 #543
 #CL		STATUS_DEST		edas_status	#msil
 # Trace file name
 #CL		TRACE_DEST		Trace.prodas	#default 	
@@ -21,7 +21,9 @@ CL		TRACE_DEST		Trace.joa
 CL		ROOT_PATH		/users/RTE
 #CL		ROOT_PATH		/disk3/users/RTE
 #CL		ROOT_PATH		/users/RTE	#msil
-#CL		DEBUG_FLAG		TRUE
+#CL		DEBUG_FLAG		TRUE	#543
+#CL		DEBUG_FLAG		FALSE	#default #PV4
+CL		DEBUG_FLAG		FALSE
 CL		REPLAY_FLAG		FALSE 
 
 
@@ -32,7 +34,7 @@ SS		LIMIT_ACTION		TRUE
 # value: Rate (Hz) to check limits 
 #CI		la_rate_hz		2
 # The host where the alsum will be running
-#CI		la_alsum_cli_host		mgthost	#default
+#CI		la_alsum_cli_host		mgthost	#default #543
 #CI		la_alsum_cli_host		prodasrtd1
 #CI		la_alsum_cli_host		prodasmgt	#msil
 CI		la_alsum_cli_host		prodasmgt
@@ -50,6 +52,7 @@ CI		la_alsum_timeout		5000
 CI		la_alsum_max_retry		20
 # Sleep in polling loop the client (In Millisecond)
 CI		la_alsum_sleep_ms		200
+#CI		la_alsum_sleep_ms		200	#543
 # The yellow alarms flag (TRUE or FALSE)
 CI		la_yellow_alarm		TRUE
 # The default hostname for INVOKE_EXECUTE action
@@ -141,29 +144,37 @@ CI		pre_fs_action			op_rec_num Num_Fullset
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS		LOG_PLAYBACK		TRUE
 # Time (ms) saved before event
-CI		crit_pre_event		120 
+CI		crit_pre_event		60
 # Time (ms) saved after event
-CI		crit_post_event		60 
+CI		crit_post_event		30
 # Rate (Hz) of critical log
-CI		crit_rate_hz		10 
+CI		crit_rate_hz		10
 # Rate (chan/sec) maximum aggregate rate
 CI		max_agg_rate		100000
-#CI		max_agg_rate		150000	#default  
+#CI		max_agg_rate		150000	#default #543
+#CI		max_agg_rate		250000	#534
+#CI		max_agg_rate		250000	#PV4
 # History log version being output
-#CI		log_version		4.0
-CI		log_version		2.0	#msil
+#CI		log_version		4.0	#PV4 #534
+CI		log_version		2.0
+#CI		log_version		2.0	#msil
 # Size of critical log in MBytes
 CI		crit_size		450 
 # precision of float values in report
 CI		report_precision		8 
 # Critical log description
-CI		crit_description	RRDS DDAS critical log description
+#CI		crit_description		DDAS
+#CI		crit_description		RRDS
+#CI		crit_description		SNECMA
+CI		crit_description		REC
 # Flag controlling the location of the report directory
 CI		use_testeng_dir_4_rep		FALSE
+#CI		use_testeng_dir_4_rep		TRUE	#PV4
 # Flag controlling the continuous log
 CI		cl_enabled		TRUE
 # Continuous log scan rate (from 1 Hz to 10 Hz)
 CI		cl_scan_rate		10
+#CI		cl_scan_rate		200	#534
 # Maximum file size (Kilobytes)
 CI		cl_max_file_size		2000000
 # Maximum number of tests
@@ -176,6 +187,7 @@ CI		cl_max_off_delay		10
 CI		cl_exclude_ss		Calculated
 # allow continuous log to scan at up to 100 Hz (TRUE or FALSE)
 CI		cl_exceedance		FALSE
+#CI		cl_exceedance		TRUE	#534
 # Maximum buffer duration (in seconds: 5 - 600) for transient log
 CI		max_buf_duration		600
 # Log action format: Key_word Opcode_cmd Record_number_channel output_channel Optional_record_number_value
@@ -194,7 +206,7 @@ CI		pre_log_start		REC op_rec_num Num_Log
 # post_save_critical action
 #CI		post_save_critical		PW op_rec_num REC_NO O30004
 # recording number monitor channel
-CI		rec_num_monitor_chan		EnableRecNum
+CI		rec_num_monitor_chan		Num_Log_Enable
 
 
 # ──────────────────────────────────────────────────────────
@@ -217,6 +229,7 @@ SS		INTERNAL		TRUE
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS		Calculated				TRUE 
 CI		load_balance_enable		TRUE
+#CI		load_balance_enable		FALSE	#PV4
 # Can be either set to BAD or SUSPECT for NON domain error (Can't set to GOOD)
 CI		propagated_quality		SUSPECT		
 # Set to TRUE to report all calc error; set to FALSE to report only domain error
@@ -242,7 +255,9 @@ CI		kill_client		no
 # ──────────────────────────────────────────────────────────
 SS		User_Functions		FALSE
 # service name or shared memory key
-CI		serv_key		ut_serv	
+CI		serv_key		ut_serv
+CI		program		/usr/bin/rsh mgthost C:\\prodas\\bin_Exthook\\ExtHook.Cyclic.exe /username sl5 /password sl5sl5
+#CI		program		/usr/bin/rsh mgthost C:\\prodas\\bin_Exthook\\ExtHook.Cyclic.exe /username sl5 /password sl5sl5	#534
 # connection type
 CI		connection		SOCKET
 # server timeout in second
@@ -254,9 +269,12 @@ CI		kill_client		no
 # ──────────────────────────────────────────────────────────
 SS		Sample		FALSE
 # service name or shared memory key
-CI		serv_key			ex_serv_mgt 
+CI		serv_key			ex_serv_mgt
+#CI		serv_key			ex_serv	#534
 # connection type
 CI		connection		SOCKET
+CI		program		/usr/bin/rsh mgthost C:\\prodas\\bin_Exthook\\ExtHook.Cyclic.exe /username sl5 /password sl5sl5
+#CI		program		/usr/bin/rsh mgthost C:\\prodas\\bin_Exthook\\ExtHook.Cyclic.exe /username sl5 /password sl5sl5	#534
 # server timeout in second
 CI		serv_timeout		30
 # set to yes if the client is on the system O/S; otherwise no
@@ -269,7 +287,7 @@ CI		kill_client		no
 MD		UI_SERVER
 # Name of service
 CI		service_name		ui_serv_mgt
-#CI		service_name		ui_serv	#default
+#CI		service_name		ui_serv	#default #PV4 #543
 # Timeout in seconds
 CI		timeout		90
 CI		save_hsv_sentry		ON
@@ -288,6 +306,7 @@ CI		source_names		CALCHK, EHS
 CI		source_names		ARINCDISP, ALSUMDISP, RDD, WDS, UFI, TOS, TOE, SNEXML
 CI		source_names		GENDBSRV, DCU
 CI		source_names		WEATHER_STN
+#CI		source_names		CUTI, DATABASE, DDS, EAIF, ARINCDISP, ALSUMDISP, RDD, UFI, TOS, TOE, SNEXML,SNECMA, DCU, TOCEUM, CALCHK, GENDBSRV, EHS, RTD, TIMESYNC, AFDX	#PV4
 # cmd line to execute when log closed
 # Path and file of log file is appended first.
 #CI		post_proc_cmd		/users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_r2d2.config -t UEL  
@@ -299,7 +318,7 @@ CI		source_names		WEATHER_STN
 CI		language_filename		EV_English.lang
 # Name of UEL display server service
 #CI		UEL_display_server_service_name		debug4_srv
-#CI		UEL_display_server_service_name		uel_dserv	#default
+#CI		UEL_display_server_service_name		uel_dserv	#default #PV4
 #CI		UEL_display_server_service_name		uel_dserv_mgt	#msil
 CI		UEL_display_server_service_name		uel_dserv_mgt
 
@@ -339,13 +358,14 @@ CI		rt_priority		Calculated 26
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS		DATA_SERVER		TRUE
 # Service name for connecting to DS
-#CI		service_name		ds_serv	#default
+#CI		service_name		ds_serv	#default #543
 #CI		service_name		ds_serv_mgt	#msil
 CI		service_name		ds_serv_mgt
 # Maximun send rate allowed in Hz for DS
 CI		max_sendrate		10
 # Communication timeout in milliseconds 500-5000
 CI		com_timeout		5000
+#CI		com_timeout		2000	#534 #543
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -372,7 +392,7 @@ CI		db_serv_key		pdb_serv
 # database server host name
 CI		db_host_name		yoda
 #CI		db_host_name		picard
-#CI		db_host_name		rtehost	#default
+#CI		db_host_name		rtehost	#default #PV4
 #CI		db_host_name		yoda	#msil
 # timeout to wait for database server requests, in seconds
 CI		db_timeout		900
@@ -382,7 +402,7 @@ CI		cr_serv_key		CRS_Serv
 CI		cr_host_name		prodasmgt
 #CI		cr_host_name		prodasmgt	#msil
 #CI		cr_host_name		bigbird
-#CI		cr_host_name		mgthost	#default
+#CI		cr_host_name		mgthost	#default #PV4
 # timeout to wait for configuration retrieval server requests, in seconds
 CI		cr_timeout		900
 # flag which controls the sending of quality change message to event handler
@@ -395,6 +415,8 @@ CI		report_quality_change		FALSE
 # # (float number, zero means no extrapolation, less than zero is invalid)
 # # (polynomial type needs some extrapolation in order to enable limit check)
 #CI		ss_extrap_value		ProDAQVXI   0.1
+CI		min_free_space		1024
+#CI		min_free_space		1024	#PV4
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -433,6 +455,8 @@ SS		AFDX		FALSE
 CI		card_number		0
 # True to enable the AFDX lookback circuitry. No loopback cable is required.
 CI		loopback_enabled		FALSE
+#CI		skew_max		1200000	#PV4
+#CI		text_config		FALSE	#PV4
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -442,18 +466,22 @@ SS		DTS		FALSE
 # DPS service name (default telnet)
 CI		port		telnet
 # software or hardware trigger; SW or HW
-CI		trigger		HW
-CI		trigger		SW	#msil
-# external trigger rate (Hz)
+#CI		trigger		HW	#Default
+CI		trigger		SW
+#CI		trigger		SW	#msil #PV4
+# external trigger rate (Hz) (Generally 20Hz or 40Hz)
 CI		hw_trigger_rate		20
 # number of averages during calibration
 CI		calavg		1
+#CI		calavg		4	#534
 # maximum allowable difference between RTD values
 CI		maxdelta		10.0
 # scan rate for accelerated transfer
 CI		accel_xfer		40
 # reply time-out in seconds
 CI		reply_timeout		10
+#CI		reply_timeout		10	#PV4 #543
+#CI		reply_timeout		3	#534
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -535,6 +563,22 @@ CI		cal_zero		TRUE
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+# MIL 1553
+# ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+SS		M1553		FALSE
+#Ballard card number in the PCI bus
+CI		card_number		1
+#CI		card_number		0	#534
+#Maximum response time in us (before setting the channel quality to suspect)
+CI		exp_resp_time		12
+#   init_port, init_method, trigger chan, trig node1, trig node2,...
+#CI		init_params		0, WC, trigger,1,2
+#TRUE to reverse the word order - default to TRUE
+CI		reverse_word_order		TRUE
+CI		reverse_bit_order		TRUE
+#CI		reverse_bit_order		TRUE	#PV4 #534
+
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 # Modbus Ethernet
 # ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 SS    ECS                 FALSE
@@ -566,6 +610,38 @@ CI    writemultipleregisters  multiple
 CI    maxcoiloutput     1920
 #     max range of holding register addresses in one output request (<=120)
 CI    maxregoutput      120
+
+
+# ──────────────────────────────────────────────────────────
+SS    FCS1            FALSE
+CI    host            gkn25_plc1
+CI    service         me_srv
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little, big or swap
+CI    endian          swap
+#   datatype:  float or short (short is for short integer)
+CI    datatype        float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatus
+#   float channel group, inputregisters or holdingregisters
+CI  fchannelgroup     holdingregisters
+#   timeout in ms
+CI    timeout         100
+#   protocol, tcp or udp
+CI  protocol          tcp
+#   max number of Modbus register channels
+CI  maxregchannel     250
+#   TCP implementation (use either Woodward or OpenMODBUS)
+CI  modbus_tcp        OpenMODBUS
+#   write multiple registers : multiple/single                
+CI  writemultipleregisters  multiple                            
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920                                    
+#   max range of holding register addresses in one output request (<=120)   
+CI  maxregoutput      120   
 
 
 # ──────────────────────────────────────────────────────────
@@ -671,18 +747,70 @@ CI  maxcoiloutput     1920
 CI  maxregoutput      120
 
 
-# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-# MIL 1553
-# ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-SS		M1553		FALSE
-#Ballard card number in the PCI bus
-CI		card_number		1
-#Maximum response time in us (before setting the channel quality to suspect)
-CI		exp_resp_time		12
-#   init_port, init_method, trigger chan, trig node1, trig node2,...
-#CI		init_params		0, WC, trigger,1,2
-#TRUE to reverse the word order - default to TRUE
-CI		reverse_word_order		TRUE
+# ──────────────────────────────────────────────────────────
+SS		MBBM		FALSE
+#CI    host            gkn25_mbbm
+CI		host		gkn25_pak
+CI		service		me_srv
+#   sign: signed or unsigned
+CI		sign		unsigned
+#   endian: little or big
+CI		endian		big
+#   datatype:  float or short (short is for short integer)
+CI		datatype		float
+#   use decimal format for the slave address
+CI		slaveaddress		1
+#   discrete channel group, inputcoils or inputstatus
+CI		dchannelgroup		inputstatus
+#   float channel group, inputregisters or holdingregisters
+CI		fchannelgroup		holdingregisters
+#   timeout in ms
+CI		timeout		100
+#   protocol, tcp or udp
+CI		protocol		tcp
+#   max number of Modbus register channels
+CI		maxregchannel		500
+#   TCP implementation (use either Woodward or OpenMODBUS)
+CI		modbus_tcp		OpenMODBUS
+#   write multiple registers : multiple/single                
+CI		writemultipleregisters  single                            
+#   max range of coil addresses in one output request (<= 1968)
+CI		maxcoiloutput		1920                                    
+#   max range of holding register addresses in one output request (<=120)   
+CI		maxregoutput		120
+
+
+# ──────────────────────────────────────────────────────────
+SS		MBBMserv		FALSE
+#CI    host            gkn25_mbbm
+CI		host		gkn25_vibpcrt
+CI		service		me_srv
+#   sign: signed or unsigned
+CI		sign		unsigned
+#   endian: little or big
+CI		endian		big
+#   datatype:  float or short (short is for short integer)
+CI		datatype		float
+#   use decimal format for the slave address
+CI		slaveaddress		1
+#   discrete channel group, inputcoils or inputstatus
+CI		dchannelgroup		inputstatus
+#   float channel group, inputregisters or holdingregisters
+CI		fchannelgroup		holdingregisters
+#   timeout in ms
+CI		timeout		100
+#   protocol, tcp or udp
+CI		protocol		tcp
+#   max number of Modbus register channels
+CI		maxregchannel		500
+#   TCP implementation (use either Woodward or OpenMODBUS)
+CI		modbus_tcp		OpenMODBUS
+#   write multiple registers : multiple/single                
+CI		writemultipleregisters  multiple
+#   max range of coil addresses in one output request (<= 1968)
+CI		maxcoiloutput		1920
+#   max range of holding register addresses in one output request (<=120)   
+CI		maxregoutput		120
 
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -726,6 +854,7 @@ SS		OPC		FALSE
 # OPC server info: prefix, critical_flag, main URL, optional secondary URL
 # Multiple OPC server info line can be defined.
 CI		opc_server		soft_bridge, false,  http://plc_pc:8090/OPC/DA
+#CI		opc_server		RSLink, false,  http://pv3_mgt:8091/OPC/DA	#PV4
 # Time out in sec for the OPC connection
 CI		timeout		10
 # Optional, append the specified string to all item
@@ -742,14 +871,17 @@ CI		port		pbs
 # number of bricks per zone
 CI		zone		20 
 # software or hardware trigger; OFF or ON
-#CI		trigger		ON 100
-CI		trigger		OFF 100	#msil
+#CI		trigger		ON 100	#534
+#CI		trigger		OFF 100	#msil
+CI		trigger		OFF 100
 # no of days to next cal; default don't show anything
 CI		min_days_to_cal		30 
 # scan rate for accelerated transfer
 CI		accel_xfer		100
 # reply time-out in seconds
 CI		reply_timeout		60
+#CI		reply_timeout		60	#PV4
+#CI		reply_timeout		30	#543
 # UEL source name for cal date messages
 # This name should match with the 'cal_uel_source' name in the 
 # DB server .config file 
@@ -761,12 +893,17 @@ CI		vent_control_ch		PBS_Cmd_Purge
 #CI		vent_feedback_ch		D002
 # Milliseconds to allow all purge valves to open
 CI		valve_on_delay		2000
+#CI		valve_on_delay		5000	#534
 # Milliseconds to allow venting to take affect
 CI		valve_off_delay		5000
+#CI		valve_off_delay		5000	#PV4 #534 #543
 # Continuous purge mode: (continuous, high/low, none)
-CI		cont_purge_mode		none	#msil
+CI		cont_purge_mode		none
+#CI		cont_purge_mode		none	#msil #534
 # Engine ready to run channel (discrete channel)
 CI		eng_running_ch		EngRunningCh
+# Flag: Report calibration due date (TRUE or FALSE)
+#CI		show_cal_time		FALSE	#PV4 #534
 
 
 # ──────────────────────────────────────────────────────────
@@ -1003,7 +1140,8 @@ CI		program		ws_test -c .config.ws -s
 # Type of IPC communication used
 CI		connection		SOCKET
 # Shared memory service key number
-CI		serv_key		ws_serv 
+CI		serv_key		ws_serv
+#CI		serv_key		ws_serv	#543
 # Heartbeat channel tolerance value 
 CI		tolerance		30
 CI		init_tolerance		120 
