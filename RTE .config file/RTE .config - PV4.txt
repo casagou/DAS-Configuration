@@ -1,0 +1,1031 @@
+# Application Name: .config.RAMS
+# Creation Date: 23/03/2007 10:51:00 AM
+# **************************************************************************************
+# Change Log
+#     28Apr2008 - Changed DDTC serial port From ttyS0 to ttyM17 - Denis Stang/MDS
+#                 Due to failure of the S0 port
+#     03Oct2008 - Changed PCI subsystems to False for scutr testing - Henry Carver
+#     03Oct2008 - Changed PCI subsystems back to TRUE following Scutr Testing - MF
+#     23Oct2008 - Changed Baud Rate for DDTC Subsystem to test communication
+#     01Feb2010 - Changed VERBOSITY level from 100 to 89 per recommendation of MDS
+#     14Apr2010 - Changed VERBOSITY level from 89 to 50 per recommendation of MDS
+#                 Issue with this version of proDAS and the DDTC sub-system to be
+#                 fixed when proDAS is upgraded
+#     17May2010 - Changed VERBOSITY level from 50 to 100 to investigate Fullset failures
+#     17May2010 - Also changed 'la_alsum_cli_host' from stn2_rtd2 to stn2_rtd3 due to
+#                 failue of RTD2 to communicate with proDAS
+#     17May2010 - Changed INIT db_timeout from 30 to 900 as requested by Ashwani at MDS - AHC
+#     29Jun2010 - Changed PBS and TSM to Software Driven trigger
+#     27Jul2010 - Changed PBS and TSM back to Hardwired trigger - unknown cause of issue - SWP
+#                 System now working
+#     06JUN2011 - PBS zero and purge not working due to missing CI line heading in PBS section.
+#                 Added missing C next to I on line.
+#     13DEC2011 - Changed verbosity to 50 to investigate proDAS rtehost lockup and DDTC communication issues.
+#                 See 17MAY2010 comment about similar issue(s).
+#     15AUG204  - Changed LOG_PLAYBACK version from 2 to 4
+#
+#
+# **************************************************************************************
+CL	VERBOSITY			100
+CL	TRACE_DEST			Trace.prodas
+CL	REPLAY_FLAG			FALSE
+CL	ROOT_PATH			/users/RTE
+CL	STATUS_DEST			edas_status
+CL	DEBUG_FLAG			FALSE
+#-------SS-----------------------------------------------------------------------------
+SS	INTERNAL			TRUE
+#-------SS-----------------------------------------------------------------------------
+SS	LIMIT_ACTION			TRUE
+#CI     la_rate_hz                       1.0
+CI	la_alsum_cli_host		rtd1host
+CI	la_alsum_cli_service		alsum_srv
+CI	la_alsum_srv_service		laas_srv
+CI	la_alsum_timeout		60000
+CI	la_alsum_max_retry		20
+CI	la_alsum_sleep_ms		200
+CI	la_yellow_alarm			TRUE
+CI	la_default_hostname		rtd1host
+CI	la_event_comment_to_db		TRUE
+CI      la_enable_alarms_ch             ENABLE_ALARMS
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/ssh
+
+SS     LIMIT_ACTION_INFO   TRUE
+CI     la_rate_hz               1.0
+CI     la_alsum_cli_host       rtd1host
+CI     la_alsum_cli_service    alsum_srv_info
+CI     la_alsum_srv_service    laas_srv_info
+CI     la_alsum_timeout        60000
+CI     la_alsum_max_retry      20
+CI     la_alsum_sleep_ms       200
+CI     la_yellow_alarm         FALSE
+CI     la_default_hostname     rtd1host
+CI     la_event_comment_to_db  FALSE
+CI     la_enable_alarms_ch     ENABLE_ALARMS
+CI     la_info_uel_flag        TRUE
+CI     la_remote_shell       /usr/bin/ssh
+
+SS     LIMIT_ACTION_QUIET  TRUE
+CI     la_rate_hz               1.0
+CI     la_default_hostname     rtd1host
+CI     la_event_comment_to_db  FALSE
+CI     la_enable_alarms_ch     ENABLE_ALARMS
+CI     la_remote_shell       /usr/bin/rsh
+
+#-------SS-----------------------------------------------------------------------------
+SS	FULLSET				TRUE
+CI	deviation_limit			50
+CI	deviation_duration		30
+CI	fs_channame			Fullsetstatus
+#CI	pre_fs_action			op_stop_purge
+#CI	pre_fs_action			op_rec_num ReadingNo  
+#CI	pre_fs_action			op_start_mss
+#CI     post_fs_action			op_start_purge
+#CI     post_fs_action			op_trans_ss_data MSS
+#CI 	post_fs_accu_action 		op_trans_ss_data MSS
+
+#-------SS-----------------------------------------------------------------------------
+SS	LOG_PLAYBACK			TRUE
+#CI      rec_num_monitor_chan		RecModeOn 
+#CI 	pre_log_start			REC op_rec_num ReadingNo 
+CI	crit_pre_event			60
+CI	crit_post_event			30
+CI	crit_rate_hz			10
+CI	max_agg_rate			250000
+CI	log_conversion			RRDS /users/RTE/bin/exe/eaif_start -f /users/RTE/bin/exe/.eaif_r2d2.config -t TR
+CI	crit_conversion			RRDS /users/RTE/bin/exe/eaif_start -f /users/RTE/bin/exe/.eaif_r2d2.config -t TR
+#CI	log_conversion			DDAS /users/RTE/bin/exe/eaif_start -f /users/RTE/bin/exe/.eaif_ddas.config -t TR
+#CI      log_conversion                  CDF /usr/bin/rsh mgthost  "<[MIN]>" c:\\proDAS\\bin_DCU\\DCU.exe /testname=$TESTNAME$ /log=\"$LOGNAME$\" 
+#CI      log_conversion                  CRIT /usr/bin/rsh mgthost  "<[MIN]>" c:\\proDAS\\bin_DCU\\DCU.exe /testname=$TESTNAME$ /log=\"$LOGNAME$\" /CCQ=false
+#CI      log_conversion                  SNECMA /usr/bin/rsh mgthost C:\\proDAS\\bin_SNEXML\\SNEXML.exe /mode TR /log
+CI	log_version			4
+CI	crit_size			150
+CI	report_precision		8
+#CI	crit_description		DDAS
+#CI	crit_description		RRDS
+#CI	crit_description		SNECMA
+CI	crit_description		This_is_critical_log_comment
+#CI	crit_description		DDAS RRDS CRIT SNECMA REC
+CI	use_testeng_dir_4_rep   	True
+CI	cl_enabled			True
+CI      cl_exceedance                   FALSE
+CI	cl_scan_rate			10
+CI	cl_max_file_size		2000000
+CI	cl_trigger			Start_ContLog
+CI	CL_Exclude_SS			Calculated	
+# Maximum number of seconds to delay before stopping continuous log
+CI     cl_max_off_delay   10
+# Flag if unlimited log is supported (TRUE or FALSE)
+#CI    unlimited_log       TRUE
+CI    cl_always_create_new_log    TRUE
+#
+#-------SS-----------------------------------------------------------------------------
+SS	DATA_SERVER			TRUE
+CI	service_name			ds_serv
+CI	com_timeout 			2000
+CI	max_sendrate			10
+#-------SS-----------------------------------------------------------------------------
+SS	Calculated			TRUE
+CI      propagated_quality              SUSPECT
+CI 	load_balance_enable		FALSE
+#-------SS-----------------------------------------------------------------------------
+SS	ARINC_BALLARD			TRUE
+#SS	ARINC429			TRUE
+CI	a16				0xF700
+CI	a32				0x17000000
+CI	tx				3
+CI	tx				4
+CI	tx				5
+CI	tx				6
+
+CI	T800_type			TRENT800
+CI	T800_type			TRNT8104
+CI	T800_type			T800PRD
+CI	T800_type			ATP_Calibration
+#CI	T800_type			TRENT900
+
+CI	T800_priority			5
+#CI	T800_reset_time			100
+CI	T800_scan_rate			10
+CI	T800_gui_cmd			oms_rte
+CI	T800_gui_host			mgthost
+CI	T800_gui_serv			oms_gui
+
+CI	T700_type			TRENT700
+CI	T700_type			T700PRD
+#CI	T700_type			ATP_Calibration
+#CI	T700_type			TRENT900
+CI	T700_gui_cmd			oms_rte
+CI	T700_gui_host			mgthost
+CI	T700_gui_serv			oms_gui
+CI	T700_oms_rate			100
+CI	T700_priority			5
+CI	acl_key				17
+
+CI	SSM_string			TRENT800 DIS FW NCD FT NOP
+CI	SSM_string			T800PRD DIS FW NCD FT NOP
+CI	SSM_string			TRNT8104 DIS FW NCD FT NOP
+#<!-- NEW ARINC PCI CONFIGURATION -->
+CI	device				BTI429
+#CI	device			VME429
+CI	rx_start_port			0
+CI	tx_start_port			8
+CI	acl_srvname			acl_srv
+CI      card_number                     0
+CI	ignore_SSM			TRUE
+#<!-- END -->
+#-------SS-----------------------------------------------------------------------------
+SS	DDTC				FALSE
+CI	device				/dev/ttyM7
+CI	baudrate			19200
+CI	parity				1
+CI	stopbits			1
+CI	databits			8
+CI	timeout_ms			100
+CI	wbsend_ms			600
+CI	LP_dev_addr			6
+CI	IP_dev_addr			4
+CI	HP_dev_addr			20
+#-------SS-----------------------------------------------------------------------------
+# OPC subsystems
+# ----------------------------------------
+SS  OPC                     FALSE
+# OPC server info: prefix, critical_flag, main URL, optional secondary URL
+# Multiple OPC server info line can be defined.
+CI  opc_server     RSLink, false,  http://pv3_mgt:8091/OPC/DA
+# Time out in sec for the OPC connection
+CI  timeout                 10
+# Optional, append the specified string to all item
+#CI  append_prefix         soft_bridge, OCP_1
+
+#-------SS-----------------------------------------------------------------------------
+# Control subsystems
+# ----------------------------------------
+#SS  DDSC
+SS  Dynamic                   TRUE
+# DDS host name that DDSC is connecting to
+#CI    dds_host_name          dds_host
+CI    dds_host_name          rtehost
+# DDS Service name that DDSC is connecting to
+CI    dds_srv_name           dds_port
+# FTP user name
+CI    tdf_remote_path        /users/RTE/bin/tmp/DDS/CITS
+# Communication timeout in milliseconds
+CI    con_timeout            30000
+# State change timeout in seconds
+CI    state_timeout          60
+CI    dds_version            4
+# ========================================
+# Network Data Distrubution subsystems
+# ----------------------------------------
+SS    NDDS                  TRUE
+CI    sta_topic_name        StaChan
+CI    sta_profile_name      StaChanData_Profile
+CI    dyn_topic_name        DynChan
+#CI    dyn_profile_name      HighThroughput
+CI    dyn_profile_name      DynChanData_Profile
+#CI    test_topic_name        Example TestInfo
+CI    test_topic_name        TestInfoDataTopicName
+CI    test_profile_name      TestInfo_Profile
+# ========================================
+# NSS Network Subscription Subsystem
+# ----------------------------------------
+SS   NSS		TRUE                
+# Topic name
+CI   topic_name         SlowSpeedChanTopic
+# QoS profile name
+CI   qos_profile_name   DynChanData_Profile
+# Suspect tolerance in seconds
+CI   suspect_tolerance  3
+# Bad tolerance in seconds
+CI   bad_tolerance      5
+# Start scan timeout in seconds
+CI   start_scan_timeout 15
+#-------SS-----------------------------------------------------------------------------
+SS	CEC				FALSE
+CI	chassis				1 /dev/ttyM4 19200 1 8 N
+#CI	chassis				2 /dev/ttyM5 19200 1 8 N
+CI	timeout				3000
+CI	retry				3
+#-------SS-----------------------------------------------------------------------------
+SS      TDM_LP                          TRUE                                                          
+CI      dev_digbert                     /dev/ttyM6
+CI      port_digbert                    9600 8 1 N                                                     
+#-------SS-----------------------------------------------------------------------------
+SS	TDM_HP				TRUE
+CI	dev_incahp			/dev/ttyM7
+CI	port_incahp			9600 8 1 N 
+#-------SS-----------------------------------------------------------------------------
+SS	TDM_IP				TRUE
+CI	dev_incaip			/dev/ttyM8
+CI	port_incaip			9600 8 1 N
+#-------SS-----------------------------------------------------------------------------
+SS	PLC				TRUE
+CI	host_name			pv1_pecs
+CI	service				plc_tcp
+CI	float_in			F36
+CI	float_out			F26
+CI	disc_in				B35
+CI	disc_out			B25s
+
+SS	FCSPLC				TRUE
+CI	device				/dev/ttyM13
+CI	baudrate			4800
+CI	databits			8
+CI	stopbits			1
+CI	parity				N
+CI	RTU_protocol			SIGNED
+#-------SS-----------------------------------------------------------------------------
+SS      THG				FALSE
+SS	Thrust				FALSE
+#serial port
+CI     WRK1_device       /dev/ttyM0
+#communication parameter, including buadrate data bits stop bits parity
+CI     WRK1_port         38400 8 1 N
+#instrument address
+CI     WRK1_instr_addr   01
+#sign, could be + or -
+CI     WRK1_sign         +
+#delay before send request
+CI     WRK1_send_delay     0
+#delay before read response
+CI     WRK1_receive_delay  5
+#serial port
+CI     WRK2_device       /dev/ttyM1
+#communication parameter, including buadrate data bits stop bits parity
+CI     WRK2_port         38400 8 1 N
+#instrument address
+CI     WRK2_instr_addr   01
+#sign, could be + or -
+CI     WRK2_sign         +
+#delay before send request
+CI     WRK2_send_delay     0
+#delay before read response
+CI     WRK2_receive_delay  10
+
+# device type, either E-2-TAD or AST3                                         
+CI     MSTF1_device_type AST3                                                 
+#serial port
+CI     MSTF1_device      /dev/ttyM2                                           
+#communication parameter, including buadrate data bits stop bits parity       
+CI     MSTF1_port        38400 8 1 N                                          
+#instrument address                                                           
+CI     MSTF1_instr_addr  01                                                   
+#sign, could be + or -                                                        
+CI     MSTF1_sign         +                                                   
+#delay before send request                                                    
+CI     MSTF1_send_delay    0                                                 
+#delay before read response                                                   
+CI     MSTF1_receive_delay 35                                                 
+# device type, either E-2-TAD or AST3                                         
+CI     MSTF2_device_type AST3                                                 
+#serial port                                                                  
+CI     MSTF2_device      /dev/ttyM3                                           
+#communication parameter, including buadrate data bits stop bits parity       
+CI     MSTF2_port        38400 8 1 N                                          
+#instrument address                                                           
+CI     MSTF2_instr_addr  01                                                   
+#sign, could be + or -                                                        
+CI     MSTF2_sign         +                                                   
+#delay before send request                                                    
+CI     MSTF2_send_delay    0                                                 
+#delay before read response                                                   
+CI     MSTF2_receive_delay 45
+
+# device type, either E-2-TAD or AST3
+CI     MSTR1_device_type AST3
+#serial port
+CI     MSTR1_device      /dev/ttyM2
+#communication parameter, including buadrate data bits stop bits parity
+CI     MSTR1_port        38400 8 1 N
+#instrument address
+CI     MSTR1_instr_addr  01
+#sign, could be + or -
+CI     MSTR1_sign         -
+#delay before send request
+CI     MSTR1_send_delay    0
+#delay before read response
+CI     MSTR1_receive_delay 35
+# device type, either E-2-TAD or AST3                                         
+CI     MSTR2_device_type AST3
+#serial port                                                                  
+CI     MSTR2_device      /dev/ttyM3
+#communication parameter, including buadrate data bits stop bits parity       
+CI     MSTR2_port        38400 8 1 N
+#instrument address                                                           
+CI     MSTR2_instr_addr  01
+#sign, could be + or -                                                        
+CI     MSTR2_sign         -
+#delay before send request                                                    
+CI     MSTR2_send_delay    0
+#delay before read response                                                   
+CI     MSTR2_receive_delay 45                                                 
+
+#working load cell device timeout in ms
+CI     WRK_timeout       500
+#master load cell device timeout in ms
+CI     MST_timeout       500
+#average 
+CI     AverageReadings   100
+#-------SS-----------------------------------------------------------------------------
+SS     FTOTS               FALSE
+# Port definition for DIGBERT stream A
+CI     DIGBERT_PORT_A  /dev/ttyM6 115200 8 1 n
+# Port definition for DIGBERT stream B
+CI     DIGBERT_PORT_B  /dev/ttyM7 115200 8 1 n
+# Port definition for PINCAIP stream A
+CI     PINCAIP_PORT_A  /dev/ttyM6 115200 8 1 n
+# Port definition for PINCAIP stream B
+CI     PINCAIP_PORT_B  /dev/ttyM7 115200 8 1 n
+# Port definition for PINCAHP stream A
+CI     PINCAHP_PORT_A  /dev/ttyM6 115200 8 1 n
+# Port definition for PINCAHP stream B
+CI     PINCAHP_PORT_B  /dev/ttyM7 115200 8 1 n
+# Timeout for reading data from serial port (ms)
+CI     COMM_TIME_OUT   60
+# Timeout to force update (ms)
+CI     DATA_TIME_OUT   120
+#--------------------------------------------------------------------------
+SS    GASSAI               TRUE
+CI    card                 1 1  0xC600 0x200000 4 37 5.0
+#CI    card                 1 2  0xC800 0x240000 4 37 5.0
+# Mode type(Long/Short) and measurment timeout
+CI    period               Short 1.01
+# number of ms to wait after removing excitation voltage
+#CI    temf_n1              17.5
+# number of ms to wait for settling after applying the excitation voltage
+#CI    temf_n2              17.5
+# an integer number of samples to use in an average for calculating EMF
+#CI    temf_n               2
+#  Flag to indicate if thermal correction is "on" or "off"
+CI    temf                 ON
+#  EMF excitation channel name
+CI    temf_excitation_channel   DCStrainControlZero01
+#  EMF control channel name
+CI    temf_control_channel      DCControl
+#  RTD control channel name                                                                      
+#CI    rtd_control_channel       RTD                                                             
+#  RTD notify channel name                                                                       
+#CI    rtd_notify_channel        RTDNOTIFY                                                       
+# Extrapolation value                                                                            
+# (float number, zero means no extrapolation, less than zero is invalid)                         
+CI    extrap_value         10                                                                    
+# Extrapolation quality (G/B/S)                                                                  
+CI    extrap_quality       S                                                                     
+# a float describing the maximum negative bridge balance correction in volts                     
+CI       bb_lo_limit    -0.0001                                                                  
+# a float describing the maximum positive bridge balance correction in volts                     
+CI       bb_hi_limit    0.0001                                                                   
+# a float describing trhe maximum negative EMF correction in volts                               
+CI       temf_lo_limit  -0.0006                                                                  
+# a float describing the maximum positive EMF correction in volts                                
+CI       temf_hi_limit  -0.0006                                                                  
+# an integer describing the number of samples to take in an average to                           
+# arrive at bridge balance correction values                                                     
+CI       bb_count_in_average    400                                                              
+# the value to be stored in the CVT for DC strain channels while a EMF                           
+# calculation is being done. Values are "last_value" or "bad_value"                              
+CI       temf_display   last_value                                                               
+# EMF excitation channel polarity - POSITIVE or NEGATIVE                                         
+CI       temf_excitation_polarity    POSITIVE  
+#--------------------------------------------------------------------------
+SS    GASSVXI		   TRUE 
+CI    card                 1 2  0xC800 0x240000 4 37 5.0
+#CI    card                 1 1  0xC600 0x200000 4 37 5.0
+# number of ms to wait after removing excitation voltage
+#CI    temf_n1              17.5
+# number of ms to wait for settling after applying the excitation voltage
+#CI    temf_n2              17.5
+# an integer number of samples to use in an average for calculating EMF
+#CI    temf_n               2
+#  Flag to indicate if thermal correction is "on" or "off"
+CI    temf                ON 
+#  EMF excitation channel name
+CI    temf_excitation_channel   DCStrainControlZero01
+#  EMF control channel name
+CI    temf_control_channel      DCControl
+#  RTD control channel name                                                                      
+#CI    rtd_control_channel       RTD                                                             
+#  RTD notify channel name                                                                       
+#CI    rtd_notify_channel        RTDNOTIFY                                                       
+# Extrapolation value                                                                            
+# (float number, zero means no extrapolation, less than zero is invalid)                         
+CI    extrap_value         10                                                                    
+# Extrapolation quality (G/B/S)                                                                  
+CI    extrap_quality       S                                                                     
+# a float describing the maximum negative bridge balance correction in volts                     
+CI       bb_lo_limit    -0.0001                                                                  
+# a float describing the maximum positive bridge balance correction in volts                     
+CI       bb_hi_limit    0.0001                                                                   
+# a float describing trhe maximum negative EMF correction in volts                               
+CI       temf_lo_limit  -0.0006                                                                  
+# a float describing the maximum positive EMF correction in volts                                
+CI       temf_hi_limit  -0.0006                                                                  
+# an integer describing the number of samples to take in an average to                           
+# arrive at bridge balance correction values                                                     
+CI       bb_count_in_average    400                                                              
+# the value to be stored in the CVT for DC strain channels while a EMF                           
+# calculation is being done. Values are "last_value" or "bad_value"                              
+CI       temf_display   last_value                                                               
+# EMF excitation channel polarity - POSITIVE or NEGATIVE                                         
+CI       temf_excitation_polarity    POSITIVE                                                    
+#--------------------------------------------------------------------------
+SS    GASSAO             TRUE                                                                    
+# card info (VXI chassis,slot and VME address)                                                   
+# EDAS can configure more than one card                                                          
+#CI    	 card           1 9  0xD400
+CI       card     	1 4 0xd400                                                                     
+#--------------------------------------------------------------------------                      
+#    GASSDIO (dio) Subsystem                                                                     
+#--------------------------------------------------------------------------                      
+SS    GASSDIO           TRUE                                                                    
+# card info (VXI chassis,slot and VME address)                                                   
+# proDAS can configure more than one card                                                        
+#CI    card                 1 8  0xD000
+CI     card              1 3 0xD000  
+# ----------------------------------------
+SS  UserFunctions           TRUE
+# ----------------------------------------
+CI    serv_key          et_serv
+CI    connection        SOCKET
+#-------SS-----------------------------------------------------------------
+#HSV Analong Input subsystem
+SS 	HSV		FALSE
+CI      card                 1 1  0xC600 0x200000 4 37 5.0
+
+#Extrapolation quality		(G/B/S)
+CI	extrap_quality		G
+CI	pre_event_time		1920
+CI	post_event_time		5
+
+#Continous or Circular
+CI	log_mode		CIRCULAR
+CI	store_EU_converted	YES
+CI	save_with_critical	NPO
+                                                            
+#-------SS-----------------------------------------------------------------------------
+SS	SCUTR				FALSE
+CI	vme_if				FALSE
+CI	card				1 0x14000000
+CI	set_rx_term			FALSE
+#-------SS-----------------------------------------------------------------------------
+SS	PWM				FALSE
+# For simulator, use ports tt_serv1 and tt_serv2
+CI	cmd_host			picard
+CI	cmd_service			tt_serv1
+#CI	cmd_service			pwm_ws
+CI	data_host			picard
+CI	data_service			tt_serv2
+#CI	data_service			pwm_vax
+CI	TRENT				ControlATP
+#CI	TRENT				TRENT700
+#CI	TRENT				TRENT800
+#CI	TRENT				TRENT900
+#CI	TRENT				TRNT8104
+#CI	TRENT				T800PRD
+#CI	TRENT				T500PRD
+#CI	TRENT				T700PRD
+#CI	TRENT				TRNT1000
+#CI	TRENT				535
+#CI	TRENT				524G-H
+#CI	TRENT				T900PRD
+#CI	TRENT				TRENT500
+CI	TRENT				BR725
+#CI	TRENT				123456
+#CI	TRENT				ATP_CALIBRATION
+#CI	ATP_Calibration			123456
+#-------SS-----------------------------------------------------------------------------
+SS	TOCEUM				TRUE
+CI	connection			SOCKET
+CI	serv_key			te_serv
+CI	program				/users/RTE/bin/exe/toceum -c /users/RTE/bin/exe/.toceum.config -s
+CI	heartbeat			TE_HEARTBEAT
+CI	error				TE_ERROR
+CI	tolerance			300
+CI	retry				3
+CI	delay				10
+CI	allow_disable			No
+#-------SS-----------------------------------------------------------------------------
+SS      Sample                          TRUE
+CI      connection                      SOCKET
+CI      serv_key                        ex_serv
+CI	program				/usr/bin/ssh engineer@MGTHOST "/cygdrive/c/proDAS/data/MgtGUI/Launch_ExtHook.bat"
+#CI	program				/usr/bin/ssh engineer@PV4_MGT "/cygdrive/c/proDAS/bin/exthook.fullset.exe /username sl5 /password sl5sl5"
+CI      heartbeat			SAMPLE_HEARTBEAT
+CI      error				SAMPLE_ERROR 
+CI      tolerance                       300
+CI      retry                           3
+CI      delay                           10
+CI      allow_disable                   No
+#-------SS-----------------------------------------------------------------------------
+SS      EXTERNAL                        FALSE
+CI      connection                      SOCKET
+CI      serv_key                        ex_serv
+#CI	program				/usr/bin/rsh mgthost c:\\proDAS\\Data\\MgtGUI\\Launch_ExtHook.bat 
+CI      tolerance                       300
+CI      retry                           3
+CI      delay                           10
+CI      allow_disable                   No
+#<!-- PBS & TCM WORK -->
+#-------SS-----------------------------------------------------------------------------
+SS	PBS			        TRUE
+CI	port				pbs
+CI	zone				20
+CI	trigger				OFF 33
+CI	min_days_to_cal			5
+CI	accel_xfer			33
+CI	reply_timeout			30
+CI	cal_uel_source			CALCHK
+#CI	vent_control_ch			PurgeEnable
+#CI	vent_feedback_ch		PressScanPurgeSupply01
+CI	valve_on_delay			2000
+CI	valve_off_delay			2000
+#Continuous purge mode (continuous, high/low, none)
+CI      cont_purge_mode                 none                                                                                         
+#For Continuous purge only. Only discrete channel
+CI      cont_purge_ctrl_ch              PurgeCtrlCh
+#For Continuous purge only. Only float channel
+CI      cont_purge_delay_ch             PurgeDelayCh
+#CI      cont_purge_enabled              FALSE
+#For high/low purge only. Only discrete channel
+#CI      hilo_press_ctrl_ch              PressScanHLPurgePressure
+#Engine ready to run. Only discrete channel
+CI      eng_running_ch                  EngRunning
+# Flag: Report calibration due date (TRUE or FALSE)
+CI 	show_cal_time			FALSE
+#--------------------------------------------------------------------------
+# TSM (Temperature Scanning Modules) subsystem 
+#--------------------------------------------------------------------------
+SS   TSM                 FALSE 
+# service name
+CI     port              pbs
+# software or hardware trigger;
+CI     trigger           SW
+#  hardware trigger scan rate
+CI     hw_trigger_rate   100
+# no of days to next cal; default don't show anything
+CI     min_days_to_cal   60
+# scan rate for accelerated transfer
+CI     accel_xfer        10
+# response time-out in seconds
+CI     response_timeout  30
+# UEL source name for cal date messages
+# This name should match with the 'cal_uel_source' name in the
+# proDAS DB server .config file
+CI     cal_uel_source    CALCHK
+# Tolerance for bad data reporting
+CI	tolerance_counter       	2
+
+#--------------------------------------------------------------------------                      
+# MSS Subsystem          
+#--------------------------------------------------------------------------                      
+SS   MSS                      FALSE                                          
+# specifies the time required to allow the MSS to settle-down after stepping from                
+# one port to the next
+CI   settling_time            150                                                                
+# specifies the duration of the impluse 
+CI   impulse_time              0
+ # specifies the minimum time reqiured between impluse
+CI   time_between_impulse     60                                                                 
+# The physical tolerance in EU's for the MSS for checking the quick zero deviation               
+CI   zero_tolerance           10
+# if the position_confirm set to OFF, the driver won't do port position checking                 
+# the default is ON
+CI   position_confirm         OFF                                                               
+CI   ambient_channame         amb_channel                                                        
+CI   avg_samples              8
+CI   read_delay               5
+CI   decoding                BNR_32                                                   
+# mode SYNC or ASYNC
+CI   mode 	             ASYNC
+CI   sv_zero_pres_volt       1,sv1_zero_pv                                                       
+CI   sv_zero_pres_volt       2,sv2_zero_pv                                                       
+CI   sv_zero_pres_volt       3,sv3_zero_pv                                                       
+CI   sv_zero_pres_volt       4,sv4_zero_pv                                                       
+CI   sv_zero_pres_volt       5,sv5_zero_pv                                                       
+CI   sv_zero_pres_volt       6,sv6_zero_pv                                                       
+CI   sv_zero_pres_volt       7,sv7_zero_pv                                                       
+CI   sv_zero_pres_volt       8,sv8_zero_pv                                                     
+CI   sv_zero_pres_volt       9,sv9_zero_pv                                                     
+CI   sv_zero_pres_volt       10,sv10_zero_pv                                                     
+CI   sv_zero_pres_volt       11,sv11_zero_pv                                                     
+CI   sv_zero_pres_volt       12,sv12_zero_pv                                                     
+#--------------------------------------------------------------------------                      
+# ========================================
+# AFDX subsystem
+# ----------------------------------------
+SS  AFDX                  TRUE
+CI  card_number           0
+#CI  timeout               10
+CI  skew_max		  1200000
+CI  loopback_enabled      FALSE
+CI  text_config           FALSE
+# ========================================
+# # PRODAQ subsystem
+# # ---------------------------------------
+SS  PRODAQ               FALSE
+# ========================================                                                       
+# VEXA subsystem                                                                                 
+# ----------------------------------------                                                       
+SS  VEXA                   TRUE
+ 
+# software or hardware trigger: SW or HW                                                         
+CI  trigger               SW                                                                     
+
+# ======================================================
+# ME (Modbus Ethenet SubSystem)
+# ------------------------------------------------------
+SS    ModBus1       	TRUE
+# 10.130.245.99  # Simulators PC
+CI    host            10.130.245.69  
+CI    service         me_srv
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian          big
+#   datatype:  float or short (short is for short integer)
+CI    datatype      float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatus
+#   float channel group, inputregisters or holdingregisters
+#CI  fchannelgroup     holdingregisters
+CI  fchannelgroup     holdingregisters
+#   timeout in ms
+CI    timeout         100
+#   protocol, tcp or udp
+CI  protocol          tcp
+#   max number of Modbus register channels
+CI  maxregchannel     120
+#   TCP implementation (use either Woodward or OpenMODBUS)
+CI  modbus_tcp        OpenMODBUS
+#   write multiple registers : multiple/single                
+CI  writemultipleregisters  multiple                            
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920                                    
+#   max range of holding register addresses in one output request (<=120)   
+CI  maxregoutput      120   
+
+# ME (Modbus Ethenet SubSystem)
+# ------------------------------------------------------
+SS    ModBus2       	FALSE
+# 10.130.245.99  # Simulators PC
+CI    host            10.130.245.69  
+CI    service         me_srv0
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian          big
+#   datatype:  float or short (short is for short integer)
+CI    datatype      float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputcoils
+#   float channel group, inputregisters or holdingregisters
+#CI  fchannelgroup     holdingregisters
+CI  fchannelgroup     holdingregisters
+#   timeout in ms
+CI    timeout         100
+#   protocol, tcp or udp
+CI  protocol          tcp
+#   max number of Modbus register channels
+CI  maxregchannel     120
+#   TCP implementation (use either Woodward or OpenMODBUS)
+CI  modbus_tcp        OpenMODBUS
+#   write multiple registers : multiple/single                
+CI  writemultipleregisters  single                            
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920                                    
+#   max range of holding register addresses in one output request (<=120)   
+CI  maxregoutput      120   
+
+# ME (Modbus Ethenet SubSystem)
+# ------------------------------------------------------
+SS    ModBus2_         FALSE
+CI    host            10.130.245.99
+CI    service         me_srv0
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian          big
+#   datatype:  float or short (short is for short integer)
+CI    datatype        float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatuse
+#   float channel group, inputregisters or holdingregisters
+#CI  fchannelgroup     holdingregisters
+CI  fchannelgroup     inputregisters
+#   timeout in ms
+CI    timeout         100
+
+# ME (Modbus Ethenet SubSystem)
+# ------------------------------------------------------
+SS    Modbus3         TRUE
+CI    host            10.130.245.99
+CI    service         me_srv1
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian          big
+#   datatype:  float or short (short is for short integer)
+CI    datatype        float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatuse
+#   float channel group, inputregisters or holdingregisters
+#CI  fchannelgroup     holdingregisters
+CI  fchannelgroup     inputregisters
+#   timeout in ms
+CI    timeout         100
+
+#  ME (Modbus Ethenet SubSystem)
+# ------------------------------------------------------
+SS    Modbus4         TRUE
+CI    host            10.130.245.99
+CI    service         me_srv2
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian          big
+#   datatype:  float or short (short is for short integer)
+CI    datatype        float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatuse
+#   float channel group, inputregisters or holdingregisters
+#CI  fchannelgroup     holdingregisters
+CI  fchannelgroup     inputregisters
+#   timeout in ms
+CI    timeout         100
+
+#     ME (Modbus Ethenet SubSystem)
+# ------------------------------------------------------
+SS    Modbus5         TRUE
+CI    host            10.130.245.99
+CI    service         me_srv3
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian          big
+#   datatype:  float or short (short is for short integer)
+CI    datatype        float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatuse
+#   float channel group, inputregisters or holdingregisters
+#CI  fchannelgroup     holdingregisters
+CI  fchannelgroup     inputregisters
+#   timeout in ms
+CI    timeout         100
+                             
+#-------------------------------------------------------------------------- 
+# CONSORT Subsystem
+#--------------------------------------------------------------------------
+SS   CONSORT                  FALSE
+# Server name that RTE uses to communicate with the CONSORT H/W
+CI   service_name             udp_test1
+# Maximun milliseconds RTE waits for CONSORT H/W to respond.
+CI   timeout                  1000
+#--------------------------------------------------------------------------
+# M1553 subsystem
+# ----------------------------------------
+SS  MIL1553                      TRUE
+#Ballard card number in the PCI bus
+CI  card_number                 1
+#Maximum response time in us (before setting the channel quality to suspect)
+CI  exp_resp_time               12
+#   init_port, init_method, trigger chan, trig node1, trig node2,...
+#CI  init_params                 0, WC, trigger,1,2
+#TRUE to reverse the word order - default to TRUE
+CI  reverse_word_order          FALSE
+CI  reverse_bit_order           TRUE
+#--------------------------------------------------------------------------
+# ------------------------------------------
+SS    DPS                FALSE
+# DPS service name (default telnet)
+CI     port              telnet
+# software or hardware trigger; OFF or ON
+CI     trigger           OFF
+# scan rate for accelerated transfer
+CI     accel_xfer        50
+# reply time-out in seconds
+CI     reply_timeout     60
+# protocol, TCP or UDP
+CI     protocol          TCP
+#--------------------------------------------------------------------------
+# DTS (Digital Thermocouple Scanners) subsystem
+#nnnn ----------------------------------------------
+SS    DTS3250            TRUE
+# DPS service name (default telnet)                                                   
+CI     port              telnet                                                       
+# software or hardware trigger; SW or HW                                              
+CI     trigger           SW                                                           
+# external trigger rate (Hz)                                                          
+CI     hw_trigger_rate   200                                                          
+# number of averages during calibration                                               
+CI     calavg            1                                                            
+# maximum allowable difference between RTD values                                     
+CI     maxdelta          10.0                                                         
+# scan rate for accelerated transfer                                                  
+CI     accel_xfer        40                                                           
+# reply time-out in seconds                                                           
+CI     reply_timeout     3                                                            
+#-------SS-----------------------------------------------------------------------------
+SS	RTP			FALSE
+#rtp_broadcast_name(must match the one defined in /etc/hosts)
+CI	rtp_service_name             rtp_2000
+#rtp_broadcast_name(must match the one defined in /etc/hosts)
+CI	rtp_broadcast_name           rtp_2000_broadcast
+# Changed to 2000 from 1000 to eliminate excessive RTP dropout messages on UEL
+CI	rtp_max_timeout       	     2000
+CI	rtp_max_retries       	     3
+CI	rtp_retry_interval    	     60
+#max_scan_rate(Hz, default=10Hz)
+CI	max_scan_rate         	     20
+CI	rtp_protocol                 RTP2300
+# ========================================
+# ATH (Humidity Monitor) subsystem
+# ----------------------------------------
+SS     ATH                FALSE
+CI     ath_dev_name       /dev/ttyM7
+CI     ath_device_type    CPT6100
+CI     ath_time_out       1000
+CI     ath_timeval        50
+CI     ath_baud_rate      57600
+CI     ath_stop_bits      1
+CI     ath_data_bits      8
+CI     ath_parity         0
+CI     dp_ch_name         ATH_DP
+CI     hum_ch_name        Humidity
+CI     temp_ch_name       Temperature
+CI     max_attempts       10
+CI     cpt6100_filter     0
+CI     baro_ch_name       BAROCPT6100
+#-------MD-----------------------------------------------------------------------------
+MD	GUI
+CI	save_dds_sentry			ON
+CI	check_disk_in_scan		True
+
+#-------MD-----------------------------------------------------------------------------
+MD	PB_GUI
+CI	check_disk_in_scan		True
+#-------MD-----------------------------------------------------------------------------
+MD	UEL
+CI	source_names			CUTI,DATABASE,DDS,EAIF,ARINCDISP,ALSUMDISP,RDD,UFI,TOS,TOE,SNEXML,SNECMA,DCU,TOCEUM,CALCHK,GENDBSRV,EHS,RTD,TIMESYNC,AFDX
+CI	UEL_display_server_service_name		uel_dserv
+CI	language_filename			English.lang
+# cmd line to execute when log closed
+# Path and file of log file is appended first.
+#CI     post_proc_cmd    /users/RTE/bin/exe/eaif_start -f /users/RTE/bin/exe/.eaif_r2d2.config -t UEL
+# append test name to cmd line
+CI     pp_test_id       -i
+# append test name to cmd line
+CI     pp_test_name     -b
+#-------MD-----------------------------------------------------------------------------
+MD	ST
+CI	set_rt_cpu			True
+CI	detect_overruns			TRUE
+CI	base_frequency			200
+CI	rt_default_priority		15
+CI	rt_priority			INTERNAL 30
+CI	rt_priority			GASSAI 29
+CI	rt_priority			ARINC_BALLARD 28
+CI	rt_priority			SCUTR 27
+CI	overrun_tolerance		1.0
+#-------MD-----------------------------------------------------------------------------
+MD	UI_SERVER
+CI	service_name			ui_serv
+CI	timeout				10
+#--------------------------------------------------------------------------
+MD    EN_SERVER
+# Name of service 
+CI    service_name         en_serv
+# Timeout in seconds              
+CI    timeout               10
+# Heartbeat period in seconds
+CI    hb_period             5
+# xml encoding type -- default UTF
+CI    xml_encoding          GB2312
+#--------------------------------------------------------------------------
+# ========================================
+# Initialization module
+# ----------------------------------------
+MD      INIT                                                                                                              
+CI 	min_free_space 			1024
+CI      db_serv_key                     debug_srv1
+CI      db_timeout                      900
+CI      db_host_name                   	rtehost
+CI      cr_serv_key                     CRS_Serv
+CI      cr_timeout                      1200
+CI      cr_host_name                    mgthost
+CI      report_quality_change           False
+CI      ss_extrap_value                 PRODAQ   0.1
+
+<!> END OF CONFIG <!>
+
+NOTES:
+    1) '<!> END OF CONFIG <!>' marks the end of the config file
+        (so that we can put comments here ...). It MUST follow the last
+        configuration parameter and MUST start in column 1 and MUST be exactly
+       as above (without the quotes -'-).
+
+       '#' in column 1 introduces a comment line; EDAS ignores comment lines.
+
+
+    2) 'CL' stands for Command Line option. Valid command line options are:
+         - MASTER_CONFIG_ID: identifies the default test to configure EDAS with;
+         - CELL_ID: identifies the default cell to configure EDAS for;
+         - VERBOSITY: level of verbosity to be used (0 (low) - 100 (high));
+           Note that '89' is the highest verbosity EDAS should run with
+           under normal operating conditions.
+         - TRACE_DEST: either "stdout" (all trace messages go to the
+           X-term) or a trace file name with no path (all traces go to        
+           the 'tmp' dir, in the named file).                                 
+        e.g.:  CL  VERBOSITY  89                                              
+                                                                              
+        NOTE: if EDAS is started with command line options from the           
+        prompt, those options will override the config file definitions; valid
+        command line options at the prompt are 'm', 'c', 'v', 't' 'e' and 'f',
+        or the same letters in capitals:
+         mXXXX       to download master config XXXX;
+         cX          to configure for test cell XX;
+         v[0-100]    to set the verbosity between 0 (low) and 100 (high);
+         tfile_name  to use file 'file_name' (no path) as the trace destination;
+         eeng_name   to use the engine 'eng_name' with EDAS (for views and logs).
+         fconfig     to use 'config' (path/file_name) instead of this '.config'
+        e.g.:  edas m1000 c3 v89
+
+
+    3) 'SS' stands for Sub-System option
+        A sub-system will be opened only if it is set to TRUE on a
+        SS line.  It will be configured only if it is included in the
+        down-loaded master configuration.
+        e.g.:  SS  INTERNAL  TRUE
+
+
+    4) 'CI' stands for Configuration Info
+        Lines that start with 'CI' contain configuration parameters
+        that apply to the last preceeding 'SS' sub-system or 'MD'
+        module encountered in the config file.
+        e.g.:  CI  crit_pre_event  120
+
+
+    5) 'MD' stands for Module Description
+        To identify the module (or sub-system) to which 'CI' lines apply,
+        Modules which are sub-systems (such as the 'Fullset' sub-system) can
+        have config parameters after a 'SS' or 'MD' line with their name.
+        Modules which are not sub-systems (such as the GUI) can only have
+        config parameters after a 'MD' line.
+        e.g.:  MD  GUI
+        e.g.:  MD  G2_1
+         
+         
+/***************************************************************************/
+
