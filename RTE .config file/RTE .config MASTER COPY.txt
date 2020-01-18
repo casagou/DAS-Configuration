@@ -152,7 +152,7 @@ CI		crit_rate_hz		10
 # Rate (chan/sec) maximum aggregate rate
 CI		max_agg_rate		100000
 #CI		max_agg_rate		150000	#default #543
-#CI		max_agg_rate		250000	#534
+#CI		max_agg_rate		200000	#534
 #CI		max_agg_rate		250000	#PV4
 # History log version being output
 #CI		log_version		4.0	#PV4 #534
