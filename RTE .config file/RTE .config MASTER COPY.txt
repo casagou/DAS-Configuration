@@ -63,7 +63,7 @@ CI		la_default_hostname		prodasmgt
 CI		la_event_comment_to_db		TRUE
 # The ENABLE_ALARMS channel to control Limits and Actions
 CI		la_enable_alarms_ch		Alarm_Enable
-# The channel to acknowledge one alarm
+# The channel to acknowledge the last alarm (bug #4430)
 CI		la_ch_ack_one		Alarm_Ack_Last
 # The channel to acknowledge all alarms
 CI		la_ch_ack_all		Alarm_Ack_All
