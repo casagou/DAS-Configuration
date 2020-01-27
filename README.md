@@ -178,11 +178,11 @@ Bug Fixes:
 
 ----
 
-### 1.3.0 (CURRENT!)
+### 1.3.0
 
 Features and Improvements:
-- Replaced all "proDAS" mention in channelde finition and replaced it by "DAS" to faciliotation porting to nxDAS.
-	- Updated all RTD pages accordingluing (remapping), notably the new ribbon with DAS control and DAS monitoring features
+- Removed all "proDAS" mention in channels definition and replaced it by "DAS" to facilitate porting to nxDAS
+	- Updated all RTD pages accordingly (a lot of remapping), notably the new ribbon with DAS control and DAS monitoring features
 - Created Full HD 1920x1080 RTD templates (FHD_0_Template_1920_1080.v, FHD_0_Template_1920_1080_Panel.v)
 	- Created 2 examples (FHD_2_Calculations.v and FHD_2_Simulations.v)
 	- Updated the Sequence.xml accordingly
@@ -198,6 +198,13 @@ Bug Fixes:
 	- Added 508 RTE .config file to Reference
 	- Added 534 RTE .config file to Reference
 	- Added 543 RTE .config file to Reference
+
+----
+
+### 1.3.1 (CURRENT!)
+
+Bug Fixes:
+- Updated documentation
 
 ----
 
