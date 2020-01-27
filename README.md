@@ -120,9 +120,9 @@ Features and Improvements:
 	- Improved StartScan and StopScan scripts to manage up to 3 RTD Driver instances per computer (Better Strip Chart performances) 
 - RTE .config File
 	- Standardized the RTE .config file
-		- Split the file into 2 sections: Sofware subsystems and Hardware subsystems
-		- Rearranged the subsystems section by alphabetical order
-		- Added "default" value mentions
+		- Split the file into 2 sections: Sofware and Hardware subsystems
+		- Rearranged the subsystem sections by alphabetical order
+		- Added mention "default" to default value or parameters
 		- Improved style and cleanup code
 		- Tested in MSIL
 
