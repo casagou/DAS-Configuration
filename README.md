@@ -36,7 +36,8 @@ Features and Improvements:
 		- Emissions
 			- Standardization calculations
 	- Standardized the engineering unit definition
-		- Updated unit description. Corrected format consistency.
+		- Updated unit description
+		- Corrected format consistency
 		- Modified the units: g, radians, radians/s, g/l, Btu(Int), Hz/cst, Mile(US), gram, ton(long), ton(metric), ton(short), kg/hr, kg/m, HP(UK), inH2O(4DegC), inHg(0DegC), mmH2O(4DegC), mmHg(0DegC), DegK, hr, cst, gal(Im), gal(US), pint(Im), pint(US), qt(Im), qt(US), gph(Im), gph(US), gpm(Im), gpm(US), gps(Im), gps(US), L/hr, qt(Im)/hr, qt(US)/hr
 			- by: g-force, rad, rad/s, g/L, BTU, Hz/cSt, mi, g, t_long, t, t_short, kg/h, kg/min, HP, inH2O, inHg, mmH2O, mmHg, K, h, cSt, gal_UK, gal_US, pt_UK, pt_US, qt_UK, qt_US, gph_UK, gph_US, gpm_UK, gpm_US, gps_UK, gps_US, L/h, qt_UK/h, qt_US/h
 		- Updated name or added the following units: cm/s^2, in/s^2, rev, deg/min, deg/sec, rad/min, C, kohm, mohm, ohm, Btu, ft∙lbf, dyn, g/kN∙s, lb/lbf∙h, cm^2/s, m^2/s, mm^2/s, St, cm, dam, dm, hm, km, thou, um, t_lg, t_sh, lb/ft^3, g/min, ft∙lbf/s, hp, PS, bara, inH2O_4degC, inH2O_60degF, inHg_32degF, inHg_60degF, kgf/cm^2, kPaa, mbara, lbf/ft^2, Paa, Btu/lb, ft/min, km/h, d, mth, wk, y, ft∙lbf, in∙lbf, N∙m, ft^3, mL, oz_UK, oz_US, count, h.min, min.s, ratio, TBD
