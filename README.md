@@ -168,26 +168,45 @@ Features and Improvements:
 Bug Fixes:
 - RTE .config File
 	- Added missing attributes #PV4 #543 #534
+
 ----
 
-### 1.2.1 (current)
+### 1.2.1
 
 Bug Fixes:
 - Updated StartScan.vbs
 
 ----
 
-
-
-### 1.3.0 (alpha)
+### 1.3.0 (CURRENT!)
 
 Features and Improvements:
-- Create a compressor Map split view with extra overlays
-- Replace all "proDAS" channels by "DAS" channels 
+- Replaced all "proDAS" mention in channelde finition and replaced it by "DAS" to faciliotation porting to nxDAS.
+	- Updated all RTD pages accordingluing (remapping), notably the new ribbon with DAS control and DAS monitoring features
+- Created Full HD 1920x1080 RTD templates (FHD_0_Template_1920_1080.v, FHD_0_Template_1920_1080_Panel.v)
+	- Created 2 examples (FHD_2_Calculations.v and FHD_2_Simulations.v)
+	- Updated the Sequence.xml accordingly
+- Created a light theme RTD template 1920 x 1200 (W_0_Template_1920_1200.v, W_0_Template_1920_1200_Panel.v)
+	- Created 1 example (FW_2_Calculations.v)
+	- Updated the Sequence.xml accordingly
+	- Added screen captures of the new RTD pages
+
+Bug Fixes:
+- RTE .config File
+	- Corrected attribute "la_ch_ack_on" by "la_ch_ack_one"
+	- Moved RTE .config file references to Reference folder
+	- Added 508 RTE .config file to Reference
+	- Added 534 RTE .config file to Reference
+	- Added 543 RTE .config file to Reference
+
+----
+
+### 1.4.0 (alpha)
+
+Features and Improvements:
+- Create a Compressor Map split view RTD page with extra overlays and use case of Fullset import
 - Create a Thrust Calibration RTD page
-- Improve the Jet Engine Vibration Survey RTD page
-- Create Full HD 1920x1080 RTD templates
-- Create light RTD template 1920 x 1200
+- Automate the Jet Engine Vibration Survey RTD page
 
 ----
 
