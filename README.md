@@ -153,7 +153,7 @@ Bug Fixes:
 
 Bug Fixes:
 - Modified README structure
-- Updated "Data Server" section of RTE .config file for MSIL to prevent error message
+- Updated "Data Server" section of RTE .config file for MSIL to prevent error messages
 
 ----
 
