@@ -260,4 +260,5 @@ Real-Time Engine Computer  `\\rtehost\rte`
 The folder contains screen captures.
 
 ## Installation for nxDAS
-Coming soon...
+
+Coming soon.
