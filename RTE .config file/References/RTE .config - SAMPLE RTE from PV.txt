@@ -1,0 +1,1833 @@
+# @(#) PRODAS:src/main/$RCSfile: sample.prodas,v $; Version $Revision: 35782 $; extracted $Date: 2019-07-09 15:06:42 -0400 (Tue, 09 Jul 2019) $, MDS Aero
+#                              *****************
+#******************************* sample.prodas *****************************
+#                              *****************
+#
+#  Author: Thushy Thirunavukkar, MDS Aero Support Corporation
+#
+#  Description: 
+#    This is a sample proDAS config file which generated from sample.conf1.113. 
+#
+#  Notes: 
+#    This file contains only one subsystem name per subsystem type but EDAS 
+#    supports multiple instances of each subsystem (each with a unique name)
+#
+#  Date created: Tue Dec  2 16:16:26 1997
+#
+#
+#  Modification history:
+#   Date       Initial      NCR#       Description
+#   ----       -------     ------      -------------     
+# Dec.02.97      TT        A3452       Updated for edas2.5 release:
+#                                      Deleted arguments from DYNAMIC_AVM 
+#                                      Subsystem names DDS1 and DDS1_AVM were
+#                                      changed to DYNAMIC and DYNAMIC_AVM
+#                                      Added extra arguments for 
+#                                      UEL, PWM, GUI, PB_GUI, DB_SERV,
+#                                      DYNAMIC_AVM
+#                                      Added comments
+#                                      Attached a file header
+#                                      log_version is changed to 2.0 in
+#                                      LOG_PLAYBACK
+# Jan.16.98      TT        A3610       Updated for edas2.7 release:
+#                                      added rt_correct for IRIGB
+# Jan.23.98      TT        A3610       Added trace directory for TOCEUM
+#                                      T700,ACL, command line to start the GUI
+#                                      EAIF to UEL source name. 
+# Jan.23.98      TT        A3610       Fixed typo on last version
+# Jan.26.98      TT        A3610       Fixed typo on last version
+# Feb.18.98      TT        A3735       Updated for edas2.8 release
+#                                      corrected LOG_PLAYBACK, ARINC prameters
+#                                      added ATH_01 subsystem.
+# Feb.27.98      TT        A3673       Added pp_test_name to UEL
+# Mar.17.98      TT        A3754       Added la_rate_hz to LIMIT_ACTION
+# Mar.19.98      TT        A2003       Added accel_xfer to PBS
+# Mar.19.98      TT        A2828       Modified Thrust arguments
+# Mar.26.98      TT        A3985       Added DDS arguments
+# Apr.03.98      TT        A3799       Added eaif config file to all eaif 
+#                                      command line.
+# Apr.03.98      TT        A3770       Renamed DB_SERV by INIT and added 
+#                                      report_quality_change parameter to INIT 
+# Apr.07.98      TT        A4038       Added send_config option to DYNAMIC
+# Apr.07.98      TT        A4035       Added check_disk_space, save_dds_sentry
+#                                      options to GUI and PB_GUI
+# Apr.16.98      TT        A4068       Added overrun_tolerance,rt_priority,
+#                                      rt_default_priority
+# Apr.16.98      TT        A3929       Added GASSTC subsystem
+# Apr.24.98      TT        A3369       Added AVM options
+# May.04.98      TT        A3857       Added options for ARINC_BALLARD
+# May.08.98      TT        A2828       Modified Thrust arguments
+# May.08.98      TT        A3768       Added a GUI option.
+# May.11.98      TT        A4038       Changed the default value of 
+#                                      send_config option of DYNAMIC
+#                                      to false       
+#                                      Added External subsystem entry. 
+#                                      Added default value to min_days_to_cal
+#                                      option of PBS. 
+# May.12.98      TT        A3929       Modified GASSTC default values.
+# Jun.04.98      TT        A4254       Added UI_SERVER option
+# Jun.11.98      TT        A3724       Added sample_period and num_in_average
+#                                      to GAI. 
+#                                      Removed redundant cad options in GASS 
+#                                      subsystems.
+#                                      Corrected WEI_device option of THRUST.
+# Jun.15.98      TT        A1408       Added STATUS_DEST option.
+#                                      corrected the comment for WEI stop bits. 
+# Jul.14.98      TT        A4401       Added reply_timeout to PBS subsystem.
+# Jul.31.98      TT        A4304       Added event_gran, command_gran to GUI and 
+#                                      PB_GUI
+# Aug.13.98      TT        A4497       Removed sample period option from GASSTC
+# Sep.01.98      TT        A4809       Added engine type option to ARINC.
+#                                      corrected log_conversion option 
+# Sep.16.98      TT        A4275       Added avm_retries, cal_retries and 
+#                                      tel_retries options to DYNAMIC
+# Oct.13.98      TT        A2657       Added default settings for startscan_prog
+#                                      and stopscan_prog
+# Oct.16.98      TT        A2888       Added SSM_string option to arinc
+# Oct.27.98      TT        A2657       Corrected the settings for 
+#                                      startscan_prog and stopscan_prog
+# Oct.30.98      TT        A5146       Added yday_offset to IRIB
+# Oct.30.98      TS        A5080       Added args for THRUST
+# Nov.03.98      TT        A5157       Corrected sccs header
+# Nov.09.98      TT        A5071       Added 'extrap_value' and 'extrap_quality'
+# Nov.13.98      TT        A1408       Added coments for 'STATUS_DEST' option. 
+# Dec.23.98      TT        A5380       Removed tacho1, tacho2, tacho3 from
+#                                      DYNAIMIC
+# Dec.30.98      TT        A5406       Added 'cal_uel_source' option to PBS
+# Jan.27.99      TT        A4404       Added 'TAD_retries ' , 'TAD_timeout'
+#                                      options to THRUST.
+# Jan.29.99      TT        A5269       Added 'T800_reset_time' option to ARINC
+# Feb.10.99      TS        A4926       Add 'double_buffer_size' arg to LOGS
+# Feb.15.99      TS        A4926       Remove the double buffer size parameter
+# Feb.22.99      TT        A4569       Added 'eaif_server_host','eaif_server_service'
+#                                      to DYNAMIC
+# Feb.23.99      TT        A4569       Added 'crit_description' to LOG_PLAYBACK
+# Feb.24.99      TT        A5471       Added 'Nsrc_name' option to GUI
+# Mar.25.99      TS        A5600       Add thermal EMF parameters to GAI & 
+#                                       allow configuration of polarity of 
+#                                       excitation channel
+# Jun.14.99      GK        A5825       Added recover mode for Scan & Transfer
+# Jul.05.99      RS        A5629       Added required tokens for Alarm Summary
+#                                       Window feature in LIMIT_ACTION section
+# Jul.09.99      GK        A5747       Added PLC_TTY subsystem
+# Aug.20.99      GK        A5774       Added device addresses for LP/IP/HP
+#                                       ground stations in DDTC
+# Aug.22.99      AC        A5815       Added the avm_connection parameter to the 
+#                                       DYNAMIC_AVM section 
+# Sep.14.99      JH        A4954       Added header info parameters in
+#                                       T700_gui_cmd and T800_gui_cmd
+# Oct.04.99      JD        A5711       Added channel redirect flag to GUI
+# Oct.20.99      RS        A6305       Added use_testeng_dir_4_rep flag in LOG
+#                                       TRUE will chooses the engine/test as
+#                                       report's parent directory
+# Nov.23.99      RS        A6443       Added dynamic_slot flag for DDS
+# Jan.12.00      JH        Z1003       Added exit_scan_prompt for GUI
+# Aug.25.00      JH        A3515       Removed dynamic_slot flag for DDS
+# Aug.31.00      JPL       A6962       Added scan rate for T800
+# Oct.02.00      JPL       Z0001       Added values for new WS section 
+# Oct.16.00      LY        A7041       Added save_hss_sentry for GUI
+#                                      Added HSS subsystem
+# Oct.31.00      JH        A7073       Added dataview_active for GUI
+# Dec.04.00      JPL       A7233       Added TRUTEMP subsystem
+# Dec 14 00      LY        A7262       Added init_tolerance option for WS and TOCEUM
+# Dec 29 00      XC        A7151       Added Torque Meter (MS Driver) subsystem
+#                                      Added EMS1_MS (MS Driver) subsystem
+#                                      Added EMS1_ME (ME Driver) subsystem
+# Feb 12 2001    JPL       A7344       Changed TRUTEMP retry from 3 to 1
+# Feb 16 01      LY        A7345       Changed timeout of MS from 1000 to 100
+# Feb 20 01      LY        A7345       Changed timeout of ME and TRQMETER to 100
+# Apr 24 2001    JPL       A7410       Added 4 new parameters to PBS section
+# May 15 2001    JPL       A7411       Added 1 new parameter to EMS1_ME section
+# Jun 28 2001    HZ        A7422       Added 1 new la_audio_player parameter 
+#                                       to LIMIT_ACTION section
+# Sep 05 2001    MZ        A7439       add GASS subsystem
+# Sep 27 2001    HZ        A7449       add continuous log parameters
+# Sep 27 2001    MZ        A7412       add new parameter for ATH
+# Sep 16 2001    HZ        A7449       add comments for continuous log parameters
+# Oct 25 2001    MZ        A7451       change thrust parameter
+# Oct 25 2001    MZ        A7412       add new parameter for ATH
+# Mar 14 2002    JH        Z1003       Moved modbus_tcp parameter from MS to ME
+# Apr 26 2002    HZ        A7567       Added pbs_9032_list parameter in PBS
+# Apr 29 2002    JPL       A7576       Added language_filename to UEL
+# May 03 02      YJ        A7549       add flag BPT_data_from_DB
+# MAY 23 02      MZ        A7595       add comment in ATH section
+# MAY 29 02      MZ        A7600       add RTP2000 driver section
+# JUN 04 02      MZ        A7593       modify DYNAMIC_AVM section 
+# Jun 13 2002    HZ        A7567       Temporarilly removeded pbs_9032_list
+# Jun 26 2002    HZ        A7607       Modified cl_max_file_size in kilobytes
+#                                       in section LOG_PLAYBACK
+# Aug 22 2002    HZ        A7567       Added pbs_9032_list parameter in PBS
+# Aug 30 02      YJ        A7606       Added parameters for UEL display server
+# Sep 20 02      YJ        A7648       Added TBDAU subsystem
+# Oct 24 02      MZ        A7634       add replay feature
+# NOV 25 02      MZ        A7600       remove done DP from RTP section
+# DEC 16 02      MZ        A7739       Add SETRA470 in ATH section
+# DEC 16 02      MZ        A7739       Add comment in ATH section
+# Dec 17, 2002   JPL       A7601       Added section for HPS (HyScan driver)
+# Jan 24, 2002   JPL       A7601       Added timeout values for operations
+# Jan 27, 03     HZ        A7768       Added Fullset configurable channel
+# Jan 27 03      JH        A7649       Added section for DS (Data Server)
+# Jan 30 03      HZ        A7581       Added configurable yellow alarm flag
+# Feb 06 03      HZ        A7769       Added acl_srvname for PRODAS
+# Feb 17, 2003   JPL       A7601       Changed names of 2 HPS entries
+# Feb 27, 2003   JPL       A7601       Added entries, update values, comments
+# Mar 07  2003   YJ        A7794       Added fs_point_size
+# Apr 21, 2003   JPL       10078       Added auxiliary purge support
+# May 07, 2003   HZ        10096       Modified FS configurable channel to float
+# May 26, 2003   HZ        A7794       Generated sample.prodas from sample.conf1.113
+#                                       for proDAS configuration
+# May 30, 2003   HZ        A7794       Removed GUI and PB_GUI sections
+# Jun 21, 2003   YJ        10171       Added UTRH subsystyem
+# Jul 17, 2003   YJ        10168       Added MSS subsystyem
+# Dec 15, 2003   JH        A1003       Remove the connection type from INIT
+# Jan 23, 2004   MZ        10170       Added HSV subsystem
+# Feb 12, 2004   YJ        10168       Added position checking option for MSS
+# Apr 12, 2004   HZ        10169       Added DPS subsystem
+# May 03, 2004   YJ        11834       Added scan_delay for HPS
+# May 03, 2004   YJ        11834       Added data_query
+# May 28, 2004   MZ        11946       Assed new option for HSV
+# Jun 16, 2004   MZ        11946       change to save_with_critical
+# Jun 30, 2004   JH        11946       Add some comment to HSV SS 
+# Aug 30, 2004   MZ        10168       add comments for MSS
+# Oct 29, 2004   MZ        10699       added CONSORT
+# Nov 23, 2004   HZ        12034       Removed the la_audio_player
+# Dec 15, 2004   HZ        12034       Added the la_default_hostname for LA
+# Jan 06, 2005   HZ        12262       Removed the pbs_9032_list from PBS section
+# Feb 10, 2005   JH        12037       Added new Calculated SS option 
+# Feb 16, 2005   MZ        12236       Added CEC subsystem
+# Feb 16, 2005   MZ        12294       Added root path
+# Feb 18, 2005   HZ        12326       Added the exclude_subsystems for LOG
+# Apr 01, 2005   MZ        12294       changed to ROOT_PATH
+# May 01, 2005   HZ        12503       Added la_event_comment_to_db flag for LA
+# May 12, 2005   HZ        12503       Modified the comment for the flag of
+#                                       saving EVENT_COMMENT to database
+# May 27, 2005   AC        12237       Added TSM subsystem              
+# Aug 03, 2005   JH        12654       Removed UEL disp server timeout
+# Dec 07, 2006   JH        Z1003       Added the communication timeout for Data Server
+# Jan 25, 2007   AC        13555       Added Zero Pressure Voltage channels for MSS
+# Dec 18, 2007   JH        Z1005       Added the fullset stability information 
+# May 08, 2008   JH        Z1005       Fix PBS's vent_control_ch tag 
+# Jul 15, 2008   JH        Z1005       Added parameters for External and RTP
+# Oct 14, 2008   JH        14481       Added parameters for M1553 SS
+# Jan 08, 2009   AC        14113       Added tolerance for TSM
+# Apr 27, 2009   JH        14655       Added the new parameter for ARINC
+# May 15, 2009   HZ        14674       Added CDF conversion for LOG_PLAYBACK
+# Jun 05, 2009   HZ        14737       Added cal_zero parameter for GASS SS
+# Jun 09, 2009   JH        Z1005       Added note for RTP SS
+# Oct 19, 2009   HZ        14775       Added device type parameter for each THG master load cell
+# Nov 16, 2009   JH        14840       Added SPT timeout parameter for DDTC
+# May 10, 2010   JH        14938       Added 3 parameters for ARINC
+# May 25, 2010   JH        Z1005       Modified all default EH connection from
+#                                       SHARED_MEMORY to SOCKET
+# May 31, 2010   HZ        14925       Added parameters for continuous purge
+# May 31, 2010   AC        14925       Added parameters for fullset
+# Jul 14, 2010   JH        14970       Added OPC SS parameters
+# Oct 14, 2010   HZ        15041       Added 2 new parameters for LOG_PLAYBACK
+# Oct 14, 2010   HZ        15054       Added a new section for DTS subsystem
+# Oct 20, 2010   HZ        15054       Changed DTS trigger type text to HW/SW
+# Oct 21, 2010   HZ        14925       Modified PBS section for proDAS continuous purge
+# Jan 26, 2011   HZ        15157       Added log action parameters for LOG_PLAYBACK
+# Feb 09, 2011   HZ        15173       Added three new parameters for ME subsystem
+# Feb 14, 2011   JH        15159       Added VEXA section for VEXA subsystem
+# Feb 18, 2011   AC        15157       Added fullsets pre action for record number 
+# Jun 16, 2011   JH        15294       Added EN_SERVER section
+# Jun 27, 2011   JH        14481       Added a new parameter for M1553
+# Sep 10, 2012   JH        15690       Added the DDSC section
+# Apr 18, 2013   AC        15841       Added back-off delay to the TSM section
+# May 07, 2013   HZ        15840       Increased the default log version to 4.0
+# May 08, 2013   HZ        15871       Modified to support 3 LA subsystems
+# May 28, 2013   HZ        15877       Added NDDS section
+# Jun 26, 2013   HZ        15871       Removed the la_yellow_alarm parameter from LA INFO SS
+# Aug 14, 2013   HZ        15945       Added NSS subsystem
+# Aug 20, 2013   HZ        15945       Replaced EPHL_disabled_pgm with replay_disabled_prg 
+# Sep 12, 2013   HZ        15997       Removed the TCorrChan parameter from THG for proDAS
+# Oct 01, 2013   HZ        15945       Added comments to NSS subsystem
+# Oct 25, 2013   AC        15841       modified back-off delay to the TSM section
+# Nov 15, 2013   JH        15841       Add support for DDS version 4.5
+# Jan 23, 2014   HZ        16141       Add recording number monitor channel to the LOG section
+# Mar 28, 2014   AC        16268       Added new parameters in MSS and FULLSET sections
+# Dec 04, 2014   AC        16526       Added new parameters in MSS section
+# Mar 24, 2015   HZ        Bug763      Added 2 acknowledge alarm channels in LIMIT_ACTION SS
+# Jun 25, 2015   JH        Bug1021     Added AFDX SS paramters
+# Oct 05, 2015   HZ        Bug1260     Modified ATH SS to support CPT6100
+# Jan 18, 2016   JH        Bug1389     Added one parameter to AFDX SS
+# Jan 28, 2016   HZ        Bug1492     Modified comments for two critical log parameters
+# Oct 20, 2016   JH        Bug1677     Added xml_encoding into EN_server
+# Nov 09, 2016   HZ        Bug2051     Added min_free_space parameter for INIT
+#                                      Modified NDDS to be a subsystem
+# Jan 11, 2018   HZ        Bug2653     Added unlimited_log parameter in the LOG section
+# Jan 15, 2018   HZ        Bug2631     Added la_remote_shell parameter in LA subsystems
+# Feb 06, 2018   HZ        Bug2039     Added 2 parameters in INIT section for periodic
+#                                       checking disk space
+# Feb 15, 2018   HZ        Bug2461     Added PRODAQ subsystem
+# Feb 16, 2018   JH        Bug2473     Added MVIB SS
+# May 30, 2018   JH        Bug2869     Added load_balance_enable parameter in the calculated SS
+# Aug 13, 2018   HZ        Bug2926     Added cl_always_create_new_log parameter for continuous log
+# Feb 08, 2019   JH        Bug3077     Added ss_extrap_value for IC module
+#****************************************************************************/
+
+
+#--------------------------------------------------------------------------
+# See Notes (2) at the end of this file for help on 'CL' options
+#--------------------------------------------------------------------------
+CL    MASTER_CONFIG_ID   0
+CL    CELL_ID            0
+CL    VERBOSITY          100
+CL    TRACE_DEST         stdout
+CL    STATUS_DEST        edas_status
+# REPLAY_FLAG (TRUE replay mode. FALSE real time mode)
+CL    REPLAY_FLAG        FALSE 
+CL    ROOT_PATH          /users/EDAS
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    LIMIT_ACTION       TRUE
+# value: Rate (Hz) to check limits 
+CI    la_rate_hz          
+# The host where the alsum will be running
+CI     la_alsum_cli_host       ramsYYYY
+# The service name for alsum server
+CI     la_alsum_cli_service    alsum_srv
+# The service name for L&A alarm server
+CI     la_alsum_srv_service    laas_srv
+# The timeout for which L&A alarm server waits for alsum after its launch
+CI     la_alsum_timeout    5000
+# Maximum number of retries of a client
+CI     la_alsum_max_retry  3
+# Sleep in polling loop the client (In Millisecond)
+CI     la_alsum_sleep_ms   200
+# The yellow alarms flag (TRUE or FALSE)
+CI     la_yellow_alarm   FALSE
+# The default hostname for INVOKE_EXECUTE action
+CI     la_default_hostname   prodasmgt
+# The saving EVENT_COMMENT to database flag (TRUE or FALSE)
+CI     la_event_comment_to_db  FALSE
+# The ENABLE_ALARMS channel to control Limits and Actions
+CI     la_enable_alarms_ch   ENABLE_ALARMS
+# The channel to acknowledge one alarm
+CI     la_ch_ack_one         CH_ACK_ONE
+# The channel to acknowledge all alarms
+CI     la_ch_ack_all         CH_ACK_ALL
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/rsh
+
+#--------------------------------------------------------------------------
+SS    LIMIT_ACTION_INFO   TRUE
+# value: Rate (Hz) to check limits 
+CI    la_rate_hz          1.0
+# The host where the alsum will be running
+CI     la_alsum_cli_host       ramsYYYY
+# The service name for alsum info server
+CI     la_alsum_cli_service    alsum_srv_info
+# The service name for L&A info server
+CI     la_alsum_srv_service    laas_srv_info
+# The timeout for which L&A info server waits for alsum after its launch
+CI     la_alsum_timeout    5000
+# Maximum number of retries of a client
+CI     la_alsum_max_retry  3
+# Sleep in polling loop the client (In Millisecond)
+CI     la_alsum_sleep_ms   200
+# The default hostname for INVOKE_EXECUTE action
+CI     la_default_hostname   prodasmgt
+# The saving EVENT_COMMENT to database flag (TRUE or FALSE)
+CI     la_event_comment_to_db  FALSE
+# The ENABLE_ALARMS channel to control Limits and Actions
+CI     la_enable_alarms_ch   ENABLE_ALARMS
+# The UEL message flag for LIMIT_ACTION_INFO subsystem only (TRUE or FALSE)
+CI     la_info_uel_flag      TRUE
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/rsh
+   
+#--------------------------------------------------------------------------
+SS    LIMIT_ACTION_QUIET  TRUE
+# value: Rate (Hz) to check limits 
+CI    la_rate_hz          1.0
+# The default hostname for INVOKE_EXECUTE action
+CI     la_default_hostname   prodasmgt
+# The saving EVENT_COMMENT to database flag (TRUE or FALSE)
+CI     la_event_comment_to_db  FALSE
+# The ENABLE_ALARMS channel to control Limits and Actions
+CI     la_enable_alarms_ch   ENABLE_ALARMS
+# The remote shell (/usr/bin/rsh (default) or /usr/bin/ssh)
+CI     la_remote_shell       /usr/bin/rsh
+   
+#--------------------------------------------------------------------------
+#  
+#--------------------------------------------------------------------------
+SS    CALCULATED         TRUE
+# Can be either set to BAD or SUSPECT for NON domain error (Can't set to GOOD)
+CI  propagated_quality  BAD
+# Set to TRUE to report all calc error; set to FALSE to report only domain error
+CI  report_all_error    TRUE
+# Set to TRUE/FALSE to turn on/off the load balancing mechanism; default to TRUE
+CI  load_balance_enable    TRUE
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+SS    INTERNAL           TRUE
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    FULLSET            TRUE
+# Fullset configurable float channel name
+CI    fs_channame        
+# Maximum number of fullset stability channels
+CI    deviation_limit    50
+# Maximum duration of a fullset for stability, in seconds
+CI    deviation_duration 30
+# For fullset recording number: Opcode_cmd Record_number_channel output_channel 
+# For PW at Glacier, we need to define pre_fs_action
+# Pre Fullset Actions
+CI    pre_fs_action  op_rec_num REC_NO O30002
+# Pre Fullset Actions: Opcode_cmd
+CI    pre_fs_action  
+# Post Fullset Accmulation Actions: Opcode_cmd SSName
+CI    post_fs_accu_action  
+# Post Fullset Actions: Opcode_cmd
+CI    post_fs_action
+
+# ========================================
+# Data Server subsystems
+# ----------------------------------------
+SS  DATA_SERVER                 TRUE
+# Service name for connecting to DS
+CI    service_name          ds_serv
+# Maximun send rate allowed in Hz for DS
+CI    max_sendrate          10
+# Communication timeout in milliseconds 500-5000
+CI    com_timeout           3000
+
+# ========================================
+# Torque Meter (Generic Modbus Serial Driver) subsystem
+# ----------------------------------------
+SS    TRQMETER                        FALSE
+#    /dev/ttydn004          /dev/ttyd2
+CI    device                      /dev/ttyd2
+CI    baudrate                    19200
+CI    databits                    8
+CI    stopbits                    1
+#   parity: n=none, e=even, o=odd
+CI    parity                        n
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian                  little
+#   datatype:  float or short (short is for short integer)
+CI    datatype                    float
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatus
+#   float channel group, inputregisters or holdingregisters
+CI  fchannelgroup     holdingregisters
+#   timeout in ms
+CI    timeout         100
+#   max number of Modbus register channels
+CI  maxregchannel      5
+# ========================================
+# EMS1_MS (Generic Modbus Serial Driver) subsystem
+# ----------------------------------------
+SS    EMS1_MS                     FALSE
+#    /dev/ttydn004          /dev/ttyd2
+CI    device                      /dev/ttyd2
+CI    baudrate                    19200
+CI    databits                    8
+CI    stopbits                    1
+#   parity: n=none, e=even, o=odd
+CI    parity                        n
+#   sign: signed or unsigned
+CI    sign            signed
+#   endian: little or big
+CI    endian                  little
+#   datatype:  float or short (short is for short integer)
+CI    datatype                   short
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatus
+#   float channel group, inputregisters or holdingregisters
+CI  fchannelgroup     inputregisters
+#   timeout in ms
+CI    timeout         100
+#   max number of Modbus register channels
+CI  maxregchannel      5
+# ========================================
+# EMS1_ME (Generic Modbus Ethernet Driver) subsystem
+# ----------------------------------------
+SS    EMS1_ME                    FALSE
+CI    host                            picard
+CI    service                       debug_srv2
+#   sign: signed or unsigned
+CI    sign            unsigned
+#   endian: little or big
+CI    endian                  big
+#   datatype:  float or short (short is for short integer)
+CI    datatype                    short
+#   use decimal format for the slave address
+CI    slaveaddress    1
+#   discrete channel group, inputcoils or inputstatus
+CI  dchannelgroup     inputstatus
+#   float channel group, inputregisters or holdingregisters
+CI  fchannelgroup     inputregisters
+#   timeout in ms
+CI    timeout         100
+#   protocol, tcp or udp
+CI  protocol         tcp
+#   max number of Modbus register channels
+CI  maxregchannel     100
+#   TCP implementation (use either Woodward or OpenMODBUS)
+CI  modbus_tcp              Woodward
+#   write multiple registers : multiple/single
+CI  writemultipleregisters  single
+#   max range of coil addresses in one output request (<= 1968)
+CI  maxcoiloutput     1920
+#   max range of holding register addresses in one output request (<=120)
+CI  maxregoutput      120
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+SS  PLC_TTY            TRUE
+# the TTY device name for the PLC communication (no default)
+CI    device             /dev/ttyd2
+# the TTY port buadrate (default = 9600)
+CI    baudrate           38400
+# the number of data bits (default = 8)
+CI    databits           8
+# the number of stop bits (default = 1)
+CI    stopbits           1
+# the parity (N = None, E = Even, O = Odd) of the data (default = N)
+CI    parity             N
+# the protocol (SIGNED or UNSIGNED) used by the PLC (default = SIGNED)
+CI    RTU_protocol       SIGNED
+
+#--------------------------------------------------------------------------
+# DTCI Subsystem
+#--------------------------------------------------------------------------
+SS    DTCI                   TRUE
+# the trigger type (SW or HW)
+CI    trigger                SW
+# the reply timeout in seconds
+CI    reply_timeout          10
+# engineering unit, or user factor
+CI    engineering_unit       psi
+# intermittent temperature rate in seconds
+CI    temperature_scan_rate  5
+# zero calibration stabilization time in seconds
+CI    zero_stabilize_time    10
+# the service name to communicate to the DTC Initium systems
+CI    service_name           dtc_srv
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+SS    COXFLOW            TRUE
+# the port to which the Cox flow meter is connected to
+CI     device            /dev/tty1
+# the baud rate of the Cox flow meter
+CI     baudrate          300
+# enable or disble parity (0 = off)
+CI     parity            TTY_EVEN
+# set number of stop bits
+CI     stopbits          1
+# set number of data bits
+CI     databits          7
+# timeout value for communicating with the COX flow
+CI     timeout           1000
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    ARINC_BALLARD        TRUE
+# VME A16 address
+CI     a16                 0xf700                
+# VME A32 address
+CI     a32                 0x17000000         
+# enable or disble port directory
+CI     tx                  3
+CI     tx                  4
+CI     tx                  5
+CI     tx                  6
+# Engine type
+CI     T800_type           TRENT_800
+# T800 OMS scan thread priority
+CI     T800_priority       5 
+# T800 OMS scan rate
+CI     T800_scan_rate      10
+# TX label resetting time in msec
+CI     T800_reset_time     50
+# Engine type
+CI     T700_type           TRENT_700
+# T700 OMS data update rate (ms) by EEC 
+CI     T700_oms_rate       100
+# T700 OMS scan thread priority
+CI     T700_priority       5 
+# Shared memory key (if used, must also be specified in the command line) 
+CI     acl_key             17 
+# SSM string:  <engine> <encoding> <string <00> <01> <10> <11> >
+CI     SSM_string          TRENT_800 DIS NOP NCD FT FW
+# The service name of Arinc Channel list server for PRODAS
+CI     acl_srvname          acl_srv
+#Ballard card number in the PCI bus (default=0)
+CI     card_number         0
+#TRUE to disable encoding for the label: flight number
+CI    label_fln_disable   FALSE
+#TRUE to disable encoding for the label: time 
+CI    label_time_disable  FALSE
+#TRUE to disable encoding for the label: date
+CI    label_date_disable  FALSE
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    DYNAMIC               TRUE
+# AVM TRUE / FALSE  flag 
+CI     avm_enable           TRUE
+# Telemetry TRUE / FALSE  flag
+CI     tel_enable           TRUE
+# DDS send_config flag
+CI     send_config          FALSE 
+# AVM service name
+CI     avm_service          avm_srv
+# Telemetry service name
+CI     telemetry_service    tel_srv
+# calibration service name
+CI     calibration_service  cal_srv 
+# FTP user name
+CI     ftp_user             ftpuser 
+# Number of avm packets allowed to be missing
+CI    max_avm_pack_miss     5
+# Number of retries on AVM socket
+CI    avm_retries           50
+# Number of telemetry packets allowed to be missing
+CI    max_tel_pack_miss     5
+# Number of retries on TELEMETRY socket
+CI    tel_retries           50
+# time out used for real time processing 
+CI    max_pack_miss_on_sel  3
+# Number of retries on CALIBRATION socket
+CI    cal_retries           50
+# EAIF_server host name
+CI    eaif_server_host      edas_rt
+# EAIF_server service name
+CI    eaif_server_service   eaif_srv
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS  DDSC                 TRUE
+# DDS host name that DDSC is connecting to
+CI    dds_host_name          fuji
+# DDS Service name that DDSC is connecting to
+CI    dds_srv_name           dds_port
+# Communication timeout in milliseconds
+CI    con_timeout            10000
+# State change timeout in seconds
+CI    state_timeout          30
+# DDS version (3, 4, 4.5)
+CI    dds_version            3
+# Save sentry duration in second
+CI    sentry_duration        3600
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    GASSDIO            TRUE
+# card info (VXI chassis,slot and VME address)
+# EDAS can configure more than one card
+CI     card              2 6 0xE800
+
+#--------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------
+SS    G2_1                 TRUE
+CI     device            /dev/g2_mem             
+CI     version           G2020 
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    GASSAI             TRUE
+# card info (VXI chassis,slot,VME address,sample to use in an average, 
+#            sample period)
+# EDAS can configure more than one card
+CI       card     1 1 0xc400 0x900000 4 37
+# Extrapolation value 
+# (float number, zero means no extrapolation, less than zero is invalid)
+CI       extrap_value    10
+# Extrapolation quality (G/B/S)
+CI       extrap_quality  S 
+# number of ms to wait after removing excitation voltage
+CI       temf_n1	 12.5
+# number of ms to wait for settling after applying the excitation voltage
+CI       temf_n2	 12.5
+# an integer number of samples to use in an average for calculating EMF
+CI       temf_n		 4
+# a float describing the maximum negative bridge balance correction in volts
+CI       bb_lo_limit	-0.0001
+# a float describing the maximum positive bridge balance correction in volts
+CI       bb_hi_limit	0.0001
+# a float describing trhe maximum negative EMF correction in volts
+CI       temf_lo_limit	-0.0006
+# a float describing the maximum positive EMF correction in volts
+CI       temf_hi_limit	-0.0006
+# an integer describing the number of samples to take in an average to
+# arrive at bridge balance correction values
+CI       bb_count_in_average	400
+# the value to be stored in the CVT for DC strain channels while a EMF 
+# calculation is being done. Values are "last_value" or "bad_value"
+CI       temf_display	last_value
+#  EMF excitation channel name
+CI       temf_excitation_channel  DCExcite
+#  EMF control channel name
+CI       temf_control_channel     DCControl
+#  Flag to indicate if thermal correction is "on" or "off"
+CI       temf                    on
+# EMF excitation channel polarity - POSITIVE or NEGATIVE
+CI       temf_excitation_polarity    POSITIVE
+#
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    GASSAO             TRUE
+# card info (VXI chassis,slot and VME address)
+# EDAS can configure more than one card
+CI       card     2 10 0xF000
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    GASSFC             TRUE 
+# card info (VXI chassis,slot and VME address)
+# EDAS can configure more than one card
+CI       card     1 5 0xCA00
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    GASSTC             TRUE
+# Mode type(Long/Short) and measurment timeout
+CI     period            Short 1.01
+# card info (VXI chassis,slot,VME address and trigger period in milliseconds)
+CI     card              3 4 0xf400 0x980000 5.0 
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    PBS                TRUE
+# service name
+CI     port              pbs 
+# number of bricks per zone
+CI     zone              20 
+# software or hardware trigger; OFF or ON
+CI     trigger           ON 33 
+# no of days to next cal; default don't show anything
+CI     min_days_to_cal   30 
+# scan rate for accelerated transfer
+CI     accel_xfer        33
+# reply time-out in seconds
+CI     reply_timeout     60
+# UEL source name for cal date messages
+# This name should match with the 'cal_uel_source' name in the 
+# DB server .config file 
+CI     cal_uel_source    CALCHK
+# Discrete output channel used to control vent relay 
+# (MUST appear in .config before the other 3 vent CI's)
+CI     vent_control_ch    D001
+# Discrete feedback channel from relay
+CI     vent_feedback_ch  D002
+# Milliseconds to allow all purge valves to open
+CI     valve_on_delay    2000
+# Milliseconds to allow venting to take affect
+CI     valve_off_delay   2000
+# Continuous purge mode: (continuous, high/low, none)
+CI     cont_purge_mode   continuous
+# Engine ready to run channel (discrete channel)
+CI     eng_running_ch    EngRunningCh
+# The following two parameters are used only for continuous purge mode
+# Continuous purge control channel (discrete channel)
+CI     cont_purge_ctrl_ch PurgeCtrlCh
+# Continuous purge delay channel (float channel)
+CI     cont_purge_delay_ch PurgeDelayCh
+# The following parameter is used only for high/low continuous purge mode
+# High/low pressure control channel (discrete channel)
+CI     hilo_press_ctrl_ch  hilo_ctrl_ch
+#--------------------------------------------------------------------------
+# TSM (Temperature Scanning Modules) subsystem 
+#--------------------------------------------------------------------------
+SS    TSM                TRUE
+# service name
+CI     port              pbs
+# software or hardware trigger;
+CI     trigger           SW
+#  hardware trigger scan rate
+CI     hw_trigger_rate   100
+# no of days to next cal; default don't show anything
+CI     min_days_to_cal   30
+# scan rate for accelerated transfer
+CI     accel_xfer        50
+# response time-out in seconds
+CI     response_timeout  60
+# UEL source name for cal date messages
+# This name should match with the 'cal_uel_source' name in the
+# proDAS DB server .config file
+CI     cal_uel_source    CALCHK
+# tolerance for open circuit detected
+CI     tolerance_counter 2
+# Back-off delay offset counter min 0 and max 100
+CI     delay_offset 0
+
+#--------------------------------------------------------------------------
+#
+# ==========================================
+# DPS (Digital Pressure Scanners) subsystem
+# ------------------------------------------
+SS    DPS                FALSE
+# DPS service name (default telnet)
+CI     port              telnet
+# software or hardware trigger; OFF or ON
+CI     trigger           OFF
+# scan rate for accelerated transfer
+CI     accel_xfer        50
+# reply time-out in seconds
+CI     reply_timeout     60
+# protocol, TCP or UDP
+CI     protocol          UDP
+#--------------------------------------------------------------------------
+#
+# ==============================================
+# DTS (Digital Thermocouple Scanners) subsystem
+# ----------------------------------------------
+SS    DTS                FALSE
+# DPS service name (default telnet)
+CI     port              telnet
+# software or hardware trigger; SW or HW
+CI     trigger           SW
+# external trigger rate (Hz)
+CI     hw_trigger_rate   100
+# number of averages during calibration
+CI     calavg            4
+# maximum allowable difference between RTD values
+CI     maxdelta          10.0
+# scan rate for accelerated transfer
+CI     accel_xfer        20
+# reply time-out in seconds                                                    
+CI     reply_timeout     3                                                     
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+# RTP2000 subsystem 
+#--------------------------------------------------------------------------
+SS    RTP_2000                TRUE
+# rtp_service_name
+CI      rtp_service_name      rtp_2000
+# rtp_broadcast_name(must match the one defined in /etc/hosts)
+CI      rtp_broadcast_name      rtp_2000_broadcast
+# rtp_max_timeout(ms, default=1000ms)
+CI      rtp_max_timeout       1000
+# rtp_max_retries(default=3)
+CI      rtp_max_retries       3
+# rtp_retry_interval(sec, default=60s)
+CI      rtp_retry_interval    60
+# max_scan_rate(Hz, default=10Hz)
+CI      max_scan_rate         10 (10Hz is the max possible for the throttle)
+# RTP protocol (default=RTP2000, RTP2300)
+CI     rtp_protocol           RTP2000
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    PLC                TRUE
+# The TCP/IP name of the PLC host
+CI     host_name         plc1
+# The name of the service for TCP/IP port
+CI     service           plc_tcp
+# The name of the file on the PLC for float inputs
+CI     float_in          F36
+# The name of the file on the PLC for float outputs
+CI     float_out         F26
+# The name of the file on the PLC for discrete inputs
+CI     disc_in           B35
+# The name of the file on the PLC for discrete outputs
+CI     disc_out          B25
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    PWM                TRUE
+# Command host name
+CI     cmd_host          dpwmw2
+# Command host service name
+CI     cmd_service       pwm_ws
+# Data host name
+CI     data_host         daiut1
+# Data host service name
+CI     data_service      pwm_vax
+# Trent engine names
+CI     TRENT             TRENT_700
+# BRR engine names
+CI     BRR               BR_710
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    SCUTR              TRUE 
+# Flag to use VME SCUTR interface (TRUE) or PCI SCUTR interface (FALSE)
+CI     vme_if            TRUE
+# Card number, and card A32 VME address
+# EDAS can configure more than one card
+CI     card              1     0x15000000 
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    DYNAMIC_DDTC       TRUE
+# UNIX device name for RS485 port
+CI     device            /dev/ttyd3 
+# Baud-rate used by TTY
+CI     baudrate          19200 
+# Parity used by TTY
+CI     parity            1 
+# Number of stop bits used by TTY
+CI     stopbits          1 
+# Number of data bits used by TTY
+CI     databits          8 
+# Time out for TTY in milliseconds
+CI     timeout_ms        50 
+# Time out for SPT TTY in milliseconds
+CI     spt_timeout_ms    300 
+# Wing box sned time in milliseconds
+CI     wbsend_ms         200 
+# LP ground station device address
+CI     LP_dev_addr       0
+# IP ground station device address
+CI     IP_dev_addr       0
+# HP ground station device address
+CI     HP_dev_addr       0
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    TDM_1               TRUE
+# digbert unit serial port device name
+CI     dev_digbert       /dev/ttyd3
+# digbert port rate(baud),bits per byte(6,7,8),parity(N,O,E),stop bits(0,1,2)
+CI     port_digbert      9600 8 1 N
+# incaip unit serial port device name
+CI     dev_incaip        /dev/ttyd2
+# incaip port rate(baud),bits per byte(6,7,8),parity(N,O,E),stop bits(0,1,2)
+CI     port_incaip       9600 8 1 N
+# incahp unit serial port device name
+CI     dev_incahp        /dev/ttyd1
+# incahp port rate(baud),bits per byte(6,7,8),parity(N,O,E),stop bits(0,1,2)
+CI     port_incahp       9600 8 1 N
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    THRUST             TRUE
+# driver communicating with the WEI1 port
+CI     WEI_device        /dev/ttyd1
+# Baud-rate used for WEI
+CI     WEI_baudrate      9600
+# Parity used for WEI
+CI     WEI_parity        none 
+# Number of stop bits used for WEI
+CI     WEI_stopbits      1
+# Number of data bits used for WEI
+CI     WEI_databits      8
+# Instrument address in E-2-WEI
+CI     WEI_instr_addr    01
+# driver communicating with the WEI2 port
+#CI     WEI2_device        /dev/null
+# Baud-rate used for WEI
+#CI     WEI2_baudrate      9600
+# Parity used for WEI
+#CI     WEI2_parity        none 
+# Number of stop bits used for WEI
+#CI     WEI2_stopbits      1
+# Number of data bits used for WEI
+#CI     WEI2_databits      8
+# Instrument address in E-2-WEI
+#CI     WEI2_instr_addr    02
+# driver communicating with the TAD1 port
+CI     TAD1_device       /dev/ttyd2
+# Baud-rate used for TAD1
+CI     TAD1_baudrate     9600
+# Parity used for TAD1
+CI     TAD1_parity       none 
+# Number of stop bits used for TAD1
+CI     TAD1_stopbits     1
+# Number of data bits used for TAD1
+CI     TAD1_databits     8
+# driver communicating with the TAD2 port
+#CI     TAD2_device       /dev/ttyd2
+# Baud-rate used for TAD2
+#CI     TAD2_baudrate     9600
+# Parity used for TAD2
+#CI     TAD2_parity       none 
+# Number of stop bits used for TAD2
+#CI     TAD2_stopbits     1
+# Number of data bits used for TAD2
+#CI     TAD2_databits     8
+# Number of milliseconds that EDAS should wait for a TAD to respond.
+CI     TAD_timeout       300
+# Number of consecutive times EDAS will try to reestablish communication with a TAD
+CI     TAD_retries       2
+# Number of seconds before giving up on the WEI
+CI     lostcomm_timeout  180
+# Default channel quality to use during temporary communication loss
+# one of GOOD / BAD / SUSPECT
+CI     WEI_comm_fail_quality  GOOD
+# maximum number of consecutive communication failures to tolerate
+CI     WEI_max_comm_fail      5
+# WEI device
+# Communication protocol for WEI devices
+#CI     WEI_Protocol   WEI
+CI     WEI_Protocol    TAD
+
+#--------------------------------------------------------------------------
+#   THG (Thrust generic ) subsystem
+#--------------------------------------------------------------------------
+SS     THG               TRUE
+
+#serial port
+CI     WRK1_device       /dev/ttyn000
+#communication parameter, including buadrate data bits stop bits parity
+CI     WRK1_port         38400 8 1 N
+#instrument address
+CI     WRK1_instr_addr   01
+#sign, could be + or -
+CI     WRK1_sign         +
+#delay before send request
+CI     WRK1_send_delay     0    
+#delay before read response
+CI     WRK1_receive_delay  5  
+
+#serial port
+CI     WRK2_device       /dev/ttydn001
+#communication parameter, including buadrate data bits stop bits parity
+CI     WRK2_port         38400 8 1 N
+#instrument address
+CI     WRK2_instr_addr   01
+#sign, could be + or -
+CI     WRK2_sign         +
+#delay before send request
+CI     WRK2_send_delay     5    
+#delay before read response
+CI     WRK2_receive_delay  10  
+
+#serial port
+CI     WRK3_device       /dev/ttydn002
+#communication parameter, including buadrate data bits stop bits parity
+CI     WRK3_port         38400 8 1 N
+#instrument address
+CI     WRK3_instr_addr   01
+#sign, could be + or -
+CI     WRK3_sign         +
+#delay before send request
+CI     WRK3_send_delay     5    
+#delay before read response
+CI     WRK3_receive_delay  10  
+
+#serial port
+CI     WRK4_device       /dev/ttydn003
+#communication parameter, including buadrate data bits stop bits parity
+CI     WRK4_port         38400 8 1 N
+#instrument address
+CI     WRK4_instr_addr   01
+#sign, could be + or -
+CI     WRK4_sign         +
+#delay before send request
+CI     WRK4_send_delay     5    
+#delay before read response
+CI     WRK4_receive_delay  10  
+
+# device type, either E-2-TAD or AST3
+CI     MSTF1_device_type E-2-TAD
+#serial port
+CI     MSTF1_device      /dev/ttydn004
+#communication parameter, including buadrate data bits stop bits parity
+CI     MSTF1_port        4800 8 1 N
+#instrument address
+CI     MSTF1_instr_addr  01
+#sign, could be + or -
+CI     MSTF1_sign         +
+#delay before send request
+CI     MSTF1_send_delay    35    
+#delay before read response
+CI     MSTF1_receive_delay 45  
+
+# device type, either E-2-TAD or AST3
+CI     MSTR1_device_type E-2-TAD
+#serial port
+CI     MSTR1_device      /dev/ttydn005
+#communication parameter, including buadrate data bits stop bits parity
+CI     MSTR1_port        4800 8 1 N
+#instrument address
+CI     MSTR1_instr_addr  01
+#sign, could be + or -
+CI     MSTR1_sign         +
+#delay before send request
+CI     MSTR1_send_delay    35    
+#delay before read response
+CI     MSTR1_receive_delay 45  
+
+# device type, either E-2-TAD or AST3
+CI     MSTF2_device_type E-2-TAD
+#serial port
+CI     MSTF2_device      /dev/ttydn006
+#communication parameter, including buadrate data bits stop bits parity
+CI     MSTF2_port        4800 8 1 N
+#instrument address
+CI     MSTF2_instr_addr  01
+#sign, could be + or -
+CI     MSTF2_sign         +
+#delay before send request
+CI     MSTF2_send_delay    35    
+#delay before read response
+CI     MSTF2_receive_delay 45  
+
+# device type, either E-2-TAD or AST3
+CI     MSTR2_device_type E-2-TAD
+#serial port
+CI     MSTR2_device      /dev/ttydn007
+#communication parameter, including buadrate data bits stop bits parity
+CI     MSTR2_port        4800 8 1 N
+#instrument address
+CI     MSTR2_instr_addr  01
+#sign, could be + or -
+CI     MSTR2_sign         +
+#delay before send request
+CI     MSTR2_send_delay    35    
+#delay before read response
+CI     MSTR2_receive_delay 45  
+
+#working load cell device timeout in ms
+CI     WRK_timeout       500
+#master load cell device timeout in ms
+CI     MST_timeout       500
+#average 
+CI     AverageReadings   2
+
+#========================================
+# GASS (Analog Input) subsystem
+#----------------------------------------
+# card info (VXI chassis,slot,VME address,sample to use in an average, 
+#            sample period trigger period)
+# EDAS can configure more than one card
+SS  GASS              TRUE 
+CI    card                 1 1  0xC400 0xA00000 4 37 5.0
+CI    card                 1 2  0xC600 0xA40000 4 37 5.0
+CI    card                 1 3  0xC800 0xA80000 4 37 5.0
+CI    card                 1 4  0xCA00 0xAC0000 4 37 5.0
+CI    card                 1 5  0xCC00 0xB00000 4 37 5.0
+CI    card                 1 6  0xCE00 0xB40000 4 37 5.0
+CI    card                 1 8  0xD200 0xBC0000 4 37 5.0  
+# Mode type(Long/Short) and measurment timeout
+CI    period               Short 1.01
+# number of ms to wait after removing excitation voltage
+CI    temf_n1              17.5
+# number of ms to wait for settling after applying the excitation voltage
+CI    temf_n2              17.5
+# an integer number of samples to use in an average for calculating EMF
+CI    temf_n               2
+#  Flag to indicate if thermal correction is "on" or "off"
+CI    temf                 OFF
+#  EMF excitation channel name
+CI    temf_excitation_channel   DCStrainControlZero01
+#  EMF control channel name
+CI    temf_control_channel      DCControl
+#  RTD control channel name
+CI    rtd_control_channel       RTD
+#  RTD notify channel name
+CI    rtd_notify_channel        RTDNOTIFY
+# Extrapolation value 
+# (float number, zero means no extrapolation, less than zero is invalid)
+CI    extrap_value         10
+# Extrapolation quality (G/B/S)
+CI    extrap_quality       S
+# a float describing the maximum negative bridge balance correction in volts
+CI       bb_lo_limit	-0.0001
+# a float describing the maximum positive bridge balance correction in volts
+CI       bb_hi_limit	0.0001
+# a float describing trhe maximum negative EMF correction in volts
+CI       temf_lo_limit	-0.0006
+# a float describing the maximum positive EMF correction in volts
+CI       temf_hi_limit	-0.0006
+# an integer describing the number of samples to take in an average to
+# arrive at bridge balance correction values
+CI       bb_count_in_average	400
+# the value to be stored in the CVT for DC strain channels while a EMF 
+# calculation is being done. Values are "last_value" or "bad_value"
+CI       temf_display	last_value
+# EMF excitation channel polarity - POSITIVE or NEGATIVE
+CI       temf_excitation_polarity    POSITIVE
+# Flag to do cal_zero or not (TRUE or FALSE), default is TRUE
+CI       cal_zero         TRUE
+#
+#--------------------------------------------------------------------------
+# An External Hook Subsystem 
+#--------------------------------------------------------------------------
+SS    TOCEUM             TRUE
+# connection used: socket or shared memory
+CI     connection        SOCKET 
+# service name or shared memory key
+CI     serv_key          toceum_srv 
+# program name of the client
+CI     program           /users/EDAS/bin/exe/toceum -c /users/EDAS/bin/exe/.toceum.config -s  
+# heartbeat channel name
+CI     heartbeat         TE_HEARTBEAT 
+# error channel name
+CI     error             TE_ERROR 
+# maximum value of heartbeat channel
+CI     tolerance         30 
+CI     init_tolerance    120 
+# maximum number of consecutive retries to restart client
+CI     retry             3 
+# delay before checking the value of heartbeat
+CI     delay             10 
+# flag to set the sentivity to the Enable/Disable button
+CI     allow_disable     No 
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    LOG_PLAYBACK       TRUE
+# Time (sedonds) saved before event
+CI     crit_pre_event    120 
+# Time (seconds) saved after event
+CI     crit_post_event   60 
+# Rate (Hz) of critical log
+CI     crit_rate_hz      200 
+# Rate (chan/sec) maximum aggregate rate
+CI     max_agg_rate      10000 
+# Key word for the description, value 2: Command line for conversion prg
+CI     log_conversion    RRDS /users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_r2d2.config -t TR
+CI     log_conversion    DDAS /users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_ddas.config -t TR
+CI     log_conversion    CDF  /usr/bin/rsh prodasmgt "<[MIN]>" c:\\proDAS\\bin\\DCU.exe /testname=$TESTNAME$ /log=$LOGNAME$
+# History log version being output
+CI     log_version       4.0 
+# Size of critical log in MBytes
+CI     crit_size         40 
+# precision of float values in report
+CI     report_precision  4 
+# Critical log description
+CI     crit_description  RRDS DDAS critical log description
+# Flag controlling the location of the report directory
+CI     use_testeng_dir_4_rep  FALSE
+# Flag controlling the continuous log
+CI     cl_enabled         FALSE
+# Continuous log scan rate (from 1 Hz to 10 Hz)
+CI     cl_scan_rate       10
+# Maximum file size (Kilobytes)
+CI     cl_max_file_size   2000
+# Maximum number of tests
+CI     cl_max_number_test 20
+# Discrete channel name to control the stop and start of continuous log
+CI     cl_trigger
+# Maximum number of seconds to delay before stopping continuous log        
+CI     cl_max_off_delay   10
+# Subsystem names to be excluded from the continuous log (seperated by space)
+CI     cl_exclude_ss      MOPS
+# allow continuous log to scan at up to 100 Hz (TRUE or FALSE)
+CI     cl_exceedance      FALSE
+# Maximum buffer duration (in seconds: 5 - 600) for transient log
+CI     max_buf_duration   10
+# Log action format: Key_word Opcode_cmd Record_number_channel output_channel Optional_record_number_value
+# For PW at Glacier, we need to define pre_log_start, post_log_stop and pre_save_critical actions
+# pre_log_start action
+CI     pre_log_start      PW op_rec_num REC_NO O30002
+# post_log_start action
+#CI     post_log_start     PW op_rec_num REC_NO O30002
+# pre_log_stop action
+#CI     pre_log_stop       PW op_rec_num REC_NO O30002 -1
+# post_log_stop action
+CI    post_log_stop       PW op_rec_num REC_NO O30002 -1
+# pre_save_critical action
+CI    pre_save_critical   PW op_rec_num REC_NO O30004
+# post_save_critical action
+#CI    post_save_critical   PW op_rec_num REC_NO O30004
+# recording number monitor channel
+CI    rec_num_monitor_chan EnableRecNum
+# Flag if unlimited log is supported (TRUE or FALSE)
+CI    unlimited_log       FALSE
+# Flag if a new continuous log is always created (TRUE or FALSE, default is FALSE)
+CI    cl_always_create_new_log    FALSE
+#--------------------------------------------------------------------------
+# External Hook Subsystem
+#--------------------------------------------------------------------------
+SS    External           TRUE
+# service name or shared memory key
+CI     serv_key          ex_serv
+# connection type
+CI     connection        SOCKET
+# server timeout in second
+CI     serv_timeout      30
+# set to yes if the client is on the system O/S; otherwise no
+CI     kill_client       no 
+
+#--------------------------------------------------------------------------
+# An External Hook Subsystem
+#--------------------------------------------------------------------------
+SS    RNA                TRUE
+# service name or shared memory key
+CI     serv_key          ex_serv                   
+# connection type
+CI     connection        SOCKET 
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    DYNAMIC_AVM         TRUE
+# The TCP/IP name of the GPIB host
+CI     host_name          GPIB_ENET_0
+# The GPIB service type for the TCP/IP connection
+CI     gpib_server        gpib_tcp
+# Address, number of channels, number of tracking filters of the AVM hardware
+CI     avm_info           2 6 0
+# Default low frequency
+CI     avm_low_freq       21
+# Default high frequency
+CI     avm_high_freq      217
+# Default acceleration sensitivity
+CI     avm_acc_sens       50
+# Default velocity sensitivity
+CI     avm_vel_sens       500
+# Default Tracking Filter Mode
+CI     avm_tf_mode        0
+# AVM Connection: value 1, release connection, any other value has no effect
+CI     avm_connection      1
+# Do not calibrate the following channel
+CI     avm_ch              1
+CI     avm_ch              2
+
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    ATH_01                TRUE
+#The name of the device communicating with Hygro-M2
+CI     ath_dev_name  /dev/ttydn001
+#The time out of the device
+CI     ath_time_out  1000
+#Time delay for reading data from RS232 in millisenconds 
+CI     ath_timeval   10
+#RS-232-C device baud rate
+#For Setra470, set ath_baud_rate to 9600
+CI     ath_baud_rate 1200
+#RS-232-C device stop bits
+CI     ath_stop_bits 1
+#RS-232-C device data bits
+CI     ath_data_bits 8
+#RS-232-C device parity
+CI     ath_parity    0
+#Device type (Hygro_M2, DPI141, SETRA470 or CPT6100)
+#CI     ath_device_type   Hygro_M2
+#CI     ath_device_type   DPI141
+#CI     ath_device_type   SETRA470 
+CI     ath_device_type   CPT6100
+#Name of the Temperature CVT channel
+#only be used for HYGRO_M2 channel
+CI     temp_ch_name  Temperature
+#Name of the Humidity CVT channel
+#only be used for HYGRO_M2 channel
+CI     hum_ch_name   Humidity
+#Name of the Dew Point CVT channel
+#only be used for HYGRO_M2 channel
+CI     dp_ch_name    Dew_Point
+#Name of the DPI141 CVT channel
+#only be used for DPI141 channel
+CI     baro_ch_name  dpi141
+#Maximum number of reconnection attempts
+CI     max_attempts  5
+# the filter percentage (CPT6100 only), default 0
+CI     cpt6100_filter    0
+#--------------------------------------------------------------------------
+#
+#--------------------------------------------------------------------------
+SS    IRIGB               TRUE
+# The base address of the TrueTime card in the VME bus
+CI     base_addr          0xf000
+# The path and the name of the device file
+CI     dev_file           /dev/vme/vme0a16n
+# Boolean to indicate if RT correction is performed 
+CI     rt_correct         TRUE
+# Offset for 'day of year'
+CI     yday_offset        0
+
+#--------------------------------------------------------------------------
+# WEATHER (External) subsystem
+#--------------------------------------------------------------------------
+SS  WS			TRUE
+# Command line to start WS
+CI    program			    ws_test -c .config.ws -s
+# Type of IPC communication used
+CI    connection		  SOCKET
+# Shared memory service key number
+CI    serv_key			  ws_serv 
+# Heartbeat channel tolerance value 
+CI    tolerance			  30
+CI    init_tolerance  120 
+# Number of program restarts allowed
+CI    retry			      3
+# Heartbeat channel delay value
+CI    delay			      10
+# Enable/Disable EXT HOOKS button in GUI
+CI    allow_disable		No
+# Name of Heartbeat channel
+CI    heartbeat			  WS_HEARTBEAT
+# Name of Error channel
+CI    error			      WS_ERROR
+
+#--------------------------------------------------------------------------
+# HSS (High Speed Sentry) subsystem
+#--------------------------------------------------------------------------
+#Note: SS DYNAMIC and HSS cannot be Both TRUE at the same time
+SS  HSS                FALSE
+#save sentry history length in seconds
+CI    history_length       60 
+#save sentry post event length in seconds
+CI    post_length          60
+
+#--------------------------------------------------------------------------
+# TRUTEMP subsystem
+#--------------------------------------------------------------------------
+SS  TRUTEMP    TRUE
+# Well known service port name (/etc/services)
+CI    tt_service_name           tt_gate
+# Retry gateway connection this many times
+CI    comm_retries              1
+# Delay time in mS between reconnect attempts
+CI    comm_retry_interval       1000
+# File to dump TruTemp diagnostics info
+CI    diag_filename             TTdiag.log
+# Gateway host names (/etc/hosts) & synch pulse address
+CI    gateway                  rrc7ttg2  0
+CI    gateway                  rrc7ttg1  0xf0
+CI    gateway                  rrc7ttg3  0xf1
+# Dump the coefficients to the TTdiag file
+CI    dump_coeffs              FALSE
+# Perform loop resistance testing for all
+CI    loop_resist              FALSE
+# Perform earth conductance testing for all
+CI    earth_cond               FALSE
+
+#--------------------------------------------------------------------------
+# TBDAU Subsystem
+#--------------------------------------------------------------------------
+SS   TBDAU                      FALSE
+CI   tbdau_dev_name             /dev/ttydn004
+CI   tbdau_baud_rate            9600
+CI   tbdau_stop_bits            1
+CI   tbdau_parity               2
+CI   tbdau_data_bits            8
+CI   tbdau_timeout              300
+CI   tbdau_max_attempts         3
+
+#--------------------------------------------------------------------------
+# UTRH Subsystem
+#--------------------------------------------------------------------------
+SS   UTRH                      FALSE
+
+#--------------------------------------------------------------------------
+# MSS Subsystem
+#--------------------------------------------------------------------------
+SS   MSS                      FALSE
+# specifies the time required to allow the MSS to settle-down after stepping from
+# one port to the next
+CI   settling_time            180
+# specifies the duration of the impluse 
+CI   impulse_time             15
+# specifies the minimum time reqiured between impluse
+CI   time_between_impulse     60
+# The physical tolerance in EU's for the MSS for checking the quick zero deviation
+CI   zero_tolerance           10
+# if the position_confirm set to OFF, the driver won't do port position checking
+# the default is ON
+#CI   position_confirm         OFF
+CI   ambient_channame         amb_channel
+# Sample to be taken for average
+CI   avg_sample               1
+# Delay between reading each sample data
+CI   read_delay               5
+# Decoding BCD / BNR_32
+CI   decoding                BCD
+# Syncronous Mode SYNC / ASYNC
+CI   mode                    SYNC
+# TRUE will generate info message for ambient channel if defined and found. 
+CI   ambch_uel_infomsg       FALSE
+# TRUE will ignore sv zero press volt channels verification if defined. 
+CI   ignore_sv_zerochan      FALSE
+CI   sv_zero_pres_volt       1,sv1_zero_pv
+CI   sv_zero_pres_volt       2,sv2_zero_pv
+CI   sv_zero_pres_volt       3,sv3_zero_pv
+CI   sv_zero_pres_volt       4,sv4_zero_pv
+CI   sv_zero_pres_volt       5,sv5_zero_pv
+CI   sv_zero_pres_volt       6,sv6_zero_pv
+CI   sv_zero_pres_volt       7,sv7_zero_pv
+CI   sv_zero_pres_volt       8,sv8_zero_pv
+CI   sv_zero_pres_volt       9,sv9_zero_pv
+CI   sv_zero_pres_volt       10,sv10_zero_pv
+CI   sv_zero_pres_volt       11,sv11_zero_pv
+CI   sv_zero_pres_volt       12,sv12_zero_pv
+
+#--------------------------------------------------------------------------
+# CONSORT Subsystem
+#--------------------------------------------------------------------------
+SS   CONSORT                  FALSE
+# Server name that RTE uses to communicate with the CONSORT H/W
+CI   service_name             udp_test1
+# Maximun milliseconds RTE waits for CONSORT H/W to respond.
+CI   timeout                  1000
+
+#--------------------------------------------------------------------------
+# HPS Subsystem
+#--------------------------------------------------------------------------
+SS   HPS                        TRUE
+# It is possible to have up to 8 hyscan entries.
+# 1) HyScan Letter [A-H], 2) GPIB address [1-31], 3) hostname, 4) Hiline used [0|1] 
+# NOTE: not shown here are 2 hidden hyscan parameters, they are 2 integer numbers
+#       that will override the program defaults of GPIB data buffer size and
+#       read data window size for the given PC.  The defaults should be sufficient
+#       which is why they are hidden/optional parameters
+CI    hyscan             a  4  acatgpib1  1
+CI    hyscan             b  5  acatgpib2  1
+CI    hyscan             C  6  acatgpib3  0 
+# Tolerance percentage for Zero Difference reporting when last was < 12 hours ago
+CI    tol_zd_lt12        0.5
+# Tolerance percentage for Zero Difference reporting when last was > 12 hours ago
+CI    tol_zd_gt12        2.3
+# Tolerance percentage for checking transducer value after hiline zero operation
+CI    tol_hiline         0.7
+# Retry offline HyScan connections, number of times before giving up, to retry
+# continuously set this value to an arbitrarily high number.  Remember also
+# that the retry works each time the START SCAN event occurs
+CI    gpib_retry         1
+# Verify presence of calibrators.  This feature is not totally necessary and 
+# shutting it off can reduce 5-10 seconds for the time CONFIGURE takes to complete
+CI    verify_calib       TRUE
+# Name of Calibration Coefficients file to use (HyScan Letter and date/time are appended)
+CI    hps_calcoef_log    HPS_calcoefs.log
+# Name of Zero Difference Report to use (HyScan Letter and date/time are appended)
+CI    hps_zero_report    HPS_zerodiff.log
+# Name of High line Zero Report file to use (HyScan letter & date appended)
+CI    hps_hiline_rpt     HPS_highline.log
+# Standard GPIB service port name for GPIB/ENET-100 devices
+CI    gpib_service       gpib_tcp
+# "SET" items that are used to configure each HyScan PC (see HyScan 2000 manual) 
+CI    conf_setting       CALIBRATION_FILE_EXTENSION  000
+CI    conf_setting       CALIBRATION_FILE_NAME       calcoefs
+# Time out value for the calibration (per PC in seconds)
+CI    time_calib         350
+# Time out value for the zero operation (per PC in seconds)
+CI    time_zero          100
+# Time out value for the hiline zero (per PC in seconds)
+CI    time_hizero        120
+# Setting to map auxiliary purge to specific HyScan PC
+CI    auxiliary_purge    C
+# Critical settings for Auxiliary Purge
+CI    aux_purge_zone     1  1  34.0
+CI    aux_purge_zone     1  2  69.0
+CI    aux_purge_zone     1  3  344.0
+CI    aux_purge_zone     4  3  137.0
+# number of calibrators
+CI    num_calibrators    6
+# data query type: POLL or CONTINUOUS, default as CONTINUOUS
+CI    data_query         CONTINUOUS
+# delay time in ms for reading data after sending PREPARE_SCAN, default:0
+CI    scan_delay         30
+
+#========================================
+# HSV (Analog Input) subsystem
+#----------------------------------------
+# card info (VXI chassis,slot,VME address,sample to use in an average,
+#            sample period trigger period)
+# EDAS can configure more than one card
+SS    HSV                  TRUE
+CI    card                 1 2  0xC600 0xA40000
+CI    card                 1 4  0xCA00 0xAC0000
+# Extrapolation value
+# (float number, zero means no extrapolation, less than zero is invalid)
+#CI    extrap_value         10
+# Extrapolation quality (G/B/S)
+CI    extrap_quality       G
+# pre-event log time(second), must great than 3 second
+CI    pre_event_time       10
+# post-event log time(second), must great than 3 second
+CI    post_event_time      40
+# card log mode (CONTINUOUS or CIRCULAR)
+CI    log_mode        CONTINUOUS
+# store EU converted value into log (YES or NO)
+CI    store_EU_converted   YES
+# save together with critical log (YES or NO)
+CI    save_with_critical        YES
+
+#========================================
+# CEC-8000 subsystem
+#----------------------------------------
+SS     CEC                  TRUE
+#Chassis information 
+chassis              1 /dev/ttyM3 19200 1 8 N
+#Time out in ms. Must be greater than 3000 ms)
+CI    timeout        3000
+#Maximum number of retry before give up
+CI    retry                3 
+
+# ========================================
+# M1553 subsystem
+# ----------------------------------------
+SS  M1553                       TRUE
+#Ballard card number in the PCI bus
+CI  card_number                 1
+#Maximum response time in us (before setting the channel quality to suspect)
+CI  exp_resp_time               12
+#   init_port, init_method, trigger chan, trig node1, trig node2,...
+#CI  init_params                 0, WC, trigger,1,2
+#TRUE to reverse the word order - default to TRUE
+CI  reverse_word_order          TRUE
+
+# ========================================
+# OPC subsystem
+# ----------------------------------------
+SS  OPC                     TRUE
+# OPC server info: prefix, critical_flag, main URL, optional secondary URL
+# Multiple OPC server info line can be defined.
+CI  opc_server     soft_bridge, false,  http://plc_pc:8090/OPC/DA
+# Time out in sec for the OPC connection
+CI  timeout                 10
+# Optional, append the specified string to all item
+#CI  append_prefix         soft_bridge, tag_pf
+
+# ========================================
+# VEXA subsystem
+# ----------------------------------------
+SS  VEXA                   TRUE
+# software or hardware trigger: SW or HW
+CI  trigger               SW
+
+# ========================================
+# NSS Network Subscription Subsystem
+# ----------------------------------------
+SS   NSS                TRUE
+# Topic name
+CI   topic_name         SlowSpeedTopic
+# QoS profile name
+CI   qos_profile_name   DynChanData_Profile
+# Suspect tolerance in seconds (default 3, minumum 2 seconds, < bad_tolerance)
+CI   suspect_tolerance  3
+# Bad tolerance in seconds (default 5, minumum 3 seconds, > suspect_tolerance)
+CI   bad_tolerance      5
+# Start scan timeout in seconds (default 5, maximum 10 seconds)
+CI   start_scan_timeout 5
+
+# ========================================
+# AFDX subsystem
+# ----------------------------------------
+SS  AFDX                  TRUE
+# AFDX card number. Start with 0.
+CI  card_number           0
+# True to enable the AFDX lookback circuitry. No loopback cable is required.
+CI  loopback_enabled      FALSE
+# Skew max for all received VL in us (increment of 400)
+CI  skew_max              2400
+
+# ========================================
+# PRODAQ subsystem
+# ----------------------------------------
+SS  PRODAQ                TRUE
+
+# ========================================
+# MVIB (MTI Vibration) subsystem
+# ----------------------------------------
+SS  MVIB                      TRUE
+CI    login_name              {RemoteDataUser}
+CI    login_password          REMOTEDATA
+CI    text_config             FALSE
+
+#--------------------------------------------------------------------------
+# Unified Event Log Module
+#--------------------------------------------------------------------------
+MD    UEL
+# List of source names that may be registered via the UEL library
+CI     source_names     TOCEUM, DDART, EAIF
+# cmd line to execute when log closed
+# Path and file of log file is appended first.
+CI     post_proc_cmd    /users/EDAS/bin/exe/eaif -f /users/EDAS/bin/exe/.eaif_r2d2.config -t UEL  
+# append test name to cmd line 
+CI     pp_test_id       -i
+# append test name to cmd line
+CI     pp_test_name     -b 
+# Name of language resource file (optional)
+CI     language_filename   EV_English.lang
+# Name of UEL display server service
+CI     UEL_display_server_service_name	debug4_srv
+
+#--------------------------------------------------------------------------
+# Scan and Transfer Module
+#--------------------------------------------------------------------------
+MD    ST
+# Use real-time CPU if TRUE
+CI     set_rt_cpu            TRUE
+# Report overruns if TRUE
+CI     detect_overruns       TRUE 
+# EDAS base frequency (minor cycle) in Hz
+CI     base_frequency        200
+# Full path of program to call at start scan
+CI     startscan_prog        /users/EDAS/bin/exe/time_sync stop   
+# Full path of program to call at stop scan
+CI     stopscan_prog         /users/EDAS/bin/exe/time_sync start   
+# Integer value for ss default scheduler priority
+CI     rt_default_priority 
+# char*<subsystem name> int<priority value>
+CI     rt_priority
+# float percentage above base rate  before an overrun is detected
+CI     overrun_tolerance     1.0
+# recovery mode when the scan freeze occurs: RECOVER (default) or DUMP
+CI     recover_mode          RECOVER
+
+#--------------------------------------------------------------------------
+# User Interface Server
+#--------------------------------------------------------------------------
+MD    UI_SERVER
+# Name of service
+CI    service_name          ui_serv
+# Timeout in seconds
+CI    timeout               10
+CI    save_dds_sentry       ON
+CI    save_hss_sentry       OFF
+
+#--------------------------------------------------------------------------
+# Event Notification Server
+#--------------------------------------------------------------------------
+MD    EN_SERVER
+# Name of service
+CI    service_name          en_serv 
+# Server timeout in seconds
+CI    timeout               10
+# Heartbeat period in seconds
+CI    hb_period             5
+# Name of XML encoding. Default is UTF-8
+CI    xml_encoding          UTF-8
+
+#--------------------------------------------------------------------------
+# Network Data Distribution Subsystem
+#--------------------------------------------------------------------------
+SS    NDDS                  TRUE
+# Static channel data topic name
+CI    sta_topic_name        Example StaChan
+# Static channel data profile name
+CI    sta_profile_name      StaChanData_Profile
+# Dynamic channel data topic name
+CI    dyn_topic_name        Example DynChan
+# Dynamic channel data profile name
+CI    dyn_profile_name      DynChanData_Profile
+# Test information data topic name
+CI    test_topic_name       Example TestInfo
+# Test information data profile name
+CI    test_profile_name     TestInfo_Profile
+
+#--------------------------------------------------------------------------
+# Init and Configuration Module
+#--------------------------------------------------------------------------
+MD    INIT 
+# set two connections for proDAS
+CI      db_serv_key               fs_serv
+# database server host name.
+CI      db_host_name              picard
+# timeout to wait for database server requests, in seconds
+CI      db_timeout                900
+#  configuration retriever service name.
+CI      cr_serv_key               cr_serv
+# configuration retrieval server host name
+CI      cr_host_name              bigbird
+# timeout to wait for configuration retrieval server requests, in seconds
+CI      cr_timeout                900
+# flag which controls the sending of quality change message to event handler
+CI      report_quality_change  TRUE
+# indicates the BPT data is from database or not
+CI      BPT_data_from_DB       FALSE
+# Replay disabled subsystem name list (subsystems will not scan during replay mode)
+CI      replay_disabled_pgm  TOCEUM WTHR_STN
+# minimum free disk space in MB (default is 256 MB)
+CI      min_free_space       1024
+# check disk in scan: TRUE or FALSE (default is FALSE)
+CI      check_disk_in_scan   FALSE
+# check disk interval in seconds (default is 300 seconds)
+CI      check_disk_interval  300
+# SS type and its extrapolation value pair (default is 0.0 so it doesn't need to be defined)
+# (float number, zero means no extrapolation, less than zero is invalid)
+# (polynomial type needs some extrapolation in order to enable limit check)
+CI    ss_extrap_value        PRODAQ   0.1
+
+<!> END OF CONFIG <!>
+
+----------------------------------------------------------------------------
+
+NOTES:
+    1) '<!> END OF CONFIG <!>' marks the end of the config file
+        (so that we can put comments here ...). It MUST follow the last
+        configuration parameter and MUST start in column 1 and MUST be exactly
+        as above (without the quotes -'-).
+
+       '#' in column 1 introduces a comment line.  EDAS ignores comment
+        lines and blank lines.
+
+
+    2) 'CL' stands for Command Line option. Valid command line options are:
+         - MASTER_CONFIG_ID: identifies the default test to configure EDAS with;
+         - CELL_ID: identifies the default cell to configure EDAS for;
+         - VERBOSITY: level of verbosity to be used (0 (low) - 100 (high));
+           Note that '89' is the highest verbosity EDAS should run with
+           under normal operating conditions.
+         - TRACE_DEST: either "stdout" (all trace messages go to the
+           X-term) or a trace file name with no path (all traces go to
+           the 'tmp' dir, in the named file).
+         - STATUS_DEST: identifies the edas_status file with no path (all
+           edas_status files will be directed to /users/EDAS/bin/exe directory).
+           Default file name is 'edas_status'.
+ 
+ 
+        e.g.:  CL  VERBOSITY  89
+
+        NOTE: if EDAS is started with command line options from the
+        prompt, those options will override the config file definitions; valid
+        command line options at the prompt are 'm', 'c', 'v', 't' 'e', 'f' and 's'
+        or the same letters in capitals:
+         mXXXX       to download master config XXXX;
+         cX          to configure for test cell XX;
+         v[0-100]    to set the verbosity between 0 (low) and 100 (high);
+         tfile_name  to use file 'file_name' (no path) as the trace destination;
+         eeng_name   to use the engine 'eng_name' with EDAS (for views and logs)
+         sfile_name  to use file 'file_name' (path is automatically /users/EDAS/bin/tmp)
+                     as the edas_status file destination.
+
+         fconfig     to use 'config' (path/file_name) instead of this '.config'.
+        e.g.:  edas m1000 c3 v89
+
+
+    3) 'SS' stands for Sub-System option
+        A sub-system will be opened only if it is set to TRUE on a
+        SS line.  It will be configured only if it is included in the
+        down-loaded master configuration.
+        e.g.:  SS  INTERNAL  TRUE
+
+
+    4) 'CI' stands for Configuration Info
+        Lines that start with 'CI' contain configuration parameters
+        that apply to the last preceeding 'SS' sub-system or 'MD'
+        module encountered in the config file.
+        e.g.:  CI  crit_pre_event  120
+
+
+    5) 'MD' stands for Module Description
+        To identify the module (or sub-system) to which 'CI' lines apply,
+        Modules which are sub-systems (such as the 'Fullset' sub-system) can
+        have config parameters after a 'SS' or 'MD' line with their name.
+        Modules which are not sub-systems (such as the GUI) can only have
+        config parameters after a 'MD' line.
+        e.g.:  MD  GUI
+        e.g.:  MD  G2_1
+
+/***************************************************************************/
