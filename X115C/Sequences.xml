@@ -21,6 +21,8 @@
 		<Page Name="2_Conversion_DecHexBin.v"/>
 		<Page Name="2_Polar.v"/>
 		<Page Name="2_Profile_Plot.v"/>
+		<Page Name="2_List.v"/>
+		<Page Name="2_List_Compact.v"/>
 		<Page Name="2_Languages.v"/>
 		<Page Name="W_2_Calculations.v"/>
 		<Page Name="FHD_2_Calculations.v"/>
@@ -28,6 +30,8 @@
 	</Sequence>
 	<Sequence Name="3_Compressor">
 		<Page Name="3_CompressorMap_Panel.v"/>
+		<Page Name="3_CompressorMap_Panel_Multi.v"/>
+		<Page Name="3_CompressorMap_Panel_Multi_Dark.v"/>
 		<Page Name="3_CompressorMap.v"/>
 	</Sequence>
 	<Sequence Name="4_JetEngine">
