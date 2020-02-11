@@ -1,45 +1,50 @@
-<Macros LastModificationDate="2020-01-03 15:29:31" Version="1">
-	<Macro Name="1 DAS Screensaver" Description="1 DAS Screensaver" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\1_DAS_Screensaver.tps">
+<Macros LastModificationDate="2020-02-11 12:57:04" Version="1">
+	<Macro Name="1 DAS Screensaver" Description="DAS Screensaver" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\1_DAS_Screensaver.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="1 Recording Fullset Logs" Description="1 Recording Fullset Logs" Enabled="true" LastModificationDate="2020-01-03 15:29:31" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\1_Recording_Fullset_Logs.tps">
+	<Macro Name="1 Recording Fullset Logs" Description="Recording Fullset Logs" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\1_Recording_Fullset_Logs.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="2 Demo Alarms" Description="2 Demo Alarms" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Alarms.tps">
+	<Macro Name="2 Demo Alarms" Description="Demo Alarms" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Alarms.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="2 Demo Convert DecOctHex" Description="2 Demo - German Characters" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Convert_DecOctHex.tps">
+	<Macro Name="2 Demo Convert DecOctHex" Description="Demo Convert DecOctHex" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Convert_DecOctHex.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="2 Demo Data Recording" Description="3 Demo - Script Language" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Data_Recording.tps">
+	<Macro Name="2 Demo Data Recording" Description="Demo Data Recording" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Data_Recording.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="2 Demo German Characters" Description="4 Demo - Alarms" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_German_Characters.tps">
+	<Macro Name="2 Demo German Characters" Description="Demo German Characters" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_German_Characters.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="2 Demo Script Language" Description="5 Demo - Convert DecOctHex" Enabled="true" LastModificationDate="2019-12-27 18:02:24" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Script_Language.tps">
+	<Macro Name="2 Demo Script Language" Description="Demo Script Language" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\2_Demo_Script_Language.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="3 Demo Compressor" Description="6 Demo - Screensaver" Enabled="true" LastModificationDate="2019-12-27 18:11:50" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\3_Demo_Compressor.tps">
+	<Macro Name="3 Demo Compressor" Description="Demo Compressor" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\3_Demo_Compressor.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
 		</Macro>
-	<Macro Name="6 Demo Industrial GT" Description="Thermo Mech Verif Test" Enabled="true" LastModificationDate="2019-12-27 18:11:50" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\6_Demo_IndustrialGT.tps">
+	<Macro Name="3 Demo Compressor (no test step)" Description="Demo Compressor (no test step)" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\3_Demo_Compressor_No_TestStep.tps">
+		<Categories>
+			<Category Name="Test Procedure"/>
+			</Categories>
+		</Macro>
+	<Macro Name="6 Demo Industrial GT" Description="Demo Industrial GT" Enabled="true" LastModificationDate="2020-02-11 12:57:04" FileName="C:\proDAS\Data\MgtGUI\Engine Files\JOA\6_Demo_IndustrialGT.tps">
 		<Categories>
 			<Category Name="Test Procedure"/>
 			</Categories>
