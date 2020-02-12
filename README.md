@@ -209,7 +209,7 @@ Bug Fixes:
 
 ----
 
-### 1.4.0 (CURRENT!)
+### 1.4.0
 
 Features and Improvements:
 
