@@ -233,7 +233,24 @@ Features and Improvements:
 
 ----
 
-### 1.5.0 (alpha)
+### 1.5.0 (CURRENT!)
+
+Features and Improvements:
+
+- Adds a Selector (drop-down list) to the Compressor Maps RTD page without Panel (full screen YX plot)
+- Modifies the Compressor Maps channels equations to simulate more accurately test data
+- Corrects the Clock RTD page that had wrong mapped channels
+- Adds a "PBS Status" capability example with:
+	- 2 PBS Status channels
+	- a PBS_Status RTD page template 
+- Updates the Media repository with updated screen captures of the new RTD pages
+- Replaces "MSIL Pictures 1" by a timelapse video of "DAS_Screensaver" Test Procedure 
+	- Full resolution video [here](https://1drv.ms/u/s!As9sh526xKAShZcRbeLm5ZkwK5sNLg?e=27EvGZ)
+
+
+----
+
+### 1.6.0 (alpha)
 
 Features and Improvements:
 - Create a Thrust Calibration RTD page
