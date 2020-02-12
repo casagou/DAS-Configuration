@@ -11,6 +11,7 @@
 		<Page Name="1_DAS_Control.v"/>
 		<Page Name="1_Clock.v"/>
 		<Page Name="1_PBS_Purge_Control.v"/>
+		<Page Name="1_PBS_Status.v"/>
 	</Sequence>
 	<Sequence Name="2_Demo">
 		<Page Name="2_Calculations.v"/>
@@ -29,10 +30,10 @@
 		<Page Name="FHD_2_Simulations.v"/>
 	</Sequence>
 	<Sequence Name="3_Compressor">
+		<Page Name="3_CompressorMap.v"/>
 		<Page Name="3_CompressorMap_Panel.v"/>
 		<Page Name="3_CompressorMap_Panel_Multi.v"/>
 		<Page Name="3_CompressorMap_Panel_Multi_Dark.v"/>
-		<Page Name="3_CompressorMap.v"/>
 	</Sequence>
 	<Sequence Name="4_JetEngine">
 		<Page Name="4_JetEngine_MainPage.v"/>
