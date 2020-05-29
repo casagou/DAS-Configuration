@@ -46,6 +46,7 @@
 '*    07-FEB-07            TPS       Cleaned up the RTD Driver code
 '*    10-JAN-20            JOA       Fixed script to start multi RTD Driver instance (wrong "if" logic). Cleaned up code and indentation. Added verbosity.
 '*    17-JAN-20            JOA       Multi RTD Driver instance (up to 4) with variable monitor quantity capability.
+'*    29-MAY-20            JOA       Minor correction. Added comments and scenario cases to facilitate configuration
 '******************************************************************************
 
 
@@ -95,11 +96,19 @@ Dim objCommands
 
 '/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
 
-AlarmSumDispPC = "prodasmgt"
-InfoSumDispPC = "prodasmgt"
+' AlarmSumDispPC = "prodasmgt" 
+AlarmSumDispPC = "mangtp5-mgt"
+
+' InfoSumDispPC = "prodasmgt"
+InfoSumDispPC = "mangtp5-mgt"
 ARINCDispPC    = ""
-RTDPCNames     = "prodasmgt,prodasrtd1"
-'RTDPCNames     = "prodasrtd1"
+
+' Later in the script (when deploying RTD Driver instances and View pages), The RTDPCNames variable affects the i variable.
+	' if RTDPCNames includes MgtGUI, RTD #1, RTD #2, RTD #n, RTD #n+1,  then MgtGUI is i=0, RTD #1 is i=1, RTD #2 is i=2, RTD #n is i=n)
+	' if RTDPCNames includes RTD #1, RTD #2, RTD #n, RTD #n+1,  then RTD #1 is i=0, RTD #2 is i=1, RTD #n is i=n-1)
+'RTDPCNames     = "prodasmgt,prodasrtd1"
+RTDPCNames     = "mangtp5-mgt,mangtp5-rtd1,mangtp5-rtd2"
+
 
 StartRTD          = TRUE
 
@@ -119,7 +128,7 @@ Sub GetStartupPages()
 
 if argEngineType = "ATP_Calibration" Then
 
-' MgtGUI (generally 1 monitor with no RTD Driver)	
+' MgtGUI (generally 1 monitor with no RTD pages or no RTD Driver at all)	
 	MgtGUI_Monitor1		= "1_DAS_Control.v"
 	MgtGUI_Monitor2		= "2_Simulations2.v"
 	MgtGUI_Monitor3		= "2_Alarms.v"
@@ -132,7 +141,7 @@ if argEngineType = "ATP_Calibration" Then
 	RTD1_Monitor4		= "2_Calculations.v"
 
 ' RTD #2		
-	RTD2_Monitor1		= "2_Conversion_DecHexBin.v"
+	RTD2_Monitor1		= "1_DAS_Control.v"
 	RTD2_Monitor2		= "2_Conversion_DecHexBin.v"
 	RTD2_Monitor3		= "2_Languages.v"
 	RTD2_Monitor4		= "2_Polar.v"
@@ -161,24 +170,24 @@ if argEngineType = "ATP_Calibration" Then
 	RTD6_Monitor3		= "1_DAS_Control.v"
 	RTD6_Monitor4		= "1_DAS_Control.v"
 
-Elseif argEngineType = "X115C" Then
+Elseif argEngineType = "MGT6000-2S" Then
 
-' MgtGUI (generally 1 monitor with no RTD Driver)	
+' MgtGUI (generally 1 monitor with no RTD pages or no RTD Driver at all)	
 	MgtGUI_Monitor1		= "1_DAS_Control.v"
 	MgtGUI_Monitor2		= "2_Simulations2.v"
-	MgtGUI_Monitor3		= "3_CompressorMap_Panel.v"
-	MgtGUI_Monitor4		= "4_JetEngine_MainPage.v"
+	MgtGUI_Monitor3		= "7_Emissions.v"
+	MgtGUI_Monitor4		= "6_GasTurbine_Picture.v"
 
 ' RTD #1
 	RTD1_Monitor1		= "1_DAS_Control.v"
 	RTD1_Monitor2		= "2_Simulations2.v"
 	RTD1_Monitor3		= "3_CompressorMap_Panel.v"
-	RTD1_Monitor4		= "4_JetEngine_MainPage.v"
+	RTD1_Monitor4		= "6_GasTurbine_Picture.v"
 
 ' RTD #2
-	RTD2_Monitor1		= "4_JetEngine_Picture.v"
-	RTD2_Monitor2		= "5_Bellmouth_Mass_Flow.v"
-	RTD2_Monitor3		= "6_GasTurbine_Mechanical_Verif.v"
+	RTD2_Monitor1		= "8_Bleed_BK_Temperatures_01.v"
+	RTD2_Monitor2		= "8_Mech_Verif_Test_02.v"
+	RTD2_Monitor3		= "8_Power_Eta.v"
 	RTD2_Monitor4		= "6_GasTurbine_Picture.v"
 
 ' RTD #3
@@ -322,7 +331,7 @@ If StartRTD Then
 '/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
 
 
-       'First RTD Driver instance - ALL Computers in RTDPCNames
+		'First RTD Driver instance - Deployed on ALL Computers in RTDPCNames
 			Set RTDDriver = CreateObject ("proDAS.RTDDriver", arrPCNames (i))
 			'ERR.NUMBER = 438 must be ok return code?
 			If Err.Number <> 0  And Err.Number <> 438 Then
@@ -335,10 +344,12 @@ If StartRTD Then
 
 
 
-' Choose ALL Computers by default or SELECTOR if computers have different monitor quantities
+' 2 scenarios: ALL COMPUTER by default or SELECTOR if computers have different monitor quantities
 
 
-       ' 'Second RTD Driver instance - ALL Computers in RTDPCNames
+'---------- Second RTD Driver instance ----------
+
+		' 'Second RTD Driver instance - Deployed on ALL Computers in RTDPCNames
 			' Set RTDDriver = CreateObject ("proDAS.RTDDriver2", arrPCNames (i))
 			' 'ERR.NUMBER = 438 must be ok return code?
 			' If Err.Number <> 0  And Err.Number <> 438 Then
@@ -350,8 +361,9 @@ If StartRTD Then
 
 
 			
-       'Second RTD Driver instance - SELECTOR for RTD #1
-		If i = 1 Then 
+		'Second RTD Driver instance - SELECTOR - Deployed ONLY on RTD #1, RTD #2
+		'(if RTDPCNames includes MgtGUI, RTD #1, RTD #2, RTD #n, RTD #n+1,  then MgtGUI is i=0, RTD #1 is i=1, RTD #2 is i=2, RTD #n is i=n)
+		If i = 1 OR i = 2 Then 
 			Set RTDDriver = CreateObject ("proDAS.RTDDriver2", arrPCNames (i))
 			'ERR.NUMBER = 438 must be ok return code?
 			If Err.Number <> 0  And Err.Number <> 438 Then
@@ -363,9 +375,9 @@ If StartRTD Then
 		End If
 
 
+'---------- Third RTD Driver instance ----------
 
-
-       ' 'Third RTD Driver instance - ALL Computers in RTDPCNames
+		' 'Third RTD Driver instance - Deployed on ALL Computers in RTDPCNames
 			' Set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames (i))
 			' 'ERR.NUMBER = 438 must be ok return code?
 			' If Err.Number <> 0  And Err.Number <> 438 Then
@@ -377,8 +389,9 @@ If StartRTD Then
 
 
 			
-       ' 'Third RTD Driver instance - SELECTOR for RTD #2, RTD #4, RTD #7
-		' If i = 1 OR i = 3 OR i = 6 Then 
+		' 'Third RTD Driver instance - SELECTOR - Deployed ONLY on RTD #2, RTD #4, RTD #7
+		' '(if RTDPCNames includes MgtGUI, RTD #1, RTD #2, RTD #n, RTD #n+1,  then MgtGUI is i=0, RTD #1 is i=1, RTD #2 is i=2, RTD #n is i=n)
+		' If i = 2 OR i = 4 OR i = 7 Then 
 			' Set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames (i))
 			' 'ERR.NUMBER = 438 must be ok return code?
 			' If Err.Number <> 0  And Err.Number <> 438 Then
@@ -390,9 +403,9 @@ If StartRTD Then
 		' End If
 		
 		
-		
-		
-       ' 'Fourth RTD Driver instance - ALL Computers in RTDPCNames
+'---------- Fourth RTD Driver instance ----------		
+
+		' 'Fourth RTD Driver instance - Deployed on ALL Computers in RTDPCNames
 			' Set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames (i))
 			' 'ERR.NUMBER = 438 must be ok return code?
 			' If Err.Number <> 0  And Err.Number <> 438 Then
@@ -403,7 +416,8 @@ If StartRTD Then
 			' End If
 
 
-       ' 'Fourth RTD Driver instance - SELECTOR for RTD #4 and RTD #7
+		' 'Fourth RTD Driver instance - SELECTOR - Deployed ONLY on RTD #4 and RTD #7
+		' '(if RTDPCNames includes RTD #1, RTD #2, RTD #n, RTD #n+1,  then RTD #1 is i=0, RTD #2 is i=1, RTD #n is i=n-1)
 		' If i = 3 OR i = 6 Then 
 			' Set RTDDriver = CreateObject ("proDAS.RTDDriver3", arrPCNames (i))
 			' 'ERR.NUMBER = 438 must be ok return code?
@@ -449,10 +463,10 @@ Sub StartRtdDriver (i, j)
 
 '/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
 
-' No View 0 creation on MgtGUI (i=0)
-If i > 0  Then 	    
+' Comment condition have No View 0 creation on MgtGUI (assuming MgtGUI i=0)
+ If i > 0  Then 	    
 	Set ViewObj = RTDDriver.CreateView("View 0")
-End If
+ End If
 
  '////////////////////// END SECTION  ///////////////////////////////////////////////
 
@@ -467,7 +481,12 @@ End If
 
 '/////////////////////// SECTION TO BE UPDATED FOR EVERY PROJECT //////////////////////
 
-'MgtGUI (generally 1 monitor with no RTD Driver)	
+' When deploying View pages, The RTDPCNames variable affects the i variable.
+	' if RTDPCNames includes MgtGUI, RTD #1, RTD #2, RTD #n, RTD #n+1, then MgtGUI is Case 0, RTD #1 is Case 1, RTD #n is Case n, RTD #n+1 is Case n+1)
+	' if RTDPCNames includes RTD #1, RTD #2, RTD #n, RTD #n+1, then RTD #1 is Case 0, RTD #n is Case n-1, RTD #n+1 is Case n)
+
+
+'MgtGUI   (1 monitor with 1 RTD Driver instance, no RTD page)	
 Case 0
 	Select Case j
 		'Monitor #1 of MgtGUI
@@ -484,7 +503,7 @@ Case 0
 			' ViewObj.Reload
 	End Select
 
-'RTD #1
+'RTD #1   (2 monitors - vertical layout)
 Case 1
 	Select Case j
 		'Monitor #1 of RTD #1
@@ -493,13 +512,13 @@ Case 1
 			ViewObj.SetPosition 0, 0, 1920, 1200
 			WScript.Sleep 1000	    
 			ViewObj.Reload
-		'Monitor #2 of RTD #1
+		'Monitor #2 of RTD #1 (dedicated to UEL - no RTD page)
 		Case 1
-			ViewObj.PageName = RTD1_Monitor2
-			ViewObj.SetPosition 1920, 0, 3840, 1200
-			WScript.Sleep 1000	    
-			ViewObj.Reload
-		' 'Monitor #3 of RTD #1
+			' ViewObj.PageName = RTD1_Monitor2
+			' ViewObj.SetPosition 0, -1200, 1920, 0
+			' WScript.Sleep 1000	    
+			' ViewObj.Reload
+		'Monitor #3 of RTD #1
 		' Case 2
 			' ViewObj.PageName = RTD1_Monitor3
 			' ViewObj.SetPosition 1920, 0, 3840, 1200
@@ -513,21 +532,21 @@ Case 1
 			' ViewObj.Reload
 	End Select
 	
-' 'RTD #2
-' Case 2
-	' Select Case j
-		' 'Monitor #1 of RTD #2
-		' Case 0
-			' ViewObj.PageName = RTD2_Monitor1
-			' ViewObj.SetPosition 0, 0, 1920, 1200
-			' WScript.Sleep 1000	    
-			' ViewObj.Reload
-		' 'Monitor #2 of RTD #2
-		' Case 1
-			' ViewObj.PageName = RTD2_Monitor2
-			' ViewObj.SetPosition 1920, 0, 3840, 1200
-			' WScript.Sleep 1000	    
-			' ViewObj.Reload
+'RTD #2   (2 monitors - vertical layout)
+Case 2
+	Select Case j
+		'Monitor #1 of RTD #2
+		Case 0
+			ViewObj.PageName = RTD2_Monitor1
+			ViewObj.SetPosition 0, 0, 1920, 1200
+			WScript.Sleep 1000	    
+			ViewObj.Reload
+		'Monitor #2 of RTD #2
+		Case 1
+			ViewObj.PageName = RTD2_Monitor2
+			ViewObj.SetPosition 0, -1200, 1920, 0
+			WScript.Sleep 1000	    
+			ViewObj.Reload
 		' 'Monitor #3 of RTD #2
 		' Case 2
 			' ViewObj.PageName = RTD2_Monitor3
@@ -540,10 +559,10 @@ Case 1
 			' ViewObj.SetPosition 5760, 0, 7680, 1200
 			' WScript.Sleep 1000	    
 			' ViewObj.Reload
-	' End Select
+	End Select
 	
            
-' 'RTD #3
+' 'RTD #3   (4 monitors - horizontal layout)
 ' Case 3
 	' Select Case j
 		' 'Monitor #1 of RTD #3
@@ -572,7 +591,7 @@ Case 1
 			' ViewObj.Reload
 	' End Select
 	
-' 'RTD #4
+' 'RTD #4   (4 monitors - horizontal layout)
 ' Case 4
 	' Select Case j
 		' 'Monitor #1 of RTD #4
@@ -601,7 +620,7 @@ Case 1
 			' ViewObj.Reload
 	' End Select
 	
-' 'RTD #5
+' 'RTD #5   (4 monitors - horizontal layout)
 ' Case 5
 	' Select Case j
 		' 'Monitor #1 of RTD #5
@@ -630,7 +649,7 @@ Case 1
 			' ViewObj.Reload
 	' End Select
 	
-' 'RTD #6
+' 'RTD #6   (4 monitors - horizontal layout)
 ' Case 6
 	' Select Case j
 		' 'Monitor #1 of RTD #6
