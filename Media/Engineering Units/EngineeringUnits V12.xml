@@ -1,0 +1,241 @@
+<EngineeringUnits LastModificationDate="2020-07-02 10:58:19" Version="1">
+	<EngineeringUnit Name="g-force" Description="Standard accelerations due to gravity on the Earth surface" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Acceleration" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm/s^2" Description="Centimetres/Square Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Acceleration" Primary="false" Gain="0.00102" Offset="0"/>
+	<EngineeringUnit Name="in/s^2" Description="Inch/Square Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Acceleration" Primary="false" Gain="0.00259" Offset="0"/>
+	<EngineeringUnit Name="m/s^2" Description="Metres/Square Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Acceleration" Primary="false" Gain="0.102" Offset="0"/>
+	<EngineeringUnit Name="deg" Description="Degrees" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="grad" Description="Gradians" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="false" Gain="0.9" Offset="0"/>
+	<EngineeringUnit Name="arcmin" Description="Minutes of arc" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="false" Gain="1.666667E-02" Offset="0"/>
+	<EngineeringUnit Name="quad" Description="Quadrants" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="false" Gain="90" Offset="0"/>
+	<EngineeringUnit Name="rad" Description="Radians" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="false" Gain="57.29578" Offset="0"/>
+	<EngineeringUnit Name="rev" Description="Revolutions" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="false" Gain="360" Offset="0"/>
+	<EngineeringUnit Name="arcsec" Description="Seconds of arc" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angle" Primary="false" Gain="2.777778E-04" Offset="0"/>
+	<EngineeringUnit Name="deg/sec" Description="Degrees/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angular Velocity" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="deg/min" Description="Degrees/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angular Velocity" Primary="false" Gain="0.01667" Offset="0"/>
+	<EngineeringUnit Name="rad/min" Description="Radians/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angular Velocity" Primary="false" Gain="0.9549" Offset="0"/>
+	<EngineeringUnit Name="rad/s" Description="Radians/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angular Velocity" Primary="false" Gain="57.29578" Offset="0"/>
+	<EngineeringUnit Name="rpm" Description="Revolutions/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angular Velocity" Primary="false" Gain="6" Offset="0"/>
+	<EngineeringUnit Name="rps" Description="Revolutions/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Angular Velocity" Primary="false" Gain="360" Offset="0"/>
+	<EngineeringUnit Name="m^2" Description="Square Metres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Area" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm^2" Description="Square Centimetres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Area" Primary="false" Gain="0.0001" Offset="0"/>
+	<EngineeringUnit Name="ft^2" Description="Square Feet" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Area" Primary="false" Gain="0.0929" Offset="0"/>
+	<EngineeringUnit Name="in^2" Description="Square Inches" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Area" Primary="false" Gain="0.0006452" Offset="0"/>
+	<EngineeringUnit Name="mm^2" Description="Square Millimetres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Area" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="pC/g" Description="Picocoulombs/g-force" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Charge Sensitivity" Primary="true" Gain="0.102" Offset="0"/>
+	<EngineeringUnit Name="Pa s" Description="Pascal Seconds" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cP" Description="Centipoise" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="kg/(m s)" Description="Kilograms/(Metre Second)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="mPa s" Description="Millipascal Seconds" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="N s/m^2" Description="Newton Seconds/Square Metre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="P" Description="Poise" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="false" Gain="0.1" Offset="0"/>
+	<EngineeringUnit Name="PI" Description="Poiseuille" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Dynamic Viscosity" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="pC" Description="Picocoulombs" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Charge" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="C" Description="Coulombs" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Charge" Primary="false" Gain="1E-12" Offset="0"/>
+	<EngineeringUnit Name="A" Description="Amperes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Current" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="uA" Description="Microamperes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Current" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="mA" Description="Milliamperes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Current" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="ohm" Description="Ohms" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Resistance" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="kohm" Description="Kilohms" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Resistance" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="mohm" Description="Milliohms" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Electric Resistance" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="J" Description="Joules" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="Btu" Description="British Thermal Units" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="false" Gain="1055.056" Offset="0"/>
+	<EngineeringUnit Name="eV" Description="Electronvolts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="false" Gain="1.602177E-19" Offset="0"/>
+	<EngineeringUnit Name="kJ" Description="Kilojoules" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="kW h" Description="Kilowatt hours" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="false" Gain="3600000" Offset="0"/>
+	<EngineeringUnit Name="MJ" Description="Megajoules" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="false" Gain="1000000" Offset="0"/>
+	<EngineeringUnit Name="W h" Description="Watt hours" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy" Primary="false" Gain="3600" Offset="0"/>
+	<EngineeringUnit Name="J/m^3" Description="Joules/Cubic Metre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy Density" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="J/L" Description="Joules/Litre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy Density" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="MJ/m^3" Description="Megajoules/Cubic Metre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy Density" Primary="false" Gain="1000000" Offset="0"/>
+	<EngineeringUnit Name="MJ/L" Description="Megajoules/Litre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Energy Density" Primary="false" Gain="1E+09" Offset="0"/>
+	<EngineeringUnit Name="kN" Description="Kilonewtons" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Force" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="daN" Description="Decanewtons" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Force" Primary="false" Gain="0.01" Offset="0"/>
+	<EngineeringUnit Name="dyn" Description="Dynes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Force" Primary="false" Gain="1E-08" Offset="0"/>
+	<EngineeringUnit Name="N" Description="Newtons" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Force" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="lbf" Description="Pounds-Force" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Force" Primary="false" Gain="4.448222E-03" Offset="0"/>
+	<EngineeringUnit Name="Hz" Description="Hertz" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Frequency" Primary="true" Gain="0.102" Offset="0"/>
+	<EngineeringUnit Name="lb/(lbf h)" Description="Pounds of Fuel/(Hour-Pound of Thrust)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Fuel Efficiency" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="g/(kN s)" Description="Grams of Fuel/(Second Kilonewton)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Fuel Efficiency" Primary="false" Gain="3.530394E-02" Offset="0"/>
+	<EngineeringUnit Name="kg/(daN h)" Description="Kilograms of Fuel/(Dekanewton Hour)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Fuel Efficiency" Primary="false" Gain="0.980665" Offset="0"/>
+	<EngineeringUnit Name="m^2/s" Description="Square Metres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Kinetic Viscosity" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cSt" Description="Centistokes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Kinetic Viscosity" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="cm^2/s" Description="Square Centimetres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Kinetic Viscosity" Primary="false" Gain="0.0001" Offset="0"/>
+	<EngineeringUnit Name="mm^2/s" Description="Square Millimetres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Kinetic Viscosity" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="St" Description="Stokes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Kinetic Viscosity" Primary="false" Gain="0.0001" Offset="0"/>
+	<EngineeringUnit Name="m" Description="Metres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm" Description="Centimetres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.01" Offset="0"/>
+	<EngineeringUnit Name="dm" Description="Decimetres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.1" Offset="0"/>
+	<EngineeringUnit Name="dam" Description="Dekametres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="10" Offset="0"/>
+	<EngineeringUnit Name="ft" Description="Feet" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.3048" Offset="0"/>
+	<EngineeringUnit Name="hm" Description="Hectometres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="100" Offset="0"/>
+	<EngineeringUnit Name="in" Description="Inches" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.0254" Offset="0"/>
+	<EngineeringUnit Name="km" Description="Kilometres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="um" Description="Micrometres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="mi" Description="Miles" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="1609.344" Offset="0"/>
+	<EngineeringUnit Name="mm" Description="Millimetres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="mil" Description="Thousandths of an Inch (vibration)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.0000254" Offset="0"/>
+	<EngineeringUnit Name="thou" Description="Thousandths of an Inch (vibration)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.0000254" Offset="0"/>
+	<EngineeringUnit Name="yd" Description="Yards" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Length" Primary="false" Gain="0.9144" Offset="0"/>
+	<EngineeringUnit Name="kg" Description="Kilograms" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="grn" Description="Grains" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="6.479891E-05" Offset="0"/>
+	<EngineeringUnit Name="g" Description="Grams" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="lg tn" Description="Long Tons" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="1016.047" Offset="0"/>
+	<EngineeringUnit Name="t" Description="Metric Tons" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="oz" Description="Ounces" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="2.834952E-02" Offset="0"/>
+	<EngineeringUnit Name="lb" Description="Pounds Mass" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="0.4535924" Offset="0"/>
+	<EngineeringUnit Name="sh tn" Description="Short Tons" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass" Primary="false" Gain="907.1847" Offset="0"/>
+	<EngineeringUnit Name="kg/m^3" Description="Kilograms/Cubic Metre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="g/cm^3" Description="Grams/Cubic Centimetre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="g/dm^3" Description="Grams/Cubic Decimetre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="g/m^3" Description="Grams/Cubic Metre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="g/L" Description="Grams/Litre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="kg/dm^3" Description="Kilograms/Cubic Decimetre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="kg/L" Description="Kilograms/Litre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="mg/m^3" Description="Milligrams/Cubic Metre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="lb/ft^3" Description="Pounds/Cubic Foot" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="16.02" Offset="0"/>
+	<EngineeringUnit Name="lb/in^3" Description="Pounds/Cubic Inch" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Density" Primary="false" Gain="27680" Offset="0"/>
+	<EngineeringUnit Name="kg/s" Description="Kilograms/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="g/min" Description="Grams/Min" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="1.667E-05" Offset="0"/>
+	<EngineeringUnit Name="g/s" Description="Grams/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="kg/h" Description="Kilograms/Hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="0.0002778" Offset="0"/>
+	<EngineeringUnit Name="kg/min" Description="Kilograms/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="0.0166667" Offset="0"/>
+	<EngineeringUnit Name="pph" Description="Pounds/Hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="1.259979E-04" Offset="0"/>
+	<EngineeringUnit Name="ppm" Description="Pounds/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="7.559873E-03" Offset="0"/>
+	<EngineeringUnit Name="pps" Description="Pounds/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Mass Flow" Primary="false" Gain="0.4535924" Offset="0"/>
+	<EngineeringUnit Name="J/(mol K)" Description="Joules/(Mole Kelvin)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Gas Constant" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cal/(mol K)" Description="Calories/(Mole Kelvin)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Gas Constant" Primary="false" Gain="4.184" Offset="0"/>
+	<EngineeringUnit Name="m^3 Pa/(mol K)" Description="Cubic Meters Pascals/(Mole Kelvin)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Gas Constant" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="L atm/(mol K)" Description="Liter Atmospheres/(Mole Kelvin)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Gas Constant" Primary="false" Gain="101.325" Offset="0"/>
+	<EngineeringUnit Name="g/mol" Description="Grams/Mole" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Mass" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="kg/mol" Description="Kilograms/Mole" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Mass" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="mol" Description="Moles" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Quantity" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="mmol" Description="Millimoles" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Quantity" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="L/mol" Description="Liters/Mole" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Volume" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm^3/mol" Description="Cubic Centimeters/Mole" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Volume" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="m^3/mol" Description="Cubic Meters/Mole" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Molar Volume" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="%" Description="Percents" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Percentage" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="vppm" Description="Volumetric Parts/Million" Enabled="true" LastModificationDate="2020-06-25 11:14:56" Category="Percentage" Primary="false" Gain="0.0001" Offset="0"/>
+	<EngineeringUnit Name="W" Description="Watts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="ft lbf/s" Description="Foot Pounds-Force/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="false" Gain="1.356" Offset="0"/>
+	<EngineeringUnit Name="hp" Description="Horsepower (Mechanical)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="false" Gain="745.6999" Offset="0"/>
+	<EngineeringUnit Name="PS" Description="Horsepower (Metric)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="false" Gain="735.4988" Offset="0"/>
+	<EngineeringUnit Name="kVA" Description="Kilovolt-amperes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="kW" Description="Kilowatts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="MW" Description="Megawatts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Power" Primary="false" Gain="1000000" Offset="0"/>
+	<EngineeringUnit Name="psi" Description="Pounds/Square Inch" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="atm" Description="Atmospheres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="14.69595" Offset="0"/>
+	<EngineeringUnit Name="bar" Description="Bars" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="14.50377" Offset="0"/>
+	<EngineeringUnit Name="bara" Description="Bars Absolute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="14.50377" Offset="0"/>
+	<EngineeringUnit Name="inHg" Description="Inches of Mercury" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.4911541" Offset="0"/>
+	<EngineeringUnit Name="inHg_32degF" Description="Inches of Mercury (32degF)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.491153" Offset="0"/>
+	<EngineeringUnit Name="inHg_60degF" Description="Inches of Mercury (60degF)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.489771" Offset="0"/>
+	<EngineeringUnit Name="inH2O_4degC" Description="Inches of Water Column (4 degC)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.0361263" Offset="0"/>
+	<EngineeringUnit Name="inH2O_60degF" Description="Inches of Water Column (60 degF)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.036091" Offset="0"/>
+	<EngineeringUnit Name="inH2O" Description="Inches of Water Column (Conventional)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="3.612729E-02" Offset="0"/>
+	<EngineeringUnit Name="kgf/cm^2" Description="Kilograms-Force/Square Centimetre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="14.22334" Offset="0"/>
+	<EngineeringUnit Name="kPa" Description="Kilopascals" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.1450377" Offset="0"/>
+	<EngineeringUnit Name="kPaa" Description="Kilopascals Absolute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.1450377" Offset="0"/>
+	<EngineeringUnit Name="MPa" Description="Megapascals" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="145.0377" Offset="0"/>
+	<EngineeringUnit Name="mbar" Description="Millibars" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1.450377E-02" Offset="0"/>
+	<EngineeringUnit Name="mbara" Description="Millibars Absolute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1.450377E-02" Offset="0"/>
+	<EngineeringUnit Name="mmHg" Description="Millimetres of Mercury (0 degC)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.019337" Offset="0"/>
+	<EngineeringUnit Name="mmH2O" Description="Millimetres of Water (4 degC)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.0014224" Offset="0"/>
+	<EngineeringUnit Name="Pa" Description="Pascals" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1.450377E-04" Offset="0"/>
+	<EngineeringUnit Name="Paa" Description="Pascals Absolute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="0.000145" Offset="0"/>
+	<EngineeringUnit Name="lbf/in^2" Description="Pounds/Square Inch (psi)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="psia" Description="Pounds/Square Inch Absolute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="psid" Description="Pounds/Square Inch Differential" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="psig" Description="Pounds/Square Inch Gauge" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="lbf/ft^2" Description="Pounds-Force/Square Foot" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure" Primary="false" Gain="6.944444E-03" Offset="0"/>
+	<EngineeringUnit Name="psi/s" Description="Pounds/Square Inch" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure Drift" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="kPa/s" Description="Kilopascals" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Pressure Drift" Primary="false" Gain="0.1450377" Offset="0"/>
+	<EngineeringUnit Name="MOhm/cm" Description="Megaohms/Centimetre" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Resistance/Distance" Primary="true" Gain="0.102" Offset="0"/>
+	<EngineeringUnit Name="J/kg" Description="Joules/Kilogram" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Energy" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="Btu/lb" Description="British Thermal Units/Pound" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Energy" Primary="false" Gain="2326" Offset="0"/>
+	<EngineeringUnit Name="kcal/kg" Description="Kilocalories/Kilogram" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Energy" Primary="false" Gain="4184" Offset="0"/>
+	<EngineeringUnit Name="kJ/kg" Description="Kilojoules/Kilogram" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Energy" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="MJ/kg" Description="Megajoules/Kilogram" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Energy" Primary="false" Gain="1000000" Offset="0"/>
+	<EngineeringUnit Name="J/(kg K)" Description="Joules/(Kilogram Kelvin)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Heat Capacity" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="Btu/(lb degF)" Description="British Thermal Units/(Pound Degree Fahrenheit)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Heat Capacity" Primary="false" Gain="4186.8" Offset="0"/>
+	<EngineeringUnit Name="kJ/(kg K)" Description="Kilojoules/(Kilogram Kelvin)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Specific Heat Capacity" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="m/s" Description="Metres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm/s" Description="Centimetre/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.01" Offset="0"/>
+	<EngineeringUnit Name="ft/min" Description="Feet/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.00508" Offset="0"/>
+	<EngineeringUnit Name="ft/s" Description="Feet/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.3048" Offset="0"/>
+	<EngineeringUnit Name="ips" Description="Inches/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.0254" Offset="0"/>
+	<EngineeringUnit Name="km/h" Description="Kilometers/Hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.2777778" Offset="0"/>
+	<EngineeringUnit Name="km/min" Description="Kilometers/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="16.66667" Offset="0"/>
+	<EngineeringUnit Name="km/s" Description="Kilometers/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="kn" Description="Knots (Nautical Miles/Hour)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.5144" Offset="0"/>
+	<EngineeringUnit Name="Ma" Description="Mach speed in air at sea level" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="340.27" Offset="0"/>
+	<EngineeringUnit Name="mph" Description="Miles/Hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.44704" Offset="0"/>
+	<EngineeringUnit Name="mi/min" Description="Miles/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="26.8224" Offset="0"/>
+	<EngineeringUnit Name="mi/s" Description="Miles/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="1609.344" Offset="0"/>
+	<EngineeringUnit Name="mm/s" Description="Millimetres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Speed" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="degC" Description="Degrees Celsius" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="degF" Description="Degrees Fahrenheit" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature" Primary="false" Gain="0.5556" Offset="-17.778"/>
+	<EngineeringUnit Name="degR" Description="Degrees Rankine" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature" Primary="false" Gain="0.5556" Offset="-273.15"/>
+	<EngineeringUnit Name="K" Description="Kelvins" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature" Primary="false" Gain="1" Offset="-273.15"/>
+	<EngineeringUnit Name="degC/s" Description="Degrees Celsius difference/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature Drift" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="degC/min" Description="Degrees Celsius difference/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature Drift" Primary="false" Gain="1.666667E-02" Offset="0"/>
+	<EngineeringUnit Name="degF/min" Description="Degrees Fahrenheit difference/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature Drift" Primary="false" Gain="9.259259E-03" Offset="0"/>
+	<EngineeringUnit Name="degF/s" Description="Degrees Fahrenheit difference/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature Drift" Primary="false" Gain="0.5555556" Offset="0"/>
+	<EngineeringUnit Name="K/min" Description="Kelvins difference/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature Drift" Primary="false" Gain="1.666667E-02" Offset="0"/>
+	<EngineeringUnit Name="K/s" Description="Kelvins difference/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Temperature Drift" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="s" Description="Seconds" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="d" Description="Days" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="86400" Offset="0"/>
+	<EngineeringUnit Name="h" Description="Hours" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="3600" Offset="0"/>
+	<EngineeringUnit Name="ms" Description="Milliseconds" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="min" Description="Minutes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="60" Offset="0"/>
+	<EngineeringUnit Name="mth" Description="Months" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="2628000" Offset="0"/>
+	<EngineeringUnit Name="wk" Description="Weeks" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="604800" Offset="0"/>
+	<EngineeringUnit Name="y" Description="Years" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Time" Primary="false" Gain="3.154E+07" Offset="0"/>
+	<EngineeringUnit Name="N m" Description="Newton Metres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Torque" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="ft lbf" Description="Foot Pound-Force" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Torque" Primary="false" Gain="1.356" Offset="0"/>
+	<EngineeringUnit Name="in lbf" Description="Inch Pound-Force" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Torque" Primary="false" Gain="0.113" Offset="0"/>
+	<EngineeringUnit Name="Hz/cSt" Description="Hertz/Centistokes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Turbine Flow Meter" Primary="true" Gain="0.102" Offset="0"/>
+	<EngineeringUnit Name="V" Description="Volts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Voltage" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="uV" Description="Microvolts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Voltage" Primary="false" Gain="0.000001" Offset="0"/>
+	<EngineeringUnit Name="mV" Description="Millivolts" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Voltage" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="Vac" Description="Volts Alternating Current" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Voltage" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="Vdc" Description="Volts Direct Current" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Voltage" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="L" Description="Litres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm^3" Description="Cubic Centimetres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="ft^3" Description="Cubic Feet" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="28.31685" Offset="0"/>
+	<EngineeringUnit Name="m^3" Description="Cubic Metres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="fl oz_UK" Description="Fluid Ounces (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="2.841306E-02" Offset="0"/>
+	<EngineeringUnit Name="fl oz_US" Description="Fluid Ounces (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="2.957353E-02" Offset="0"/>
+	<EngineeringUnit Name="gal_UK" Description="Gallons (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="4.54609" Offset="0"/>
+	<EngineeringUnit Name="gal_US" Description="Gallons (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="3.785412" Offset="0"/>
+	<EngineeringUnit Name="mL" Description="Millilitres" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="pt_UK" Description="Pints (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="0.5682612" Offset="0"/>
+	<EngineeringUnit Name="pt_US" Description="Pints (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="0.4731765" Offset="0"/>
+	<EngineeringUnit Name="qt_UK" Description="Quarts (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="1.136522" Offset="0"/>
+	<EngineeringUnit Name="qt_US" Description="Quarts (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volume" Primary="false" Gain="0.9463529" Offset="0"/>
+	<EngineeringUnit Name="L/s" Description="Liters/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="true" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="cm^3/s" Description="Cubic Centimetres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="0.001" Offset="0"/>
+	<EngineeringUnit Name="cm^3/h" Description="Cubic Metres/hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="2.777778E-07" Offset="0"/>
+	<EngineeringUnit Name="m^3/h" Description="Cubic Metres/hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="0.2777778" Offset="0"/>
+	<EngineeringUnit Name="cm^3/min" Description="Cubic Metres/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="1.666667E-05" Offset="0"/>
+	<EngineeringUnit Name="m^3/min" Description="Cubic Metres/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="16.66667" Offset="0"/>
+	<EngineeringUnit Name="m^3/s" Description="Cubic Metres/Second" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="1000" Offset="0"/>
+	<EngineeringUnit Name="gph_UK" Description="Gallons/Hour (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="1.262803E-03" Offset="0"/>
+	<EngineeringUnit Name="gph_US" Description="Gallons/Hour (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="1.051503E-03" Offset="0"/>
+	<EngineeringUnit Name="gpm_UK" Description="Gallons/Minute (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="7.576817E-02" Offset="0"/>
+	<EngineeringUnit Name="gpm_US" Description="Gallons/Minute (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="0.0630902" Offset="0"/>
+	<EngineeringUnit Name="gps_UK" Description="Gallons/Second (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="4.54609" Offset="0"/>
+	<EngineeringUnit Name="gps_US" Description="Gallons/Second (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="3.785412" Offset="0"/>
+	<EngineeringUnit Name="L/d" Description="Liters/Day" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="1.157407E-05" Offset="0"/>
+	<EngineeringUnit Name="L/h" Description="Liters/Hour" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="2.777778E-04" Offset="0"/>
+	<EngineeringUnit Name="L/min" Description="Liters/Minute" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="1.666667E-02" Offset="0"/>
+	<EngineeringUnit Name="qt_UK/h" Description="Quarts/Hour (British Imperial)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="3.157007E-04" Offset="0"/>
+	<EngineeringUnit Name="qt_US/h" Description="Quarts/Hour (US)" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="Volumetric Flow" Primary="false" Gain="2.628758E-04" Offset="0"/>
+	<EngineeringUnit Name="count" Description="Counters" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="-" Description="Dimensionless" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="ratio" Description="Dimensionless" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="h.min" Description="Hours.Minutes" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="min.s" Description="Minutes.Seconds" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="d.h" Description="Days.Hours" Enabled="true" LastModificationDate="2019-01-29 13:54:28" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="y.d" Description="Years.Days" Enabled="true" LastModificationDate="2019-02-11 14:37:01" Category="" Primary="false" Gain="1" Offset="0"/>
+	<EngineeringUnit Name="TBD" Description="To Be Determined" Enabled="true" LastModificationDate="2019-01-29 13:48:17" Category="" Primary="false" Gain="1" Offset="0"/>
+	</EngineeringUnits>
