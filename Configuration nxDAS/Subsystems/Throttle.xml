@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exported from /edit/engineer/test-cells/1/subsystems/9 -->
+<mds_xml_root export_root_type="subsystems" is_list_element="true">
+    <instance name="Throttle" description="Throttle Mark3 signals" is-enabled="true" me-maximum-boolean-input-address="50000" me-maximum-boolean-output-address="50000" me-maximum-float-input-address="50000" me-maximum-float-output-address="50000" subsystem-type="modbus-ethernet"/>
+</mds_xml_root>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exported from /edit/engineer/test-cells/1/subsystems/4 -->
+<mds_xml_root export_root_type="subsystems" is_list_element="true">
+    <instance name="DTS" description="Temperature measurements from DTS4050" is-enabled="true" subsystem-type="dts">
+        <dts-devices>
+            <instance name="DTS1124" dts-avg-samples="1" dts-default-eu="DegC" dts-model="dts-3250" dts-num-channels="16" dts-unit-scan-rate="40"/>
+            <instance name="DTS1125" dts-avg-samples="1" dts-default-eu="DegC" dts-model="dts-3250" dts-num-channels="16" dts-unit-scan-rate="40"/>
+            <instance name="DTS1126" dts-avg-samples="1" dts-default-eu="DegC" dts-model="dts-3250" dts-num-channels="16" dts-unit-scan-rate="40"/>
+            <instance name="DTS1127" dts-avg-samples="1" dts-default-eu="DegC" dts-model="dts-3250" dts-num-channels="16" dts-unit-scan-rate="40"/>
+        </dts-devices>
+    </instance>
+</mds_xml_root>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exported from /edit/engineer/test-cells/1/subsystems/8 -->
+<mds_xml_root export_root_type="subsystems" is_list_element="true">
+    <instance name="PBS" description="Pressure measurements from Model 9216" is-enabled="true" subsystem-type="pbs">
+        <pbs-bricks>
+            <instance name="PB21270" pbs-cont-purge-enable="false" pbs-default-eu="psi" pbs-max-scan-rate="100" pbs-scanner-type="pbs-9216">
+                <pbs-ports>
+                    <instance pbs-port-number="1" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="11" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="12" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="13" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="14" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="15" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="16" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="2" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="3" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="4" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="5" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="6" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="7" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="8" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="9" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="10" description="0 to +500 psi" pbs-max-press-range="500"/>
+                </pbs-ports>
+            </instance>
+            <instance name="PB21271" pbs-cont-purge-enable="false" pbs-default-eu="psi" pbs-max-scan-rate="100" pbs-scanner-type="pbs-9216">
+                <pbs-ports>
+                    <instance pbs-port-number="1" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="11" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="12" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="13" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="14" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="15" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="16" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="2" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="3" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="4" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="5" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="6" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="7" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="8" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="9" description="0 to +500 psi" pbs-max-press-range="500"/>
+                    <instance pbs-port-number="10" description="0 to +500 psi" pbs-max-press-range="500"/>
+                </pbs-ports>
+            </instance>
+        </pbs-bricks>
+    </instance>
+</mds_xml_root>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exported from /edit/engineer/test-cells/1/subsystems/1 -->
+<mds_xml_root export_root_type="subsystems" is_list_element="true">
+    <instance name="arinc429" description="Avionics data bus signals from Engine" is-enabled="true" subsystem-type="arinc429">
+        <arinc429-pinouts>
+            <instance name="ArincTx01" arinc429-port="1" arinc429-port-speed="low" arinc429-source="output"/>
+            <instance name="ArincTx04" arinc429-port="4" arinc429-port-speed="low" arinc429-source="output"/>
+            <instance name="ArincRx01" arinc429-port="1" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx02" arinc429-port="2" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx03" arinc429-port="3" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx04" arinc429-port="4" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx05" arinc429-port="5" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx06" arinc429-port="6" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx07" arinc429-port="7" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincRx08" arinc429-port="8" arinc429-port-speed="low" arinc429-source="input"/>
+            <instance name="ArincTx02" arinc429-port="2" arinc429-port-speed="low" arinc429-source="output"/>
+            <instance name="ArincTx03" arinc429-port="3" arinc429-port-speed="low" arinc429-source="output"/>
+        </arinc429-pinouts>
+    </instance>
+</mds_xml_root>

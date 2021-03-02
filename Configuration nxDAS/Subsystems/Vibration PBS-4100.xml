@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exported from /edit/engineer/test-cells/1/subsystems/2 -->
+<mds_xml_root export_root_type="subsystems" is_list_element="true">
+    <instance name="Vibration" description="Vibration and balancing signals from PBS-4100R+" is-enabled="true" subsystem-type="mvib"/>
+</mds_xml_root>
